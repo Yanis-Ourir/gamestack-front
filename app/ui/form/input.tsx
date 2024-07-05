@@ -1,5 +1,5 @@
 export default function Input({label, type, id, name, required, className}: {
-    label: string;
+    label: string | null;
     type: string;
     id: string;
     name: string;
@@ -8,7 +8,7 @@ export default function Input({label, type, id, name, required, className}: {
 }) {
     return (
         <div>
-            <label htmlFor={id} className="block text-lg font-medium leading-6 text-white">{label}</label>
+            <label htmlFor={id} className="block text-md font-medium leading-6 text-white">{label}</label>
             <div className="mt-2">
                 <input id={id} name={name} type={type} required={required} className={className}/>
             </div>

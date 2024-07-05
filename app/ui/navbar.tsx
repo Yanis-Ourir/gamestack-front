@@ -6,9 +6,9 @@ export default function Navbar() {
             <p>GameStack</p>
         </div>
         <ul className="flex mr-6">
-            <li><a className="px-4" href="/">Home</a></li>
-            <li><a className="px-4" href="/about">About</a></li>
-            <li><a className="px-4" href="/contact">Contact</a></li>
+            <li><a className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/home">Home</a></li>
+            <li><a className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/about">About</a></li>
+            <li><a className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/contact">Contact</a></li>
         </ul>
     </nav>
 }

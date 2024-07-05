@@ -1,8 +1,8 @@
 'use client';
-
-import React, {useEffect, useState} from "react";
 import Input from "@/app/ui/form/input";
 import Image from "next/image";
+import Button from "@/app/ui/form/button";
+import Link from "next/link";
 
 type LoginResponse = {
     access_token: string;
@@ -20,12 +20,6 @@ export default function Login() {
         loginRequest(email.value, password.value);
     }
 
-    // function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    //     e.preventDefault();
-    //     const { email, password } = (e.target as any).elements;
-    //     console.log(email.value, password.value);
-    //     loginRequest(email.value, password.value);
-    // }
     function loginRequest(emailValue: string, passwordValue: string) {
         fetch('http://127.0.0.1:8000/api/auth/login', {
             method: 'POST',
@@ -46,9 +40,18 @@ export default function Login() {
     return (
         <div className="flex flex-col items-center justify-center">
             <Image src="/assets/place_holder_logo.png" alt={"Logo gamestack"} width={200} height={200}/>
-            <form className="space-y-6 bg-gray-900 p-12 w-1/4 rounded-lg" method="POST" onSubmit={handleSubmit}>
+            <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg" method="POST" onSubmit={handleSubmit}>
                 <Input label={"Email :"} type={"email"} id={"#inputEmail"} name={"email"} required={true} className={"input-login"}/>
                 <Input label={"Mot de passe :"} type={"password"} id={"#inputPassword"} name={"password"} required={true} className={"input-login"}/>
+                <div className="md:flex items-center justify-between">
+                    <div className="flex items-center gap-2 mb-4 md:mb-0">
+                        <Input label={null} type={"checkbox"} id={"#inputRememberMe"} name={"rememberMe"} required={false} className={""}/>
+                        <label htmlFor={"#inputRememberMe"} className="text-white pt-1">Se souvenir de moi</label>
+                    </div>
+                    <Link  href="#" className="text-gray-500 pt-1 hover:text-red-400">Mot de passe oublié ?</Link>
+                </div>
+                <Button classes={"bg-red-input w-full rounded-full p-1.5 text-white hover:bg-red-input-hover"} label={"Connexion"}/>
+                <p className="text-white text-center pt-2">Pas encore de compte ? <Link href="/auth/register" className="text-red-400 hover:underline">Inscrivez-vous</Link></p>
             </form>
         </div>
     )

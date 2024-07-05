@@ -15,6 +15,10 @@ const config: Config = {
       },
       backgroundColor: {
         "black-gray": "#191C1F",
+        "red-input": "#B54548",
+        "red-input-hover": "#A43D40",
+        "red-input-pressure": "#8F3538",
+        "footer-bg": "#171923"
       }
     },
   },

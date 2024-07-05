@@ -6,7 +6,7 @@
 
 @layer components {
     .input-login {
-        @apply rounded-md w-full p-1 bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-purple-900;
+        @apply rounded-full w-full p-1 px-3 bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-purple-900;
     }
 }
 
