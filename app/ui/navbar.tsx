@@ -1,8 +1,8 @@
 import Image from 'next/image'
 export default function Navbar() {
-    return <nav className="flex text-white justify-between items-center">
+    return <nav className="flex text-white justify-between items-center border-b border-gray-800">
         <div className="flex items-center dongle-regular-title">
-            <Image src="/assets/place_holder_logo.png" alt="Logo GameStack" width={100} height={50}/>
+            <Image src="/assets/place_holder_logo.png" alt="Logo GameStack" width={70} height={50}/>
             <p>GameStack</p>
         </div>
         <ul className="flex mr-6 text-3xl">
