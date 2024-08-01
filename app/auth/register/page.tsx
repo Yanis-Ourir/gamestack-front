@@ -11,7 +11,7 @@ export default function Register() {
 
     return <div className="flex flex-col items-center justify-center">
         <Image src="/assets/place_holder_logo.png" alt={"Logo gamestack"} width={200} height={200}/>
-        <form className="space-y-6 bg-gray-900 px-12  py-8 md:w-1/3 rounded-lg" method="POST"
+        <form className="space-y-6 bg-gray-900 px-12  py-8 md:w-1/3 rounded-lg text-2xl" method="POST"
               onSubmit={handleSubmit}>
             <Input label={"Email :"} type={"email"} id={"#inputEmail"} name={"email"} required={true}
                    className={"input-login"}/>

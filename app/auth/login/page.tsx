@@ -40,7 +40,7 @@ export default function Login() {
     return (
         <div className="flex flex-col items-center justify-center">
             <Image src="/assets/place_holder_logo.png" alt={"Logo gamestack"} width={200} height={200}/>
-            <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg" method="POST" onSubmit={handleSubmit}>
+            <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg text-2xl" method="POST" onSubmit={handleSubmit}>
                 <Input label={"Email :"} type={"email"} id={"#inputEmail"} name={"email"} required={true} className={"input-login"}/>
                 <Input label={"Mot de passe :"} type={"password"} id={"#inputPassword"} name={"password"} required={true} className={"input-login"}/>
                 <div className="md:flex items-center justify-between">
