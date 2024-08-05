@@ -19,6 +19,9 @@ const config: Config = {
         "red-input-hover": "#A43D40",
         "red-input-pressure": "#8F3538",
         "footer-bg": "#171923"
+      },
+      textColor: {
+        "hover-red": "#B54548"
       }
     },
   },
