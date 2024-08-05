@@ -23,3 +23,7 @@ body {
 .dongle-regular-title {
     font-size: 50px;
 }
+
+.avatar-image {
+    border-radius: 50%;
+}
