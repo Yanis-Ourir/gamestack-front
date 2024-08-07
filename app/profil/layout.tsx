@@ -1,8 +1,47 @@
+'use client';
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
+import parseJWT from "../lib/parseJWT";
+
+type User = {
+    pseudo: string;
+    email: string;
+    password: string;
+    role: string;
+    createdAt: string;
+    updatedAt: string;
+}
 
 export default function Profil({children}: { children: React.ReactNode[]}) {
+    const token = localStorage.getItem('token');
+    const [user, setUser] = React.useState<User>();
+    if(!token) {
+        window.location.href = '/auth/login';
+        return;
+    }
+
+    const findUser = () => {
+        const payloadToken = parseJWT(token);
+        fetch(`http://localhost:8000/api/user/` + payloadToken.pseudo, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(async (response) => {
+            const data = await response.json();
+            console.log(data);
+            setUser(data);
+            return data;
+        }).catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+    useEffect(() => {
+        findUser();
+    }, []);
+
     return (
         <div>
             <section>
@@ -26,7 +65,7 @@ export default function Profil({children}: { children: React.ReactNode[]}) {
                         <div className="text-center">
                         <Image src="/assets/static_images/icon-default.jpg" alt="avatar"
                                    className="rounded-full" width={150} height={150}/>
-                            <p className="text-4xl text-white mt-2">John Doe</p>
+                            <p className="text-4xl text-white mt-2">{user?.pseudo}</p>
                         </div>
                     </div>
                 </div>

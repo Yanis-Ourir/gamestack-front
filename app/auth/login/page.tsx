@@ -12,6 +12,8 @@ type LoginResponse = {
 
 export default function Login() {
 
+    const success = localStorage.getItem('success');
+
     // @ts-ignore
     function handleSubmit(e) {
         e.preventDefault();
@@ -33,6 +35,8 @@ export default function Login() {
         }).then(async (response) => {
             const data: LoginResponse = await response.json();
             localStorage.setItem('token', data.access_token);
+            localStorage.removeItem('success');
+            window.location.href = "/";
         });
     }
 
@@ -40,7 +44,12 @@ export default function Login() {
     return (
         <div className="flex flex-col items-center justify-center">
             <Image src="/assets/place_holder_logo.png" alt={"Logo gamestack"} width={200} height={200}/>
-            <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg text-2xl" method="POST" onSubmit={handleSubmit}>
+            {success && 
+                <div className={"text-green-400 text-2xl bg-green-800 lg:w-1/3 md:w-full p-2 rounded-lg mb-4"}>
+                <p className="text-green-500 text-center">{success}</p>
+            </div>
+            }
+            <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg text-2xl mb-[2rem]" method="POST" onSubmit={handleSubmit}>
                 <Input label={"Email :"} type={"email"} id={"#inputEmail"} name={"email"} required={true} className={"input-login"}/>
                 <Input label={"Mot de passe :"} type={"password"} id={"#inputPassword"} name={"password"} required={true} className={"input-login"}/>
                 <div className="md:flex items-center justify-between">

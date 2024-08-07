@@ -1,3 +1,4 @@
+'use client';
 import Image from "next/image";
 import Tag from "@/app/ui/molecule/tag";
 import {IoGameControllerOutline} from "react-icons/io5";
@@ -5,6 +6,7 @@ import {CgScreen} from "react-icons/cg";
 import GameDetails from "@/app/ui/molecule/game-details";
 import React from "react";
 import ListDetails from "@/app/ui/molecule/list-details";
+import parseJWT from "./lib/parseJWT";
 export default function Home() {
     const platforms = [
         {
@@ -96,6 +98,11 @@ export default function Home() {
             gamesNumber: 15
         }
     ]
+    const token = localStorage.getItem('token');
+    if(token) {
+        const payload = parseJWT(token);
+        console.log(payload);
+    }
   return (
       <>
           <section className="flex justify-center flex-col items-center my-12">

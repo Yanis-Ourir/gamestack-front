@@ -1,6 +1,8 @@
+'use client';
 import Image from 'next/image'
 import Link from "next/link";
 export default function Navbar() {
+    const token = localStorage.getItem('token');
     return <nav className="flex text-white justify-between items-center border-b border-gray-800">
         <div>
             <Link className="px-4 hover:text-[#B54548] active:text-[#B54548] flex items-center dongle-regular-title" href="/">
@@ -16,7 +18,13 @@ export default function Navbar() {
                 <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="#">Contact</Link>
             </li>
             <li>
-                <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/auth/login">Login</Link>
+                {token ? (
+                    <>
+                    <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/auth/logout">Logout</Link> <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/profil">Profil</Link>
+                    </>
+                ) : (
+                    <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/auth/login">Login</Link>
+                )}
             </li>
         </ul>
     </nav>
