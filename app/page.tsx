@@ -24,36 +24,36 @@ export default function Home() {
     ];
     const gameList = [
         {
-            title: "Granblue Fantasy Relink",
+            name: "Granblue Fantasy Relink",
             image: "/assets/static_images/GFR.png",
             platforms: platforms,
-            genres: ["JRPG", "Action", "Fantasy"],
-            releaseDate: "Février 2024",
-            grade: 9.5
+            tags: ["JRPG", "Action", "Fantasy"],
+            release_date: "Février 2024",
+            rating: 9.5
         },
         {
-            title: "Granblue Fantasy Relink",
+            name: "Granblue Fantasy Relink",
             image: "/assets/static_images/GFR.png",
             platforms: platforms,
-            genres: ["JRPG", "Action", "Fantasy"],
-            releaseDate: "Février 2024",
-            grade: 9.5
+            tags: ["JRPG", "Action", "Fantasy"],
+            release_date: "Février 2024",
+            rating: 9.5
         },
         {
-            title: "Granblue Fantasy Relink",
+            name: "Granblue Fantasy Relink",
             image: "/assets/static_images/GFR.png",
             platforms: platforms,
-            genres: ["JRPG", "Action", "Fantasy"],
-            releaseDate: "Février 2024",
-            grade: 9.5
+            tags: ["JRPG", "Action", "Fantasy"],
+            release_date: "Février 2024",
+            rating: 9.5
         },
         {
-            title: "Granblue Fantasy Relink",
+            name: "Granblue Fantasy Relink",
             image: "/assets/static_images/GFR.png",
             platforms: platforms,
-            genres: ["JRPG", "Action", "Fantasy"],
-            releaseDate: "Février 2024",
-            grade: 9.5
+            tags: ["JRPG", "Action", "Fantasy"],
+            release_date: "Février 2024",
+            rating: 9.5
         }
     ];
     const lists = [
@@ -132,12 +132,12 @@ export default function Home() {
               {gameList.map((game, index) => (
                   <GameDetails
                         key={index}
-                        title={game.title}
+                        name={game.name}
                         image={game.image}
                         platforms={game.platforms}
-                        genres={game.genres}
-                        releaseDate={game.releaseDate}
-                        grade={game.grade}
+                        tags={game.tags}
+                        release_date={game.release_date}
+                        rating={game.rating}
                   />
               ))}
           </section>

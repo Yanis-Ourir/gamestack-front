@@ -25,6 +25,13 @@ const config: Config = {
       }
     },
   },
+  variants: {
+    extend: {
+      backgroundColor: ["active"],
+      textColor: ["active"],
+      underline: ["active"],
+    },
+  },
   plugins: [],
 };
 export default config;

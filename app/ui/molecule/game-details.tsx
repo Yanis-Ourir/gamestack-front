@@ -1,28 +1,30 @@
 import Image from "next/image";
 import Tag from "@/app/ui/molecule/tag";
 import React from "react";
+import Link from "next/link";
 
-type GameDetailsProps = {
-    title: string;
+export type GameDetailsProps = {
+    id?: string;
+    name: string;
     image: string;
     platforms: PlatformsProps[];
-    genres: string[];
-    releaseDate: string;
-    grade?: number;
+    tags: string[];
+    release_date: string;
+    rating?: number;
 }
 
-type PlatformsProps = {
+export type PlatformsProps = {
     tagName: string;
     icon: React.ReactNode;
 }
 
-export default function GameDetails({title, image, platforms, genres, releaseDate, grade}: GameDetailsProps) {
+export default function GameDetails({id, name, image, platforms, tags, release_date, rating}: GameDetailsProps) {
     return (
-        <div className="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between">
+        <Link href={"/game/" + id} className="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between">
             <div className="flex">
                 <Image src={image} alt={"GBF"} width={"100"} height={"100"}/>
                 <div className="px-4">
-                    <p className="text-4xl">{title}</p>
+                    <p className="text-4xl">{name}</p>
                     <div className={"flex gap-3"}>
                         <p>Plateformes : </p>
                         {platforms.map((platform: PlatformsProps, index) => (
@@ -31,17 +33,17 @@ export default function GameDetails({title, image, platforms, genres, releaseDat
                     </div>
                     <div className={"text-gray-500"}>
                             <p>
-                                {genres.join(", ")}
+                                {tags.join(", ")}
                             </p>
-                        <p>{releaseDate}</p>
+                        <p>{release_date}</p>
                     </div>
                 </div>
             </div>
                 <div>
                     <p className={"text-6xl text-red-600"}>
-                        {grade}
+                        {rating}
                     </p>
                 </div>
-        </div>
+        </Link>
     )
 }
