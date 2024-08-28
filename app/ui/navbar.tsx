@@ -12,7 +12,7 @@ export default function Navbar() {
         </div>
         <ul className="flex mr-6 text-3xl">
             <li>
-                <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/search">Search</Link>
+                <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/search/game">Search</Link>
             </li>
             <li>
                 <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="#">Contact</Link>

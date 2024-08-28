@@ -7,6 +7,7 @@ export type GameDetailsProps = {
     id?: string;
     name: string;
     image: string;
+    description?: string;
     platforms: PlatformsProps[];
     tags: string[];
     release_date: string;

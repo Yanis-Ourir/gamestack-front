@@ -1,3 +1,4 @@
+'use client';
 import Image from "next/image";
 import Input from "@/app/ui/atoms/input";
 import Link from "next/link";

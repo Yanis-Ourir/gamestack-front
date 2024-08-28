@@ -2,8 +2,11 @@ import Image from "next/image";
 import { CgScreen } from "react-icons/cg";
 import { IoGameControllerOutline } from "react-icons/io5";
 import Tag from "../ui/molecule/tag";
+import { findGameByName } from "../lib/gameCrud";
 
-export default function Game() {
+export default async function Game({params} : {params: string}) {
+    const gameFind = await findGameByName(params);
+    console.log(gameFind);
     const platforms = [
         {
             tagName: "PS5",
