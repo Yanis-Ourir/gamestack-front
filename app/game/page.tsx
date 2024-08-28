@@ -41,7 +41,7 @@ export default async function Game({params} : {params: string}) {
                     <p className="text-gray-500">Date de sortie {game.release_date}</p>
                         <div className="flex gap-3 mb-4">
                         {game.platforms.map((platform, index) => (
-                            <Tag key={index} tagName={platform.tagName} icon={platform.icon}/>
+                            <Tag key={index} name={platform.tagName} icon={platform.icon}/>
                         ))}
                         </div>
                     <p>

@@ -15,7 +15,7 @@ export type GameDetailsProps = {
 }
 
 export type PlatformsProps = {
-    tagName: string;
+    name: string;
     icon: React.ReactNode;
 }
 
@@ -29,7 +29,7 @@ export default function GameDetails({id, name, image, platforms, tags, release_d
                     <div className={"flex gap-3"}>
                         <p>Plateformes : </p>
                         {platforms.map((platform: PlatformsProps, index) => (
-                            <Tag key={index} tagName={platform.tagName} icon={platform.icon}/>
+                            <Tag key={index} name={platform.name} icon={platform.icon}/>
                         ))}
                     </div>
                     <div className={"text-gray-500"}>

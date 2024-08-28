@@ -10,15 +10,15 @@ import parseJWT from "./lib/parseJWT";
 export default function Home() {
     const platforms = [
         {
-            tagName: "PS5",
+            name: "PS5",
             icon: <IoGameControllerOutline />
         },
         {
-            tagName: "PS4",
+            name: "PS4",
             icon: <IoGameControllerOutline />
         },
         {
-            tagName: "PC",
+            name: "PC",
             icon: <CgScreen />
         }
     ];
