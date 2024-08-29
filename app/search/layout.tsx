@@ -1,7 +1,15 @@
+'use client';
 import Link from "next/link";
 import Input from "../ui/atoms/input";
+import { useState } from "react";
 
-export default async function SearchLayout({ children }: { children: React.ReactNode }) {
+export default function SearchLayout({ children }: { children: React.ReactNode }) {
+    const [search, setSearch] = useState<string>("");
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(e.target.value);
+        console.log(search);
+    }
     return (
         <>
             <section>
@@ -11,7 +19,7 @@ export default async function SearchLayout({ children }: { children: React.React
                     <Link href={"/search/list"} className={"hover:text-hover-red active:text-hover-red active:underline"}>Listes</Link>
                 </div>
                 <div className="p-4 text-2xl justify-center flex my-12">
-                    <Input label={""} type={"text"} id={"search"} name={"search"} required={true} className={"input-login text-2xl w-[50rem]"}/>
+                    <input type="text" id="search" name="search" required={true} className="input-login text-2xl w-[50rem]" onChange={handleSearch}/>
                 </div>
             </section>
 

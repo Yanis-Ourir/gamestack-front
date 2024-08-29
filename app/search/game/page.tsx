@@ -13,6 +13,7 @@ export default async function GameSearch() {
                     image={game.image}
                     platforms={game.platforms}
                     tags={game?.tags}
+                    slug={game.slug}
                     release_date={game.release_date}
                     rating={game.rating}
                 />

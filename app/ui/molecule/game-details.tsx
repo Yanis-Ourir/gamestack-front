@@ -10,6 +10,7 @@ export type GameDetailsProps = {
     description?: string;
     platforms: PlatformsProps[];
     tags: string[];
+    slug: string;
     release_date: string;
     rating?: number;
 }
@@ -19,9 +20,9 @@ export type PlatformsProps = {
     icon: string;
 }
 
-export default function GameDetails({id, name, image, platforms, tags, release_date, rating}: GameDetailsProps) {
+export default function GameDetails({id, slug, name, image, platforms, tags, release_date, rating}: GameDetailsProps) {
     return (
-        <Link href={"/game/" + id} className="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between">
+        <Link href={"/game/" + slug} className="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between">
             <div className="flex">
                 <Image src={image} alt={"GBF"} width={"100"} height={"100"}/>
                 <div className="px-4">

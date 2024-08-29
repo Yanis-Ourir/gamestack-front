@@ -13,7 +13,11 @@ export default function Login() {
         e.preventDefault();
         const { email, password } = e.target.elements;
         console.log(email.value, password.value);
-        loginRequest(email.value, password.value);
+        try {
+            loginRequest(email.value, password.value);
+        } catch (error) {
+            console.error(error);
+        }
     }
 
 
