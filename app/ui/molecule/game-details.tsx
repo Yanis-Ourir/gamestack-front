@@ -16,7 +16,7 @@ export type GameDetailsProps = {
 
 export type PlatformsProps = {
     name: string;
-    icon: React.ReactNode;
+    icon: string;
 }
 
 export default function GameDetails({id, name, image, platforms, tags, release_date, rating}: GameDetailsProps) {
