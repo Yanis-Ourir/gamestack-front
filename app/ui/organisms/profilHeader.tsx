@@ -1,4 +1,5 @@
 'use client';
+import parseJWT from "@/app/lib/parseJWT";
 import findUser from "@/app/lib/userCrud";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,12 +16,14 @@ type User = {
 export default function ProfilHeader() {
     const [user, setUser] = useState<User>();
     const token = localStorage.getItem('token');
+    const payloadToken = parseJWT(token as string);
 
     async function fetchData() {
         if (!token) {
             window.location.href = '/auth/login';
             return;
         }
+
         const data = await findUser(token);
         setUser(data);
     }
@@ -53,7 +56,7 @@ export default function ProfilHeader() {
                     <div className="text-center">
                     <Image src="/assets/static_images/icon-default.jpg" alt="avatar"
                                 className="rounded-full" width={150} height={150}/>
-                        <p className="text-4xl text-white mt-2">{user?.pseudo}</p>
+                        <p className="text-4xl text-white mt-2">{payloadToken.pseudo}</p>
                     </div>
                 </div>
             </div>

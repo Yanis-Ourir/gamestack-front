@@ -1,0 +1,1158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<div>
+  <section
+    class="flex justify-center flex-col items-center my-12"
+  >
+    <h1
+      class="text-6xl font-medium text-white w-1/2 text-center"
+    >
+      Créez, partagez et découvrez les
+      <span
+        class="bg-gradient-to-r from-[#C31432] to-purple-800 bg-clip-text text-transparent"
+      >
+         expériences
+      </span>
+       incroyables de vos
+      <span
+        class="bg-gradient-to-r from-[#C31432] to-purple-800 bg-clip-text text-transparent"
+      >
+         jeux vidéo
+      </span>
+       préférés
+    </h1>
+    <div
+      class="relative w-full flex justify-center items-center mt-12"
+    >
+      <div
+        class="absolute -bottom-16 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-800 to-purple-800 blur-2xl rounded-lg w-[70%] h-[105%]"
+      />
+      <img
+        alt="iPhone GameStack video game list"
+        class="relative mt-12"
+        data-nimg="1"
+        decoding="async"
+        height="300"
+        loading="lazy"
+        src="/_next/image?url=%2Fassets%2Flanding-page.jpg&w=3840&q=75"
+        srcset="/_next/image?url=%2Fassets%2Flanding-page.jpg&w=1200&q=75 1x, /_next/image?url=%2Fassets%2Flanding-page.jpg&w=3840&q=75 2x"
+        style="color: transparent;"
+        width="1200"
+      />
+    </div>
+    <div
+      class="mt-24 flex items-center justify-around gap-2"
+    >
+      <a
+        href="#"
+      >
+        <img
+          alt="Téléchargement Google Play"
+          data-nimg="1"
+          decoding="async"
+          height="150"
+          loading="lazy"
+          src="/_next/image?url=%2Fassets%2Fstatic_images%2FGetItOnGooglePlay_Badge_Web_color_French.png&w=640&q=75"
+          srcset="/_next/image?url=%2Fassets%2Fstatic_images%2FGetItOnGooglePlay_Badge_Web_color_French.png&w=256&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2FGetItOnGooglePlay_Badge_Web_color_French.png&w=640&q=75 2x"
+          style="color: transparent;"
+          width="200"
+        />
+      </a>
+      <a
+        href="#"
+      >
+        <img
+          alt="Téléchargement App Store"
+          data-nimg="1"
+          decoding="async"
+          height="150"
+          loading="lazy"
+          src="/assets/static_images/Download_on_the_App_Store_Badge_FR.svg"
+          style="color: transparent;"
+          width="195"
+        />
+      </a>
+    </div>
+  </section>
+  <section
+    class="text-2xl text-white p-[2rem]"
+  >
+    <h2
+      class="dongle-regular-title mb-[3rem]"
+    >
+      Les avis de notre communauté ! 
+    </h2>
+    <h3
+      class="dongle-regular-title mb-[3rem]"
+    >
+      Meilleurs jeux :fire:
+    </h3>
+    <a
+      class="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between"
+      href="/game/undefined"
+    >
+      <div
+        class="flex"
+      >
+        <img
+          alt="GBF"
+          data-nimg="1"
+          decoding="async"
+          height="100"
+          loading="lazy"
+          src="/_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=256&q=75"
+          srcset="/_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=128&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=256&q=75 2x"
+          style="color: transparent;"
+          width="100"
+        />
+        <div
+          class="px-4"
+        >
+          <p
+            class="text-4xl"
+          >
+            Granblue Fantasy Relink
+          </p>
+          <div
+            class="flex gap-3"
+          >
+            <p>
+              Plateformes : 
+            </p>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M467.51 248.83c-18.4-83.18-45.69-136.24-89.43-149.17A91.5 91.5 0 0 0 352 96c-26.89 0-48.11 16-96 16s-69.15-16-96-16a99.09 99.09 0 0 0-27.2 3.66C89 112.59 61.94 165.7 43.33 248.83c-19 84.91-15.56 152 21.58 164.88 26 9 49.25-9.61 71.27-37 25-31.2 55.79-40.8 119.82-40.8s93.62 9.6 118.66 40.8c22 27.41 46.11 45.79 71.42 37.16 41.02-14.01 40.44-79.13 21.43-165.04z"
+                  fill="none"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <circle
+                  cx="292"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M336 288a20 20 0 1 1 20-19.95A20 20 0 0 1 336 288z"
+                />
+                <circle
+                  cx="336"
+                  cy="180"
+                  r="20"
+                />
+                <circle
+                  cx="380"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M160 176v96m48-48h-96"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+              </svg>
+               
+              PS5
+            </div>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M467.51 248.83c-18.4-83.18-45.69-136.24-89.43-149.17A91.5 91.5 0 0 0 352 96c-26.89 0-48.11 16-96 16s-69.15-16-96-16a99.09 99.09 0 0 0-27.2 3.66C89 112.59 61.94 165.7 43.33 248.83c-19 84.91-15.56 152 21.58 164.88 26 9 49.25-9.61 71.27-37 25-31.2 55.79-40.8 119.82-40.8s93.62 9.6 118.66 40.8c22 27.41 46.11 45.79 71.42 37.16 41.02-14.01 40.44-79.13 21.43-165.04z"
+                  fill="none"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <circle
+                  cx="292"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M336 288a20 20 0 1 1 20-19.95A20 20 0 0 1 336 288z"
+                />
+                <circle
+                  cx="336"
+                  cy="180"
+                  r="20"
+                />
+                <circle
+                  cx="380"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M160 176v96m48-48h-96"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+              </svg>
+               
+              PS4
+            </div>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M11 17H4C2.34315 17 1 15.6569 1 14V6C1 4.34315 2.34315 3 4 3H20C21.6569 3 23 4.34315 23 6V14C23 15.6569 21.6569 17 20 17H13V19H16C16.5523 19 17 19.4477 17 20C17 20.5523 16.5523 21 16 21H8C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19H11V17ZM4 5H20C20.5523 5 21 5.44772 21 6V14C21 14.5523 20.5523 15 20 15H4C3.44772 15 3 14.5523 3 14V6C3 5.44772 3.44772 5 4 5Z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                />
+              </svg>
+               
+              PC
+            </div>
+          </div>
+          <div
+            class="text-gray-500"
+          >
+            <p>
+              JRPG, Action, Fantasy
+            </p>
+            <p>
+              Février 2024
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p
+          class="text-6xl text-red-600"
+        >
+          9.5
+        </p>
+      </div>
+    </a>
+    <a
+      class="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between"
+      href="/game/undefined"
+    >
+      <div
+        class="flex"
+      >
+        <img
+          alt="GBF"
+          data-nimg="1"
+          decoding="async"
+          height="100"
+          loading="lazy"
+          src="/_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=256&q=75"
+          srcset="/_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=128&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=256&q=75 2x"
+          style="color: transparent;"
+          width="100"
+        />
+        <div
+          class="px-4"
+        >
+          <p
+            class="text-4xl"
+          >
+            Granblue Fantasy Relink
+          </p>
+          <div
+            class="flex gap-3"
+          >
+            <p>
+              Plateformes : 
+            </p>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M467.51 248.83c-18.4-83.18-45.69-136.24-89.43-149.17A91.5 91.5 0 0 0 352 96c-26.89 0-48.11 16-96 16s-69.15-16-96-16a99.09 99.09 0 0 0-27.2 3.66C89 112.59 61.94 165.7 43.33 248.83c-19 84.91-15.56 152 21.58 164.88 26 9 49.25-9.61 71.27-37 25-31.2 55.79-40.8 119.82-40.8s93.62 9.6 118.66 40.8c22 27.41 46.11 45.79 71.42 37.16 41.02-14.01 40.44-79.13 21.43-165.04z"
+                  fill="none"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <circle
+                  cx="292"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M336 288a20 20 0 1 1 20-19.95A20 20 0 0 1 336 288z"
+                />
+                <circle
+                  cx="336"
+                  cy="180"
+                  r="20"
+                />
+                <circle
+                  cx="380"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M160 176v96m48-48h-96"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+              </svg>
+               
+              PS5
+            </div>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M467.51 248.83c-18.4-83.18-45.69-136.24-89.43-149.17A91.5 91.5 0 0 0 352 96c-26.89 0-48.11 16-96 16s-69.15-16-96-16a99.09 99.09 0 0 0-27.2 3.66C89 112.59 61.94 165.7 43.33 248.83c-19 84.91-15.56 152 21.58 164.88 26 9 49.25-9.61 71.27-37 25-31.2 55.79-40.8 119.82-40.8s93.62 9.6 118.66 40.8c22 27.41 46.11 45.79 71.42 37.16 41.02-14.01 40.44-79.13 21.43-165.04z"
+                  fill="none"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <circle
+                  cx="292"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M336 288a20 20 0 1 1 20-19.95A20 20 0 0 1 336 288z"
+                />
+                <circle
+                  cx="336"
+                  cy="180"
+                  r="20"
+                />
+                <circle
+                  cx="380"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M160 176v96m48-48h-96"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+              </svg>
+               
+              PS4
+            </div>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M11 17H4C2.34315 17 1 15.6569 1 14V6C1 4.34315 2.34315 3 4 3H20C21.6569 3 23 4.34315 23 6V14C23 15.6569 21.6569 17 20 17H13V19H16C16.5523 19 17 19.4477 17 20C17 20.5523 16.5523 21 16 21H8C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19H11V17ZM4 5H20C20.5523 5 21 5.44772 21 6V14C21 14.5523 20.5523 15 20 15H4C3.44772 15 3 14.5523 3 14V6C3 5.44772 3.44772 5 4 5Z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                />
+              </svg>
+               
+              PC
+            </div>
+          </div>
+          <div
+            class="text-gray-500"
+          >
+            <p>
+              JRPG, Action, Fantasy
+            </p>
+            <p>
+              Février 2024
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p
+          class="text-6xl text-red-600"
+        >
+          9.5
+        </p>
+      </div>
+    </a>
+    <a
+      class="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between"
+      href="/game/undefined"
+    >
+      <div
+        class="flex"
+      >
+        <img
+          alt="GBF"
+          data-nimg="1"
+          decoding="async"
+          height="100"
+          loading="lazy"
+          src="/_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=256&q=75"
+          srcset="/_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=128&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=256&q=75 2x"
+          style="color: transparent;"
+          width="100"
+        />
+        <div
+          class="px-4"
+        >
+          <p
+            class="text-4xl"
+          >
+            Granblue Fantasy Relink
+          </p>
+          <div
+            class="flex gap-3"
+          >
+            <p>
+              Plateformes : 
+            </p>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M467.51 248.83c-18.4-83.18-45.69-136.24-89.43-149.17A91.5 91.5 0 0 0 352 96c-26.89 0-48.11 16-96 16s-69.15-16-96-16a99.09 99.09 0 0 0-27.2 3.66C89 112.59 61.94 165.7 43.33 248.83c-19 84.91-15.56 152 21.58 164.88 26 9 49.25-9.61 71.27-37 25-31.2 55.79-40.8 119.82-40.8s93.62 9.6 118.66 40.8c22 27.41 46.11 45.79 71.42 37.16 41.02-14.01 40.44-79.13 21.43-165.04z"
+                  fill="none"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <circle
+                  cx="292"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M336 288a20 20 0 1 1 20-19.95A20 20 0 0 1 336 288z"
+                />
+                <circle
+                  cx="336"
+                  cy="180"
+                  r="20"
+                />
+                <circle
+                  cx="380"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M160 176v96m48-48h-96"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+              </svg>
+               
+              PS5
+            </div>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M467.51 248.83c-18.4-83.18-45.69-136.24-89.43-149.17A91.5 91.5 0 0 0 352 96c-26.89 0-48.11 16-96 16s-69.15-16-96-16a99.09 99.09 0 0 0-27.2 3.66C89 112.59 61.94 165.7 43.33 248.83c-19 84.91-15.56 152 21.58 164.88 26 9 49.25-9.61 71.27-37 25-31.2 55.79-40.8 119.82-40.8s93.62 9.6 118.66 40.8c22 27.41 46.11 45.79 71.42 37.16 41.02-14.01 40.44-79.13 21.43-165.04z"
+                  fill="none"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <circle
+                  cx="292"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M336 288a20 20 0 1 1 20-19.95A20 20 0 0 1 336 288z"
+                />
+                <circle
+                  cx="336"
+                  cy="180"
+                  r="20"
+                />
+                <circle
+                  cx="380"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M160 176v96m48-48h-96"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+              </svg>
+               
+              PS4
+            </div>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M11 17H4C2.34315 17 1 15.6569 1 14V6C1 4.34315 2.34315 3 4 3H20C21.6569 3 23 4.34315 23 6V14C23 15.6569 21.6569 17 20 17H13V19H16C16.5523 19 17 19.4477 17 20C17 20.5523 16.5523 21 16 21H8C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19H11V17ZM4 5H20C20.5523 5 21 5.44772 21 6V14C21 14.5523 20.5523 15 20 15H4C3.44772 15 3 14.5523 3 14V6C3 5.44772 3.44772 5 4 5Z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                />
+              </svg>
+               
+              PC
+            </div>
+          </div>
+          <div
+            class="text-gray-500"
+          >
+            <p>
+              JRPG, Action, Fantasy
+            </p>
+            <p>
+              Février 2024
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p
+          class="text-6xl text-red-600"
+        >
+          9.5
+        </p>
+      </div>
+    </a>
+    <a
+      class="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between"
+      href="/game/undefined"
+    >
+      <div
+        class="flex"
+      >
+        <img
+          alt="GBF"
+          data-nimg="1"
+          decoding="async"
+          height="100"
+          loading="lazy"
+          src="/_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=256&q=75"
+          srcset="/_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=128&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2FGFR.png&w=256&q=75 2x"
+          style="color: transparent;"
+          width="100"
+        />
+        <div
+          class="px-4"
+        >
+          <p
+            class="text-4xl"
+          >
+            Granblue Fantasy Relink
+          </p>
+          <div
+            class="flex gap-3"
+          >
+            <p>
+              Plateformes : 
+            </p>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M467.51 248.83c-18.4-83.18-45.69-136.24-89.43-149.17A91.5 91.5 0 0 0 352 96c-26.89 0-48.11 16-96 16s-69.15-16-96-16a99.09 99.09 0 0 0-27.2 3.66C89 112.59 61.94 165.7 43.33 248.83c-19 84.91-15.56 152 21.58 164.88 26 9 49.25-9.61 71.27-37 25-31.2 55.79-40.8 119.82-40.8s93.62 9.6 118.66 40.8c22 27.41 46.11 45.79 71.42 37.16 41.02-14.01 40.44-79.13 21.43-165.04z"
+                  fill="none"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <circle
+                  cx="292"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M336 288a20 20 0 1 1 20-19.95A20 20 0 0 1 336 288z"
+                />
+                <circle
+                  cx="336"
+                  cy="180"
+                  r="20"
+                />
+                <circle
+                  cx="380"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M160 176v96m48-48h-96"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+              </svg>
+               
+              PS5
+            </div>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M467.51 248.83c-18.4-83.18-45.69-136.24-89.43-149.17A91.5 91.5 0 0 0 352 96c-26.89 0-48.11 16-96 16s-69.15-16-96-16a99.09 99.09 0 0 0-27.2 3.66C89 112.59 61.94 165.7 43.33 248.83c-19 84.91-15.56 152 21.58 164.88 26 9 49.25-9.61 71.27-37 25-31.2 55.79-40.8 119.82-40.8s93.62 9.6 118.66 40.8c22 27.41 46.11 45.79 71.42 37.16 41.02-14.01 40.44-79.13 21.43-165.04z"
+                  fill="none"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <circle
+                  cx="292"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M336 288a20 20 0 1 1 20-19.95A20 20 0 0 1 336 288z"
+                />
+                <circle
+                  cx="336"
+                  cy="180"
+                  r="20"
+                />
+                <circle
+                  cx="380"
+                  cy="224"
+                  r="20"
+                />
+                <path
+                  d="M160 176v96m48-48h-96"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+              </svg>
+               
+              PS4
+            </div>
+            <div
+              class="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center"
+            >
+              <svg
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M11 17H4C2.34315 17 1 15.6569 1 14V6C1 4.34315 2.34315 3 4 3H20C21.6569 3 23 4.34315 23 6V14C23 15.6569 21.6569 17 20 17H13V19H16C16.5523 19 17 19.4477 17 20C17 20.5523 16.5523 21 16 21H8C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19H11V17ZM4 5H20C20.5523 5 21 5.44772 21 6V14C21 14.5523 20.5523 15 20 15H4C3.44772 15 3 14.5523 3 14V6C3 5.44772 3.44772 5 4 5Z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                />
+              </svg>
+               
+              PC
+            </div>
+          </div>
+          <div
+            class="text-gray-500"
+          >
+            <p>
+              JRPG, Action, Fantasy
+            </p>
+            <p>
+              Février 2024
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p
+          class="text-6xl text-red-600"
+        >
+          9.5
+        </p>
+      </div>
+    </a>
+  </section>
+  <section
+    class="text-2xl text-white p-[2rem]"
+  >
+    <h4
+      class="dongle-regular-title mb-[3rem]"
+    >
+      Meilleurs listes :fire:
+    </h4>
+    <div
+      class="flex justify-between items-center border-b border-gray-600 pb-4 mb-4"
+    >
+      <div
+        class="flex items-center"
+      >
+        <img
+          alt="game list from community"
+          data-nimg="1"
+          decoding="async"
+          height="100"
+          loading="lazy"
+          src="/_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=256&q=75"
+          srcset="/_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=128&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=256&q=75 2x"
+          style="color: transparent;"
+          width="100"
+        />
+        <div
+          class="px-4"
+        >
+          <p
+            class="text-4xl"
+          >
+            Classiques incontournables
+          </p>
+          <div
+            class="flex items-center gap-2"
+          >
+            <img
+              alt="avatar from the game list"
+              class="avatar-image"
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=48&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-1/2 items-center"
+            >
+              <p
+                class="w-full"
+              >
+                John Doe
+                 - 
+                <span
+                  class="text-red-600 text-3xl"
+                >
+                  78
+                </span>
+              </p>
+              <svg
+                class="feather feather-heart"
+                fill="red"
+                stroke="red"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 120 30"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="text-gray-500"
+          >
+            Une liste qui selon moi regorges de jeux à faire absolument...
+          </p>
+          <p
+            class="text-gray-500"
+          >
+            Mis à jour le 04/08/2024
+          </p>
+        </div>
+      </div>
+      <div>
+        <p
+          class="text-3xl text-gray-500"
+        >
+          Jeux
+        </p>
+        <p
+          class="text-6xl text-red-600 text-center"
+        >
+          15
+        </p>
+      </div>
+    </div>
+    <div
+      class="flex justify-between items-center border-b border-gray-600 pb-4 mb-4"
+    >
+      <div
+        class="flex items-center"
+      >
+        <img
+          alt="game list from community"
+          data-nimg="1"
+          decoding="async"
+          height="100"
+          loading="lazy"
+          src="/_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=256&q=75"
+          srcset="/_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=128&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=256&q=75 2x"
+          style="color: transparent;"
+          width="100"
+        />
+        <div
+          class="px-4"
+        >
+          <p
+            class="text-4xl"
+          >
+            Classiques incontournables
+          </p>
+          <div
+            class="flex items-center gap-2"
+          >
+            <img
+              alt="avatar from the game list"
+              class="avatar-image"
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=48&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-1/2 items-center"
+            >
+              <p
+                class="w-full"
+              >
+                John Doe
+                 - 
+                <span
+                  class="text-red-600 text-3xl"
+                >
+                  78
+                </span>
+              </p>
+              <svg
+                class="feather feather-heart"
+                fill="red"
+                stroke="red"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 120 30"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="text-gray-500"
+          >
+            Une liste qui selon moi regorges de jeux à faire absolument...
+          </p>
+          <p
+            class="text-gray-500"
+          >
+            Mis à jour le 04/08/2024
+          </p>
+        </div>
+      </div>
+      <div>
+        <p
+          class="text-3xl text-gray-500"
+        >
+          Jeux
+        </p>
+        <p
+          class="text-6xl text-red-600 text-center"
+        >
+          15
+        </p>
+      </div>
+    </div>
+    <div
+      class="flex justify-between items-center border-b border-gray-600 pb-4 mb-4"
+    >
+      <div
+        class="flex items-center"
+      >
+        <img
+          alt="game list from community"
+          data-nimg="1"
+          decoding="async"
+          height="100"
+          loading="lazy"
+          src="/_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=256&q=75"
+          srcset="/_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=128&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=256&q=75 2x"
+          style="color: transparent;"
+          width="100"
+        />
+        <div
+          class="px-4"
+        >
+          <p
+            class="text-4xl"
+          >
+            Classiques incontournables
+          </p>
+          <div
+            class="flex items-center gap-2"
+          >
+            <img
+              alt="avatar from the game list"
+              class="avatar-image"
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=48&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-1/2 items-center"
+            >
+              <p
+                class="w-full"
+              >
+                John Doe
+                 - 
+                <span
+                  class="text-red-600 text-3xl"
+                >
+                  78
+                </span>
+              </p>
+              <svg
+                class="feather feather-heart"
+                fill="red"
+                stroke="red"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 120 30"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="text-gray-500"
+          >
+            Une liste qui selon moi regorges de jeux à faire absolument...
+          </p>
+          <p
+            class="text-gray-500"
+          >
+            Mis à jour le 04/08/2024
+          </p>
+        </div>
+      </div>
+      <div>
+        <p
+          class="text-3xl text-gray-500"
+        >
+          Jeux
+        </p>
+        <p
+          class="text-6xl text-red-600 text-center"
+        >
+          15
+        </p>
+      </div>
+    </div>
+    <div
+      class="flex justify-between items-center border-b border-gray-600 pb-4 mb-4"
+    >
+      <div
+        class="flex items-center"
+      >
+        <img
+          alt="game list from community"
+          data-nimg="1"
+          decoding="async"
+          height="100"
+          loading="lazy"
+          src="/_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=256&q=75"
+          srcset="/_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=128&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2Fretro_gaming.jpg&w=256&q=75 2x"
+          style="color: transparent;"
+          width="100"
+        />
+        <div
+          class="px-4"
+        >
+          <p
+            class="text-4xl"
+          >
+            Classiques incontournables
+          </p>
+          <div
+            class="flex items-center gap-2"
+          >
+            <img
+              alt="avatar from the game list"
+              class="avatar-image"
+              data-nimg="1"
+              decoding="async"
+              height="40"
+              loading="lazy"
+              src="/_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=96&q=75"
+              srcset="/_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=48&q=75 1x, /_next/image?url=%2Fassets%2Fstatic_images%2Ficon-default.jpg&w=96&q=75 2x"
+              style="color: transparent;"
+              width="40"
+            />
+            <div
+              class="flex w-1/2 items-center"
+            >
+              <p
+                class="w-full"
+              >
+                John Doe
+                 - 
+                <span
+                  class="text-red-600 text-3xl"
+                >
+                  78
+                </span>
+              </p>
+              <svg
+                class="feather feather-heart"
+                fill="red"
+                stroke="red"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 120 30"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="text-gray-500"
+          >
+            Une liste qui selon moi regorges de jeux à faire absolument...
+          </p>
+          <p
+            class="text-gray-500"
+          >
+            Mis à jour le 04/08/2024
+          </p>
+        </div>
+      </div>
+      <div>
+        <p
+          class="text-3xl text-gray-500"
+        >
+          Jeux
+        </p>
+        <p
+          class="text-6xl text-red-600 text-center"
+        >
+          15
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+`;

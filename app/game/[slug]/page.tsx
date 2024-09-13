@@ -54,7 +54,7 @@ export default function GamePage() {
                         ))}
                     </div>
                     <p>
-                        {game?.tags.join(", ")}
+                        {game?.tags?.join(", ")}
                     </p>
                     <p className="text-gray-500">{game?.description}</p>
                 </div>

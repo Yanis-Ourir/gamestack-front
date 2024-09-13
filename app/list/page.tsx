@@ -1,23 +1,20 @@
 import Image from "next/image";
-import {IoGameControllerOutline} from "react-icons/io5";
-import {CgScreen} from "react-icons/cg";
 import React from "react";
-import ListDetails from "@/app/ui/molecule/list-details";
 import GameDetails from "@/app/ui/molecule/game-details";
 
 export default function List() {
     const platforms = [
         {
-            tagName: "PS5",
-            icon: <IoGameControllerOutline />
+            name: "PS5",
+            icon: "IoGameControllerOutline"
         },
         {
-            tagName: "PS4",
-            icon: <IoGameControllerOutline />
+            name: "PS4",
+            icon: "IoGameControllerOutline"
         },
         {
-            tagName: "PC",
-            icon: <CgScreen />
+            name: "PC",
+            icon: "CgScreen"
         }
     ];
 
@@ -87,12 +84,13 @@ export default function List() {
                 {gameList.map((game, index) => (
                     <GameDetails
                         key={index}
-                        title={game.title}
+                        name={game.title}
                         image={game.image}
                         platforms={game.platforms}
-                        genres={game.genres}
-                        releaseDate={game.releaseDate}
-                        grade={game.grade}
+                        tags={game.genres}
+                        release_date={game.releaseDate}
+                        rating={game.grade}
+                        slug={game.title}
                     />
                 ))}
 
