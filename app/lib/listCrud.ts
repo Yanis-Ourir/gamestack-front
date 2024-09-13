@@ -27,11 +27,6 @@ export async function createListRequest(
             }),
         });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Failed to create the list');
-        }
-
         return 'Liste créée avec succès !';
     } catch (error) {
         console.error(error);

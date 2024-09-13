@@ -4,6 +4,7 @@ import Image from "next/image";
 import Button from "@/app/ui/atoms/button";
 import Link from "next/link";
 import loginRequest from "@/app/lib/loginRequest";
+import SuccessMessage from "@/app/ui/atoms/success-message";
 
 export default function Login() {
 
@@ -25,9 +26,7 @@ export default function Login() {
         <div className="flex flex-col items-center justify-center">
             <Image src="/assets/place_holder_logo.png" alt={"Logo gamestack"} width={200} height={200} />
             {success &&
-                <div className={"text-green-400 text-2xl bg-green-800 lg:w-1/3 md:w-full p-2 rounded-lg mb-4"}>
-                    <p className="text-green-500 text-center">{success}</p>
-                </div>
+                <SuccessMessage message={success} />
             }
             <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg text-2xl mb-[8rem]" method="POST" onSubmit={handleSubmit}>
                 <Input label={"Email :"} type={"email"} id={"#inputEmail"} name={"email"} required={true} className={"input-login"} />
