@@ -33,3 +33,25 @@ body {
     background: -webkit-linear-gradient(to left, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+#multiple-selects input[type="checkbox"] {
+    display: none;
+}
+
+#multiple-selects span {
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    width: 100px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+#multiple-selects input[type="checkbox"]:checked+span {
+    background-color: #B54548;
+    border-color: #B54548;
+}
