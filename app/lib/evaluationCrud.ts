@@ -5,16 +5,16 @@ export type Evaluation = {
     description: string;
     gameTime: string;
     gameId: number;
-    platforms: string[] | string;
+    platforms: string[];
     statusId: number;
     userId: string;
 }
 
-export default function addEvaluation({ rating, description, gameTime, gameId, platforms, statusId }: Evaluation) {
+export async function addEvaluation({ rating, description, gameTime, gameId, platforms, statusId }: Evaluation) {
     const token = parseTokenIfPresent();
 
     try {
-        fetch('http://localhost:8000/api/evaluations', {
+        await fetch('http://localhost:8000/api/evaluations', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,5 +32,18 @@ export default function addEvaluation({ rating, description, gameTime, gameId, p
         return 'Evaluation ajoutée avec succès !';
     } catch (error) {
         console.error(error);
+        return 'Erreur dans la création de votre évaluation. Veuillez réessayer.';
+    }
+}
+
+
+export async function getEvaluationsByGameId(gameId: number) {
+    try {
+        const response = await fetch(`http://localhost:8000/api/evaluations/game/${gameId}`);
+        const evaluations = await response.json();
+        return evaluations;
+    } catch (error) {
+        console.error(error);
+        return 'Erreur dans la récupération des évaluations. Veuillez réessayer.';
     }
 }

@@ -1,11 +1,16 @@
 'use client';
 import parseTokenIfPresent from "@/app/lib/checkToken";
-import addEvaluation, { Evaluation } from "@/app/lib/evaluationCrud";
+import { Evaluation, addEvaluation } from "@/app/lib/evaluationCrud";
 import Checkbox from "@/app/ui/atoms/checkbox";
+import ErrorMessage from "@/app/ui/atoms/error-message";
 import Input from "@/app/ui/atoms/input";
+import SuccessMessage from "@/app/ui/atoms/success-message";
+import { useState } from "react";
 
 
 export default function CreateEvaluationPage() {
+  const [evaluationStatus, setEvaluationStatus] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>(''); 
 
   const token = parseTokenIfPresent();
 
@@ -14,12 +19,17 @@ export default function CreateEvaluationPage() {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
+    const platforms: string[] = [];
+    form.querySelectorAll('input[name="evaluationPlatform"]:checked').forEach((checkbox) => {
+      platforms.push((checkbox as HTMLInputElement).value);
+    });
+
     const evaluation: Evaluation = {
       rating: parseInt(formData.get('evaluationRating') as string, 10),
       description: formData.get('evaluationDescription') as string,
       gameTime: formData.get('evaluationGameTime') as string,
       gameId: 14,
-      platforms: formData.get('evaluationPlatform') as string,
+      platforms: platforms,
       statusId: parseInt(formData.get('evaluationStatus') as string, 10),
       userId: token.id,
     };
@@ -27,21 +37,34 @@ export default function CreateEvaluationPage() {
     console.log(evaluation);
 
     try {
-      const result = addEvaluation(evaluation);
-      console.log('Evaluation submitted successfully:', result);
+      const result = await addEvaluation(evaluation);
+      if(result === 'Evaluation ajoutée avec succès !') {
+        setEvaluationStatus(result);
+      } else {
+        setErrorMessage(result);
+      }
     } catch (error) {
-      console.error('Error submitting evaluation:', error);
+      setErrorMessage('Une erreur inattendue est survenue.');
+      console.error(error);
     }
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-col justify-center items-center">
+      {evaluationStatus && (
+        <SuccessMessage message={evaluationStatus} />
+      )}
+
+      {errorMessage && (
+        <ErrorMessage message={errorMessage} />
+      )}
+
       <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/2 md:w-full rounded-lg text-2xl mb-[8rem] mt-[2rem]" onSubmit={handleSubmit}>
         <Input type="number" id="evaluation-rating" name="evaluationRating" label="notation" required={true} className="input-login"/>
 
         <p className="text-2xl text-white mt-4">Plateformes : </p>
         <div id="multiple-selects" className="flex justify-around my-4">
-          <Checkbox type="checkbox" id="evaluation-platform" name="evaluationPlatform" value="Mr. Zachariah Little" label={"PC"} required={false}/>
+          <Checkbox type="checkbox" id="evaluation-platform" name="evaluationPlatform" value="Llewellyn Moore" label={"PC"} required={false}/>
           <Checkbox type="checkbox" id="evaluation-platform" name="evaluationPlatform" value="PS4" label={"PS4"} required={false}/>
           <Checkbox type="checkbox" id="evaluation-platform" name="evaluationPlatform" value="PS5" label={"PS5"} required={false}/>
           <Checkbox type="checkbox" id="evaluation-platform" name="evaluationPlatform" value="Xbox One" label={"Xbox One"} required={false}/>
