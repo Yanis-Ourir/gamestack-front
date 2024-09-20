@@ -39,19 +39,22 @@ body {
 }
 
 #multiple-selects span {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     text-align: center;
+    justify-content: center;
+    gap: 10px;
     padding: 5px;
-    width: 100px;
-    font-size: 1rem;
+    width: 140px;
+    font-size: 1.2rem;
     text-transform: uppercase;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 50px;
-    color: rgb(255, 255, 255);
     cursor: pointer;
 }
 
 #multiple-selects input[type="checkbox"]:checked+span {
     background-color: #B54548;
     border-color: #B54548;
+    color: white;
 }

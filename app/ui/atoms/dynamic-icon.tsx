@@ -1,7 +1,7 @@
 import * as Icons from 'react-icons/io5';
 import { CgScreen } from "react-icons/cg";
 
-export default function DynamicIcon({ icon }: { icon: string }) {
+export default function DynamicIcon({ icon }: { icon: string | undefined }) {
     // @ts-ignore
     const IconComponent = Icons[icon];
 

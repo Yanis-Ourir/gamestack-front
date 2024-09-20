@@ -1,11 +1,13 @@
 import parseJWT from "./parseJWT";
 
-export async function createListRequest(
-    listName: string,
-    listDescription: string,
-    listImage: string,
-    listVisibility: string
-) {
+type List = {
+    listName: string;
+    listDescription: string;
+    listImage: string;
+    listVisibility: string;
+}
+
+export async function createListRequest({ listName, listDescription, listVisibility }: List) {
     const token = localStorage.getItem('token');
     if (!token) {
         window.location.href = '/login';

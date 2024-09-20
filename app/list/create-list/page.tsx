@@ -14,9 +14,14 @@ export default function CreateList() {
     async function handleSubmit(e: any) {
         e.preventDefault();
         const { listName, listDescription, listImage, listVisibility } = e.target.elements;
-
+        const List = {
+            listName: listName.value,
+            listDescription: listDescription.value,
+            listImage: listImage.value,
+            listVisibility: listVisibility.value,
+        }
         try {
-            const result = await createListRequest(listName.value, listDescription.value, listImage.value, listVisibility.value);
+            const result = await createListRequest(List);
             if (result === 'Liste créée avec succès !') {
                 setListStatus(result); 
             } else {
