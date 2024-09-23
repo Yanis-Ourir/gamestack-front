@@ -20,7 +20,7 @@ export default function GamePage() {
                     <Image src={"/assets/static_images/graphic_placeholder.png"} alt={"Graphique de statistiques"} width={1000} height={500} />
                 </div>
             </section>
-            <Link href={`/game/${params.slug}/create-review`} className="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center">
+            <Link href={`/game/${params.slug}/create-evaluation`} className="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center">
                 <IoGameControllerOutline /> Ajouter un avis
             </Link>
         </>

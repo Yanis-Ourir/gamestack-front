@@ -37,13 +37,13 @@ export async function addEvaluation({ rating, description, gameTime, gameId, pla
 }
 
 
-export async function getEvaluationsByGameId(gameId: number) {
-    try {
-        const response = await fetch(`http://localhost:8000/api/evaluations/game/${gameId}`);
-        const evaluations = await response.json();
-        return evaluations;
-    } catch (error) {
-        console.error(error);
-        return 'Erreur dans la récupération des évaluations. Veuillez réessayer.';
-    }
-}
+// export async function getEvaluationsByGameId(gameId: number) {
+//     try {
+//         const response = await fetch(`http://localhost:8000/api/evaluations/game/${gameId}`);
+//         const evaluations = await response.json();
+//         return evaluations;
+//     } catch (error) {
+//         console.error(error);
+//         return 'Erreur dans la récupération des évaluations. Veuillez réessayer.';
+//     }
+// }

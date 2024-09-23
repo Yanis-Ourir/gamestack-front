@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import { GameDetailsProps, PlatformsProps } from "../ui/molecule/game-details";
 import Image from "next/image";
 import Tag from "../ui/molecule/tag";
+import DynamicIcon from "../ui/atoms/dynamic-icon";
+import EvaluationDetails from "../ui/molecule/evaluation-details";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [game, setGame] = useState<GameDetailsProps | null>(null);
@@ -20,6 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 console.log(game);
                 setGame(game);
                 setPlatformsTest(game.platforms);
+                console.log(game);
             } catch (err) {
                 setError('Failed to fetch game details');
             } finally {
@@ -58,6 +61,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </div>
             </section>
             {children}
+
+            <section id="game-evaluations" className="mt-[2rem] p-12">
+                <div className="flex flex-col gap-12">
+                    {game?.evaluations?.map((evaluation, index) => (
+                       <EvaluationDetails key={index} evaluation={evaluation} />
+                    ))}
+                </div>
+            </section>
         </div>
     );
 }

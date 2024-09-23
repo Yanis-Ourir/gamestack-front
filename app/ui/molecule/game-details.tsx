@@ -13,7 +13,25 @@ export type GameDetailsProps = {
     slug: string;
     release_date: string;
     rating?: number;
+    evaluations?: EvaluationProps[];
 }
+
+export type EvaluationProps = {
+    id: number;
+    rating: number;
+    description: string;
+    game_time: string;
+    status: StatusProps;
+    platforms: PlatformsProps[];
+    user: string;
+}
+
+export type StatusProps = {
+    name: string;
+    icon: string;
+    color: string;
+}
+
 
 export type PlatformsProps = {
     name: string;

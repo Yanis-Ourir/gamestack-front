@@ -79,7 +79,7 @@ export default function CreateEvaluationPage() {
           <Checkbox type="checkbox" id="evaluation-status" name="evaluationStatus" value="1" label={"Complété"} required={false} iconName="IoCheckmarkCircleOutline" textColor="text-green-500"/>
           <Checkbox type="checkbox" id="evaluation-status" name="evaluationStatus" value="2" label={"En cours"} required={false} iconName="IoPlay"/>
           <Checkbox type="checkbox" id="evaluation-status" name="evaluationStatus" value="3" label={"Lâché"} required={false} iconName="IoTrashOutline" textColor="text-red-400"/>
-          <Checkbox type="checkbox" id="evaluation-status" name="evaluationStatus" value="4" label={"Souhaite jouer"} required={false} textColor="text-gray-400"/>
+          <Checkbox type="checkbox" id="evaluation-status" name="evaluationStatus" value="4" label={"Souhaite jouer"} required={false} iconName="IoAddCircleOutline" textColor="text-gray-400"/>
         </div>
 
         <div>
