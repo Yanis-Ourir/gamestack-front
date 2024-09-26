@@ -1,33 +1,31 @@
+import parseTokenIfPresent from "./checkToken";
 import parseJWT from "./parseJWT";
 
 type List = {
     listName: string;
     listDescription: string;
-    listImage: string;
+    listImage: File;
     listVisibility: string;
 }
 
-export async function createListRequest({ listName, listDescription, listVisibility }: List) {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        window.location.href = '/login';
-        return 'No token found';
-    }
-    const payloadToken = parseJWT(token);
+export async function createListRequest({ listName, listDescription, listVisibility, listImage }: List) {
+  
+    const payloadToken = parseTokenIfPresent();
+
+    const formData = new FormData();
+    formData.append('name', listName);
+    formData.append('description', listDescription);
+    formData.append('is_private', listVisibility);
+    formData.append('user_id', payloadToken.id);
+    formData.append('image', listImage); // Append the file to FormData
 
     try {
         const response = await fetch('http://localhost:8000/api/game-lists', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: listName,
-                description: listDescription,
-                is_private: listVisibility,
-                user_id: payloadToken.id,
-            }),
+            body: formData,
         });
+
+        console.log(response);
 
         return 'Liste créée avec succès !';
     } catch (error) {

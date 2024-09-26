@@ -17,7 +17,7 @@ export default function CreateList() {
         const List = {
             listName: listName.value,
             listDescription: listDescription.value,
-            listImage: listImage.value,
+            listImage: listImage.files[0],
             listVisibility: listVisibility.value,
         }
         try {
@@ -45,7 +45,7 @@ export default function CreateList() {
               <ErrorMessage message={errorMessage} />
           )}
           
-            <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg text-2xl mb-[8rem] mt-[2rem]" method="POST" onSubmit={handleSubmit}>
+            <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg text-2xl mb-[8rem] mt-[2rem]" method="POST" onSubmit={handleSubmit} encType='multipart/form-data'>
                 <Input label={"Nom de la liste"} type={"text"} id={"list-name"} name={"listName"} required={true} className={"input-login"}/>
                 <Input label={"Description de la liste"} type={"text"} id={"list-description"} name={"listDescription"} required={true} className={"input-login"}/>
                 <Input label={"Image de la liste"} type={"file"} id={"list-image"} name={"listImage"} required={false} className={"input-login"}/>
