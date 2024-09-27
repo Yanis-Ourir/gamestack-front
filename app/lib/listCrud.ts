@@ -51,3 +51,20 @@ export async function findGameListOfUser() {
             throw new Error('Erreur dans la récupération de vos listes de jeux.');
         });
 }
+
+
+export async function findListById(id: string | string[]) {
+    return fetch(`http://localhost:8000/api/game-list/` + id, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }).then(async (response) => response.json())
+        .then((data) => {
+            console.log(data);
+            return data;
+        }).catch((error) => {
+            console.error('Error:', error);
+            throw new Error('Erreur dans la récupération de la liste de jeux.');
+        });
+}

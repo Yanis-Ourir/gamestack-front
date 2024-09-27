@@ -13,6 +13,8 @@ type ListData = {
     image: string;
     updated_at: string;
     user: string;
+    likes: number;
+    dislikes: number;
 }
 
 export default function ProfilList() {
@@ -36,10 +38,11 @@ export default function ProfilList() {
             {lists.map((list, index) => (
                 <ListDetails
                     key={list.id}
+                    id={list.id}
                     name={list.name}
                     description={list.description}
                     image={list.image ? "http://localhost:8000/storage/" + list.image : "/assets/static_images/retro_gaming.jpg"}
-                    likes={0}
+                    likes={list.likes}
                     updatedAt={list.updated_at}
                     avatar={"/assets/static_images/icon-default.jpg"}
                     username={list.user}
