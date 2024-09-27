@@ -33,3 +33,21 @@ export async function createListRequest({ listName, listDescription, listVisibil
         return 'Erreur dans la création de votre liste. Veuillez réessayer.';
     }
 }
+
+
+export async function findGameListOfUser() {
+    const payloadToken = parseTokenIfPresent();
+    return fetch(`http://localhost:8000/api/game-lists/user/` + payloadToken.id, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }).then(async (response) => response.json())
+        .then((data) => {
+            console.log(data);
+            return data;
+        }).catch((error) => {
+            console.error('Error:', error);
+            throw new Error('Erreur dans la récupération de vos listes de jeux.');
+        });
+}

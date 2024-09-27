@@ -1,62 +1,49 @@
+'use client';
 import ListDetails from "@/app/ui/molecule/list-details";
-import React from "react";
+import React, { use, useEffect, useState } from "react";
+import { findGameListOfUser } from "../lib/listCrud";
+
+
+type ListData = {
+    id: string;
+    name: string;
+    description: string;
+    is_private: boolean;
+    user_id: number;
+    image: string;
+    updated_at: string;
+    user: string;
+}
 
 export default function ProfilList() {
-    const lists = [
-        {
-            title: "Classiques incontournables",
-            image: "/assets/static_images/retro_gaming.jpg",
-            description: "Une liste qui selon moi regorges de jeux à faire absolument...",
-            likes: 78,
-            updatedAt: "Mis à jour le 04/08/2024",
-            avatar: "/assets/static_images/icon-default.jpg",
-            username: "John Doe",
-            gamesNumber: 15
-        },
-        {
-            title: "Classiques incontournables",
-            image: "/assets/static_images/retro_gaming.jpg",
-            description: "Une liste qui selon moi regorges de jeux à faire absolument...",
-            likes: 78,
-            updatedAt: "Mis à jour le 04/08/2024",
-            avatar: "/assets/static_images/icon-default.jpg",
-            username: "John Doe",
-            gamesNumber: 15
-        },
-        {
-            title: "Classiques incontournables",
-            image: "/assets/static_images/retro_gaming.jpg",
-            description: "Une liste qui selon moi regorges de jeux à faire absolument...",
-            likes: 78,
-            updatedAt: "Mis à jour le 04/08/2024",
-            avatar: "/assets/static_images/icon-default.jpg",
-            username: "John Doe",
-            gamesNumber: 15
-        },
-        {
-            title: "Classiques incontournables",
-            image: "/assets/static_images/retro_gaming.jpg",
-            description: "Une liste qui selon moi regorges de jeux à faire absolument...",
-            likes: 78,
-            updatedAt: "Mis à jour le 04/08/2024",
-            avatar: "/assets/static_images/icon-default.jpg",
-            username: "John Doe",
-            gamesNumber: 15
+    const [lists, setLists] = useState<ListData[]>([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const listsData = await findGameListOfUser();
+            setLists(listsData);
+            console.log(listsData);
         }
-    ]
+        fetchData();
+    }, []);
+
+
+    
+
+    
     return (
         <div className={"text-2xl text-white p-[2rem]"}>
             {lists.map((list, index) => (
                 <ListDetails
-                    key={index}
-                    title={list.title}
+                    key={list.id}
+                    name={list.name}
                     description={list.description}
-                    image={list.image}
-                    likes={list.likes}
-                    updatedAt={list.updatedAt}
-                    avatar={list.avatar}
-                    username={list.username}
-                    gamesNumber={list.gamesNumber}
+                    image={list.image ? "http://localhost:8000/storage/" + list.image : "/assets/static_images/retro_gaming.jpg"}
+                    likes={0}
+                    updatedAt={list.updated_at}
+                    avatar={"/assets/static_images/icon-default.jpg"}
+                    username={list.user}
+                    gamesNumber={0}
                 />
             ))}
         </div>

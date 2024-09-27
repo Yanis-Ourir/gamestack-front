@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 type ListDetailsProps = {
-    title: string;
+    name: string;
     description: string;
     image: string;
     likes: number;
@@ -11,14 +11,14 @@ type ListDetailsProps = {
     username: string;
     gamesNumber: number;
 }
-export default function ListDetails({title, description, image, likes, updatedAt, avatar, username, gamesNumber}: ListDetailsProps) {
+export default function ListDetails({name, description, image, likes, updatedAt, avatar, username, gamesNumber}: ListDetailsProps) {
     return (
         <div className="flex justify-between items-center border-b border-gray-600 pb-4 mb-4">
             <div className="flex items-center">
                 <Image src={image} alt={"game list from community"} width={100}
                        height={100}/>
                 <div className="px-4">
-                    <p className="text-4xl">{title}</p>
+                    <p className="text-4xl">{name}</p>
                     <div className={"flex items-center gap-2"}>
                         <Image className="avatar-image" src={avatar}
                                alt={"avatar from the game list"} width={40} height={40}/>

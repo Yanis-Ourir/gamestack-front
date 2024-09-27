@@ -3,7 +3,7 @@ import ProfilHeader from "../ui/organisms/profilHeader";
 
 export default function Profil({children}: { children: React.ReactNode[]}) {
 
-   
+
     return (
         <div>
             <section>
