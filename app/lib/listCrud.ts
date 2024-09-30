@@ -8,6 +8,19 @@ type List = {
     listVisibility: string;
 }
 
+export type ListData = {
+    id: string;
+    name: string;
+    description: string;
+    is_private: boolean;
+    user_id: number;
+    image: string;
+    updated_at: string;
+    user: string;
+    likes: number;
+    dislikes: number;
+}
+
 export async function createListRequest({ listName, listDescription, listVisibility, listImage }: List) {
   
     const payloadToken = parseTokenIfPresent();
@@ -67,4 +80,28 @@ export async function findListById(id: string | string[]) {
             console.error('Error:', error);
             throw new Error('Erreur dans la récupération de la liste de jeux.');
         });
+}
+
+export async function deleteListById(id: string | string[]): Promise<{ success: boolean; message: string }> {
+    try {
+        const response = await fetch(`http://localhost:8000/api/game-list/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error:', errorText);
+            throw new Error('Erreur dans la suppression de la liste de jeux.');
+        }
+
+        const message = await response.text();
+        console.log('Successfully deleted:', message);
+        return { success: true, message };
+    } catch (error) {
+        console.error('Error:', error);
+        return { success: false, message: 'Erreur dans la suppression de la liste de jeux.' };
+    }
 }

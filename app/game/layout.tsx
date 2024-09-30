@@ -7,12 +7,16 @@ import Image from "next/image";
 import Tag from "../ui/molecule/tag";
 import DynamicIcon from "../ui/atoms/dynamic-icon";
 import EvaluationDetails from "../ui/molecule/evaluation-details";
+import { findGameListOfUser, ListData } from "../lib/listCrud";
+import Loader from "../ui/molecule/loader";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [game, setGame] = useState<GameDetailsProps | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const [platformsTest, setPlatformsTest] = useState<PlatformsProps[] | null>(null);
+    const [modal, setModal] = useState<boolean>(false);
+    const [lists, setLists] = useState<ListData[]>([]);
     const params = useParams();
 
     useEffect(() => {
@@ -34,11 +38,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     }, [params.slug]);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <Loader />;
     }
+
 
     if (error) {
         return <p>{error}</p>;
+    }
+
+    async function modalAddToList() {
+        setModal(!modal);
+        const listsData = await findGameListOfUser();
+        setLists(listsData);
+        console.log(listsData);
     }
 
     // https://stackoverflow.com/questions/65576629/how-to-render-react-icon-depending-on-string-from-database
@@ -58,6 +70,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         {game?.tags?.join(", ")}
                     </p>
                     <p className="text-gray-500">{game?.description}</p>
+                <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={modalAddToList}>Ajouter à une liste</button>
                 </div>
             </section>
             {children}
@@ -69,6 +82,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     ))}
                 </div>
             </section>
+            
+            {modal && 
+            <section id="modal-list">
+                <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center">
+                        <div className="bg-gray-800 w-1/3 p-8 rounded-lg">
+                        <h2 className="text-2xl font-bold">Ajouter à une liste</h2>
+                        {lists && lists.map((list, index) => (
+                            <div key={index} className="flex justify-between items-center border-b-2 border-gray-200 py-4 text-white">
+                                <p>{list.name}</p>
+                                <DynamicIcon icon="plus" />
+                            </div>
+                        ))}
+                        <button onClick={modalAddToList} className="bg-red-500 text-white px-4 py-2 rounded-full mt-4">Fermer</button>
+                    </div>
+                </div>
+            </section>
+            }
+            
         </div>
     );
 }

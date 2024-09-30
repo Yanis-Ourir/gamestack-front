@@ -62,7 +62,7 @@ import { GameDetailsProps } from "../ui/molecule/game-details";
 
 async function fetchGameData<T>(endpoint: string): Promise<T> {
     try {
-        const response = await fetch(`http://localhost:8000/api/${endpoint}`, {
+        const response = await fetch(`http://localhost:8000/api/${endpoint}`, { 
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
