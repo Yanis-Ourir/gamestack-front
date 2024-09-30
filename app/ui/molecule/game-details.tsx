@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 
 export type GameDetailsProps = {
-    id?: string;
+    id: string;
     name: string;
     image: string;
     description?: string;

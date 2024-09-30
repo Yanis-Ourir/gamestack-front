@@ -83,6 +83,7 @@ export async function findListById(id: string | string[]) {
 }
 
 export async function deleteListById(id: string | string[]): Promise<{ success: boolean; message: string }> {
+    const payloadToken = parseTokenIfPresent();
     try {
         const response = await fetch(`http://localhost:8000/api/game-list/${id}`, {
             method: 'DELETE',
@@ -104,4 +105,25 @@ export async function deleteListById(id: string | string[]): Promise<{ success: 
         console.error('Error:', error);
         return { success: false, message: 'Erreur dans la suppression de la liste de jeux.' };
     }
+}
+
+export async function addGameToList(idList: string, idGame: string) {
+    const payloadToken = parseTokenIfPresent();
+    return fetch(`http://localhost:8000/api/game-lists/add-game`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            gameListId: idList,
+            gameId: idGame,
+        }),
+    }).then(async (response) => response.json())
+        .then((data) => {
+            console.log(data);
+            return data;
+        }).catch((error) => {
+            console.error('Error:', error);
+            throw new Error('Erreur dans l\'ajout du jeu à la liste.');
+        });
 }
