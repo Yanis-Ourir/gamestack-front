@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import GameDetails from "@/app/ui/molecule/game-details";
 import { useParams } from "next/navigation";
 import { findListById } from "@/app/lib/listCrud";
+import Loader from "@/app/ui/molecule/loader";
+import GameReview from "@/app/ui/molecule/game-reviews";
 
 export default function List() {
     // NEED TYPING HERE
@@ -16,7 +18,7 @@ export default function List() {
             try {
                 const listsData = await findListById(params.slug);
                 setListDetails(listsData); 
-        
+                console.log(listDetails);
             } catch (error) {
                 console.error("Error fetching list data:", error);
             }
@@ -25,7 +27,7 @@ export default function List() {
     }, [params.slug]);
 
     if (!listDetails) {
-        return <p>Loading...</p>; 
+        return <Loader />; 
     }
 
     return (
@@ -58,7 +60,7 @@ export default function List() {
                 </div>
             </section>
             <section id={"list filter"}>
-                <div className={"flex justify-around items-center gap-4 text-white"}>
+                <div className={"flex justify-around items-center gap-4 text-white text-4xl my-12"}>
                     <button className={"btn btn-primary"}>Tous</button>
                     <button className={"btn btn-primary"}>Action</button>
                     <button className={"btn btn-primary"}>Aventure</button>
@@ -69,14 +71,14 @@ export default function List() {
             <section className={"text-2xl text-white p-[2rem]"}>
                 {listDetails.games.length > 0 ? (
                     listDetails.games.map((game: any, index: number) => (
-                        <GameDetails
+                        <GameReview
+                            id={game.id}
                             key={index}
-                            name={game.title}
+                            name={game.name}
                             image={game.image}
                             platforms={game.platforms}
-                            tags={game.genres}
+                            tags={game.tags}
                             release_date={game.releaseDate}
-                            rating={game.grade}
                             slug={game.slug}
                         />
                     ))

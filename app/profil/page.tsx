@@ -5,6 +5,7 @@ import { deleteListById, findGameListOfUser, ListData } from "../lib/listCrud";
 import Loader from "../ui/molecule/loader";
 import SuccessMessage from "../ui/atoms/success-message";
 import ErrorMessage from "../ui/atoms/error-message";
+import Link from "next/link";
 
 
 
@@ -55,22 +56,28 @@ export default function ProfilList() {
                 </div>
             )}
 
-            {lists.map((list, index) => (
+            {lists.length > 0 ? ( lists.map((list, index) => (
                 <div key={index}>
-                <ListDetails
-                    id={list.id}
-                    name={list.name}
-                    description={list.description}
-                    image={list.image ? "http://localhost:8000/storage/" + list.image : "/assets/static_images/retro_gaming.jpg"}
-                    likes={list.likes}
-                    updatedAt={list.updated_at}
-                    avatar={"/assets/static_images/icon-default.jpg"}
-                    username={list.user}
-                    gamesNumber={0}
-                    />
-                 <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={() => deleteList(list.id)}>Supprimer</button>
+                    <ListDetails
+                        id={list.id}
+                        name={list.name}
+                        description={list.description}
+                        image={list.image ? "http://localhost:8000/storage/" + list.image : "/assets/static_images/retro_gaming.jpg"}
+                        likes={list.likes}
+                        updatedAt={list.updated_at}
+                        avatar={"/assets/static_images/icon-default.jpg"}
+                        username={list.user}
+                        gamesNumber={0}
+                        />
+                    <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={() => deleteList(list.id)}>Supprimer</button>
                 </div>
-            ))}
+            ))
+            ) : (
+                    <div>
+                        <p>Vous n'avez pas encore de liste</p>
+                        <Link href="/list/create-list" className="text-red-400 hover:underline">Créer une liste</Link>
+                    </div>
+            )}
         </div>
     )
 }
