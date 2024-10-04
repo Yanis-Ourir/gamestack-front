@@ -1,6 +1,3 @@
-
-
-
 export type ReviewProps = {
     description: string;
     gameId: string;
@@ -9,7 +6,7 @@ export type ReviewProps = {
 };
 
 export default function addReview({description, gameId, gameListId, statusId}: ReviewProps) {
-    return fetch("http://localhost:8000/api/review", {
+    return fetch("http://localhost:8000/api/reviews", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -18,7 +15,7 @@ export default function addReview({description, gameId, gameListId, statusId}: R
             description: description,
             game_id: gameId,
             game_list_id: gameListId,
-            statusId: statusId,
+            status_id: statusId,
         }),
     })
 };
@@ -33,7 +30,7 @@ export function editReview({description, gameId, gameListId, statusId}: ReviewPr
             description: description,
             game_id: gameId,
             game_list_id: gameListId,
-            statusId: statusId,
+            status_id: statusId,
         }),
     })
 }

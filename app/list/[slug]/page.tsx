@@ -8,6 +8,9 @@ import Loader from "@/app/ui/molecule/loader";
 import GameReview, { GameReviewProps } from "@/app/ui/molecule/game-reviews";
 import SuccessMessage from "@/app/ui/atoms/success-message";
 import ErrorMessage from "@/app/ui/atoms/error-message";
+import Input from "@/app/ui/atoms/input";
+import Checkbox from "@/app/ui/atoms/checkbox";
+import addReview from "@/app/lib/reviewCrud";
 
 export default function List() {
     // NEED TYPING HERE
@@ -18,6 +21,8 @@ export default function List() {
     const [games, setGames] = useState<GameReviewProps[]>([]);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [modal, setModal] = useState<boolean>(false);
+    const [gameId, setGameId] = useState<string | null>(null);
 
     useEffect(() => {
         async function fetchData() {
@@ -37,8 +42,29 @@ export default function List() {
         return <Loader />; 
     }
 
-    function handleEdit() {
+    function openModal(id: string) {
+        setGameId(id);
+        setModal(!modal);
+    }
 
+    function closeModal() {
+        setModal(!modal);
+    }
+
+    async function handleSubmit(e: any) {
+        e.preventDefault();
+        const { reviewGame } = e.target.elements;
+        const selectedStatuses = Array.from(e.target.querySelectorAll('input[name="reviewStatus"]:checked')).map((checkbox: any) => checkbox.value);
+        console.log(reviewGame.value, selectedStatuses, gameId);
+
+        if(gameId && listDetails) {
+            try {
+                await addReview({ description: reviewGame.value, gameId, gameListId: listDetails.id, statusId: Number(selectedStatuses[0]) });
+            } catch (error) {
+                console.error('Error adding review:', error);
+                setErrorMessage('Erreur lors de l\'ajout de la review');
+            }
+        }
     }
 
     async function handleDelete(idGame: string, idList: string) {
@@ -111,12 +137,14 @@ export default function List() {
                             id={game.id}
                             key={index}
                             name={game.name}
+                            description={game.review[0].description}
                             image={game.image}
                             platforms={game.platforms}
                             tags={game.tags}
                             release_date={game.releaseDate}
+                            status={game.review[0].status}
                             slug={game.slug}
-                            handleEdit={handleEdit}
+                            handleEdit={() => openModal(game.id)}
                             handleDelete={() => handleDelete(game.id, listDetails.id)}
                         />
                     ))
@@ -124,6 +152,43 @@ export default function List() {
                     <p>No games available in this list.</p>
                 )}
             </section>
+
+            {modal &&
+                <section id="modal-list">
+                    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center">
+                        <div className="bg-gray-800 w-1/2 p-8 rounded-lg text-white text-2xl">
+                            <div className="flex justify-between items-center">
+                                <h2 className="text-center text-4xl">Modifier la review de la liste</h2>
+                                <button onClick={closeModal} className="text-white hover:text-red-600">X</button>
+                            </div>
+                            {successMessage && (
+                                <div className="flex justify-center">
+                                    <SuccessMessage message={successMessage} />
+                                </div>
+                            )}
+
+                            {errorMessage && (
+                                <div className="flex justify-center">
+                                    <ErrorMessage message={errorMessage} />
+                                </div>
+                            )}
+
+                            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                                <p className="text-2xl text-white mt-4">Status : </p>
+                                <div id="multiple-selects" className="flex justify-around my-4 gap-4">
+                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="1" label={"Complété"} required={false} iconName="IoCheckmarkCircleOutline" textColor="text-green-500" />
+                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="2" label={"En cours"} required={false} iconName="IoPlay" />
+                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="3" label={"Lâché"} required={false} iconName="IoTrashOutline" textColor="text-red-400" />
+                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="4" label={"Souhaite jouer"} required={false} iconName="IoAddCircleOutline" textColor="text-gray-400" />
+                                </div>
+                                <Input label={"Changer la description"} type={"text"} id={"review-game"} name={"reviewGame"} required={true} className={"input-login"} />
+                                <button className="bg-red-500 text-white px-4 py-2 rounded-full">Changer</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </section>
+            }
         </div>
     )
 }
