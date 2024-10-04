@@ -136,7 +136,7 @@ export async function addGameToList(idList: string, idGame: string) {
         });
 }
 
-export async function removeGameFromList(idList: string, idGame: string): Promise<{ success: boolean; message: string }> {
+export async function removeGameFromList(idGame: string, idList: string): Promise<{ success: boolean; message: string }> {
     console.log(idList, idGame);
     try {
         const response = await fetch(`http://localhost:8000/api/game-lists/remove-game`, {

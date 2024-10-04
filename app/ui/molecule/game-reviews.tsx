@@ -16,6 +16,8 @@ export type GameReviewProps = {
     tags: string[];
     slug: string;
     release_date: string;
+    handleEdit: () => void;
+    handleDelete: (idGame: string, idList: string) => void;
 }
 
 export type PlatformsProps = {
@@ -23,17 +25,11 @@ export type PlatformsProps = {
     icon: string;
 }
 
-function handleEdit() {
-
-}
-
-function handleDelete(idGame: string, idList: string) {
-    removeGameFromList(idGame, idList);
-}
 
 
 
-export default function GameReview({ idList, id, slug, name, image, platforms, tags, release_date }: GameReviewProps) {
+
+export default function GameReview({ idList, id, slug, name, image, platforms, tags, release_date, handleEdit, handleDelete }: GameReviewProps) {
     return (
         <div className="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between">
             <Link href={"/game/" + slug} className="flex">
@@ -54,7 +50,7 @@ export default function GameReview({ idList, id, slug, name, image, platforms, t
                     </div>
                 </div>
             </Link>
-            <DropdownMenu editFunction={handleEdit} deleteFunction={() => handleDelete(idList, id)}/>
+            <DropdownMenu editFunction={handleEdit} deleteFunction={handleDelete}/>
         </div>
     )
 }

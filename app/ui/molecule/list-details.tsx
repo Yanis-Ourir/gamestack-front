@@ -25,8 +25,8 @@ export default function ListDetails({id, name, description, image, likes, update
                     <div className={"flex items-center gap-2"}>
                         <Image className="avatar-image" src={avatar}
                                alt={"avatar from the game list"} width={40} height={40}/>
-                        <div className="flex items-center gap-2"> {/* Add flexbox and gap for spacing */}
-                            <p className="text-2xl">{user} - {likes}</p> {/* Adjust font size for better balance */}
+                        <div className="flex items-center gap-2">
+                            <p className="text-2xl">{user} - {likes}</p>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 32 32"  

@@ -3,9 +3,11 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import GameDetails from "@/app/ui/molecule/game-details";
 import { useParams } from "next/navigation";
-import { findListById, ListData } from "@/app/lib/listCrud";
+import { findListById, ListData, removeGameFromList } from "@/app/lib/listCrud";
 import Loader from "@/app/ui/molecule/loader";
 import GameReview, { GameReviewProps } from "@/app/ui/molecule/game-reviews";
+import SuccessMessage from "@/app/ui/atoms/success-message";
+import ErrorMessage from "@/app/ui/atoms/error-message";
 
 export default function List() {
     // NEED TYPING HERE
@@ -14,6 +16,8 @@ export default function List() {
     const [listDetails, setListDetails] = useState<ListData>();
     const [loading, setLoading] = useState<boolean>(true);
     const [games, setGames] = useState<GameReviewProps[]>([]);
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     useEffect(() => {
         async function fetchData() {
@@ -33,12 +37,27 @@ export default function List() {
         return <Loader />; 
     }
 
+    function handleEdit() {
+
+    }
+
+    async function handleDelete(idGame: string, idList: string) {
+        try {
+            await removeGameFromList(idGame, idList);
+            setGames(games.filter(game => game.id !== idGame));
+            setSuccessMessage('Jeux supprimé avec succès');
+        } catch (error) {
+            console.error('Error deleting list:', error);
+            setErrorMessage('Erreur lors de la suppression du jeu');
+        }
+    }
+
 
     return (
         <div>
             <section id={"list-details"} className={"text-2xl text-white flex items-center p-[2rem]"}>
                 <Image
-                    src={listDetails.image ? `http://localhost:8000/storage/${listDetails.image}` : "/assets/static_images/retro_gaming.jpg"} // Fallback to static image if no image is available
+                    src={listDetails.image ? `http://localhost:8000/storage/${listDetails.image}` : "/assets/static_images/retro_gaming.jpg"} 
                     alt={"game list video picture"}
                     width={100}
                     height={100}
@@ -72,6 +91,18 @@ export default function List() {
                     <button className={"btn btn-primary"}>FPS</button>
                 </div>
             </section>
+            {successMessage && (
+                <div className="flex justify-center">
+                    <SuccessMessage message={successMessage} />
+                </div>
+            )}
+
+            {errorMessage && (
+                <div className="flex justify-center">
+                    <ErrorMessage message={errorMessage} />
+                </div>
+            )}
+            
             <section className={"text-2xl text-white p-[2rem]"}>
                 {games.length > 0 ? (
                     games.map((game: any, index: number) => (
@@ -85,6 +116,8 @@ export default function List() {
                             tags={game.tags}
                             release_date={game.releaseDate}
                             slug={game.slug}
+                            handleEdit={handleEdit}
+                            handleDelete={() => handleDelete(game.id, listDetails.id)}
                         />
                     ))
                 ) : (
