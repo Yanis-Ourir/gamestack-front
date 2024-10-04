@@ -1,3 +1,4 @@
+import { GameReviewProps } from "../ui/molecule/game-reviews";
 import parseTokenIfPresent from "./checkToken";
 import parseJWT from "./parseJWT";
 
@@ -16,9 +17,16 @@ export type ListData = {
     user_id: number;
     image: string;
     updated_at: string;
-    user: string;
+    user: User;
     likes: number;
     dislikes: number;
+    games: GameReviewProps[];
+}
+
+type User = {
+    id: number;
+    username: string;
+    avatar: string;
 }
 
 export async function createListRequest({ listName, listDescription, listVisibility, listImage }: List) {
@@ -66,7 +74,7 @@ export async function findGameListOfUser() {
 }
 
 
-export async function findListById(id: string | string[]) {
+export async function findListById(id: string | string[]): Promise<ListData> {
     return fetch(`http://localhost:8000/api/game-list/` + id, {
         method: 'GET',
         headers: {
@@ -126,4 +134,33 @@ export async function addGameToList(idList: string, idGame: string) {
             console.error('Error:', error);
             throw new Error('Erreur dans l\'ajout du jeu à la liste.');
         });
+}
+
+export async function removeGameFromList(idList: string, idGame: string): Promise<{ success: boolean; message: string }> {
+    console.log(idList, idGame);
+    try {
+        const response = await fetch(`http://localhost:8000/api/game-lists/remove-game`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                game_list_id: idList,
+                game_id: idGame,
+            }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Error:', errorData);
+            throw new Error('Erreur dans la suppression du jeu de la liste.');
+        }
+
+        const data = await response.json();
+        console.log('Successfully removed game from list:', data);
+        return { success: true, message: 'Jeu supprimé de la liste avec succès.' };
+    } catch (error) {
+        console.error('Error:', error);
+        return { success: false, message: 'Erreur dans la suppression du jeu de la liste.' };
+    }
 }

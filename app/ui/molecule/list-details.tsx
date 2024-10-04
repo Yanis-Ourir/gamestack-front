@@ -2,18 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-type ListDetailsProps = {
+export type ListDetailsProps = {
     id: string;
     name: string;
     description: string;
     image: string;
     likes: number;
-    updatedAt: string;
+    updated_at: string;
     avatar: string;
-    username: string;
+    user: string;
     gamesNumber: number;
 }
-export default function ListDetails({id, name, description, image, likes, updatedAt, avatar, username, gamesNumber}: ListDetailsProps) {
+
+export default function ListDetails({id, name, description, image, likes, updated_at, avatar, user, gamesNumber}: ListDetailsProps) {
     return (
         <Link href={'/list/' + id} className="flex justify-between items-center border-b border-gray-600 pb-4 mb-4">
             <div className="flex items-center">
@@ -25,7 +26,7 @@ export default function ListDetails({id, name, description, image, likes, update
                         <Image className="avatar-image" src={avatar}
                                alt={"avatar from the game list"} width={40} height={40}/>
                         <div className="flex items-center gap-2"> {/* Add flexbox and gap for spacing */}
-                            <p className="text-2xl">{username} - {likes}</p> {/* Adjust font size for better balance */}
+                            <p className="text-2xl">{user} - {likes}</p> {/* Adjust font size for better balance */}
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 32 32"  
@@ -41,7 +42,7 @@ export default function ListDetails({id, name, description, image, likes, update
                         </div>
                     </div>
                     <p className={"text-gray-500"}>{description}</p>
-                    <p className={"text-gray-500"}>{updatedAt}</p>
+                    <p className={"text-gray-500"}>{updated_at}</p>
                 </div>
             </div>
             <div>

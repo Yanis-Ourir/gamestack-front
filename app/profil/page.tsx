@@ -1,5 +1,5 @@
 'use client';
-import ListDetails from "@/app/ui/molecule/list-details";
+import ListDetails, { ListDetailsProps } from "@/app/ui/molecule/list-details";
 import React, { useEffect, useState } from "react";
 import { deleteListById, findGameListOfUser, ListData } from "../lib/listCrud";
 import Loader from "../ui/molecule/loader";
@@ -11,7 +11,7 @@ import Link from "next/link";
 
 
 export default function ProfilList() {
-    const [lists, setLists] = useState<ListData[]>([]);
+    const [lists, setLists] = useState<ListDetailsProps[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -64,9 +64,9 @@ export default function ProfilList() {
                         description={list.description}
                         image={list.image ? "http://localhost:8000/storage/" + list.image : "/assets/static_images/retro_gaming.jpg"}
                         likes={list.likes}
-                        updatedAt={list.updated_at}
+                        updated_at={list.updated_at}
                         avatar={"/assets/static_images/icon-default.jpg"}
-                        username={list.user}
+                        user={list.user}
                         gamesNumber={0}
                         />
                     <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={() => deleteList(list.id)}>Supprimer</button>

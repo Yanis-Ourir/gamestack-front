@@ -4,8 +4,10 @@ import React from "react";
 import Link from "next/link";
 import { IoEllipsisHorizontal } from "react-icons/io5";
 import DropdownMenu from "../atoms/dropdown-menu";
+import { removeGameFromList } from "@/app/lib/listCrud";
 
 export type GameReviewProps = {
+    idList: string;
     id: string;
     name: string;
     image?: string;
@@ -21,11 +23,17 @@ export type PlatformsProps = {
     icon: string;
 }
 
-function handleClick() {
-    console.log("click");
+function handleEdit() {
+
 }
 
-export default function GameReview({ id, slug, name, image, platforms, tags, release_date }: GameReviewProps) {
+function handleDelete(idGame: string, idList: string) {
+    removeGameFromList(idGame, idList);
+}
+
+
+
+export default function GameReview({ idList, id, slug, name, image, platforms, tags, release_date }: GameReviewProps) {
     return (
         <div className="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between">
             <Link href={"/game/" + slug} className="flex">
@@ -46,7 +54,7 @@ export default function GameReview({ id, slug, name, image, platforms, tags, rel
                     </div>
                 </div>
             </Link>
-            <DropdownMenu />
+            <DropdownMenu editFunction={handleEdit} deleteFunction={() => handleDelete(idList, id)}/>
         </div>
     )
 }

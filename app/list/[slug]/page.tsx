@@ -3,22 +3,25 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import GameDetails from "@/app/ui/molecule/game-details";
 import { useParams } from "next/navigation";
-import { findListById } from "@/app/lib/listCrud";
+import { findListById, ListData } from "@/app/lib/listCrud";
 import Loader from "@/app/ui/molecule/loader";
-import GameReview from "@/app/ui/molecule/game-reviews";
+import GameReview, { GameReviewProps } from "@/app/ui/molecule/game-reviews";
 
 export default function List() {
     // NEED TYPING HERE
     const params = useParams();
 
-    const [listDetails, setListDetails] = useState<any>(null);
+    const [listDetails, setListDetails] = useState<ListData>();
+    const [loading, setLoading] = useState<boolean>(true);
+    const [games, setGames] = useState<GameReviewProps[]>([]);
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const listsData = await findListById(params.slug);
-                setListDetails(listsData); 
-                console.log(listDetails);
+                setListDetails(listsData);
+                setLoading(false);
+                setGames(listsData.games);
             } catch (error) {
                 console.error("Error fetching list data:", error);
             }
@@ -29,6 +32,7 @@ export default function List() {
     if (!listDetails) {
         return <Loader />; 
     }
+
 
     return (
         <div>
@@ -69,9 +73,10 @@ export default function List() {
                 </div>
             </section>
             <section className={"text-2xl text-white p-[2rem]"}>
-                {listDetails.games.length > 0 ? (
-                    listDetails.games.map((game: any, index: number) => (
+                {games.length > 0 ? (
+                    games.map((game: any, index: number) => (
                         <GameReview
+                            idList={listDetails.id}
                             id={game.id}
                             key={index}
                             name={game.name}
