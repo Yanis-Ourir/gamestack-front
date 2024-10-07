@@ -11,6 +11,8 @@ import ErrorMessage from "@/app/ui/atoms/error-message";
 import Input from "@/app/ui/atoms/input";
 import Checkbox from "@/app/ui/atoms/checkbox";
 import addReview from "@/app/lib/reviewCrud";
+import LikeDislike from "@/app/ui/form/like-dislike";
+import ListHeader from "@/app/ui/organisms/list-header";
 
 export default function List() {
     // NEED TYPING HERE
@@ -60,6 +62,7 @@ export default function List() {
         if(gameId && listDetails) {
             try {
                 await addReview({ description: reviewGame.value, gameId, gameListId: listDetails.id, statusId: Number(selectedStatuses[0]) });
+                setSuccessMessage('Review ajoutée avec succès');
             } catch (error) {
                 console.error('Error adding review:', error);
                 setErrorMessage('Erreur lors de l\'ajout de la review');
@@ -82,33 +85,9 @@ export default function List() {
     return (
         <div>
             <section id={"list-details"} className={"text-2xl text-white flex items-center p-[2rem]"}>
-                <Image
-                    src={listDetails.image ? `http://localhost:8000/storage/${listDetails.image}` : "/assets/static_images/retro_gaming.jpg"} 
-                    alt={"game list video picture"}
-                    width={100}
-                    height={100}
-                />
-                <div className={"px-4"}>
-                    <h1 className={"dongle-regular-title"}>{listDetails.name}</h1>
-                    <div className={"text-white text-2xl text-center flex items-center"}>
-                        <Image
-                            src={listDetails.user.avatar || "/assets/static_images/icon-default.jpg"} // Fallback for avatar if null
-                            alt={"avatar of list owner"}
-                            className={"avatar-image"}
-                            width={40}
-                            height={40}
-                        />
-                        <p>{listDetails.user.username} - Mis à jour le {new Date(listDetails.updated_at).toLocaleDateString()}</p>
-                    </div>
-                    <p className={"text-2xl text-gray-500"}>
-                        {listDetails.description}
-                    </p>
-                    <p>
-                        Likes {listDetails.likes} - Dislikes {listDetails.dislikes}
-                    </p>
-                </div>
+                <ListHeader listDetails={listDetails} />
             </section>
-            <section id={"list filter"}>
+            <section id={"listfilter"}>
                 <div className={"flex justify-around items-center gap-4 text-white text-4xl my-12"}>
                     <button className={"btn btn-primary"}>Tous</button>
                     <button className={"btn btn-primary"}>Action</button>

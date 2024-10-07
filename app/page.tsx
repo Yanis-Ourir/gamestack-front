@@ -145,13 +145,14 @@ export default function Home() {
               {lists.map((list, index) => (
                     <ListDetails
                         key={index}
-                        title={list.title}
+                        id={"1"}
+                        name={list.title}
                         description={list.description}
                         image={list.image}
                         likes={list.likes}
-                        updatedAt={list.updatedAt}
+                        updated_at={list.updatedAt}
                         avatar={list.avatar}
-                        username={list.username}
+                        user={list.username}
                         gamesNumber={list.gamesNumber}
                     />
               ))}

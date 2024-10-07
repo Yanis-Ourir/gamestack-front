@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ProfilHeader from "../ui/organisms/profilHeader";
+import ProfilHeader from "../ui/organisms/profil-header";
 
 export default function Profil({children}: { children: React.ReactNode[]}) {
 
