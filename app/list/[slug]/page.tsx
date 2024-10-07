@@ -116,12 +116,12 @@ export default function List() {
                             id={game.id}
                             key={index}
                             name={game.name}
-                            description={game.review[0].description}
+                            description={game.review[0]?.description}
                             image={game.image}
                             platforms={game.platforms}
                             tags={game.tags}
                             release_date={game.releaseDate}
-                            status={game.review[0].status}
+                            status={game.review[0]?.status}
                             slug={game.slug}
                             handleEdit={() => openModal(game.id)}
                             handleDelete={() => handleDelete(game.id, listDetails.id)}

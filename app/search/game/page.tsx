@@ -1,5 +1,4 @@
 import { findTenMostRatedGames } from "@/app/lib/gameCrud";
-import GameFilter from "@/app/ui/form/filter";
 import GameDetails, { GameDetailsProps } from "@/app/ui/molecule/game-details";
 
 export default async function GameSearch() {

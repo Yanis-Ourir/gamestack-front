@@ -1,36 +1,68 @@
-import { useState } from 'react';
-import { AiFillLike, AiFillDislike } from 'react-icons/ai'; // Utilisation des icônes React
+import { useEffect, useState } from 'react';
+import { AiFillLike, AiFillDislike } from 'react-icons/ai';
+import {checkIfUserAlreadyLiked,checkIfUserAlreadyDisliked} from '@/app/lib/likeCrud';
+import {toggleLikeDislike} from '@/app/lib/toggleLikeDislike';
 
 interface LikeDislikeProps {
     initialLikes: number;
     initialDislikes: number;
+    likeableId: string | number;
+    likeableType: string;
 }
 
-export default function LikeDislike({ initialLikes, initialDislikes }: LikeDislikeProps) {
+export default function LikeDislike({ initialLikes, initialDislikes, likeableId, likeableType }: LikeDislikeProps) {
     const [likes, setLikes] = useState<number>(initialLikes);
     const [dislikes, setDislikes] = useState<number>(initialDislikes);
-    const [liked, setLiked] = useState<boolean | null>(null); // null = ni like ni dislike, true = like, false = dislike
+    const [liked, setLiked] = useState<boolean | null>(null); // true = liked, false = disliked, null = neither
+    const [likeId, setLikeId] = useState<number | null>(null);
+    const [dislikeId, setDislikeId] = useState<number | null>(null);
+
+    useEffect(() => {
+        checkIfUserAlreadyLiked({ likeableId, likeableType }).then((response) => {
+            if (response.id) {
+                setLikeId(response.id);
+                setLiked(true);
+            }
+        });
+
+        checkIfUserAlreadyDisliked({ likeableId, likeableType }).then((response) => {
+            if (response.id) {
+                setDislikeId(response.id);
+                setLiked(false);
+            }
+        });
+    }, [dislikes, likes]);
 
     const handleLike = () => {
-        if (liked === true) {
-            setLikes(likes - 1);
-            setLiked(null); // Annule le like
-        } else {
-            setLikes(liked === false ? likes + 1 : likes + 1); // Si déjà disliké, enlever un dislike
-            if (liked === false) setDislikes(dislikes - 1);
-            setLiked(true);
-        }
+        toggleLikeDislike({
+            isLike: true,
+            liked,
+            likeableId,
+            likeableType,
+            likeId,
+            dislikeId,
+            setLikes,
+            setDislikes,
+            setLiked,
+            setLikeId,
+            setDislikeId
+        });
     };
 
     const handleDislike = () => {
-        if (liked === false) {
-            setDislikes(dislikes - 1);
-            setLiked(null); // Annule le dislike
-        } else {
-            setDislikes(liked === true ? dislikes + 1 : dislikes + 1); // Si déjà liké, enlever un like
-            if (liked === true) setLikes(likes - 1);
-            setLiked(false);
-        }
+        toggleLikeDislike({
+            isLike: false,
+            liked,
+            likeableId,
+            likeableType,
+            likeId,
+            dislikeId,
+            setLikes,
+            setDislikes,
+            setLiked,
+            setLikeId,
+            setDislikeId
+        });
     };
 
     return (

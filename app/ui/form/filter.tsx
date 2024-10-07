@@ -133,16 +133,7 @@ export default function GameFilter({ gameList }: FilterProps) {
                         <p>Note: {game.rating}</p>
                         {/* Plateformes et tags affichés */}
                         <div className="flex space-x-2">
-                            {game.platforms.map((platform: string) => (
-                                <span key={platform} className="bg-purple-600 px-2 py-1 rounded-full">
-                                    {platform}
-                                </span>
-                            ))}
-                            {game.tags.map((tag: string) => (
-                                <span key={tag} className="bg-red-600 px-2 py-1 rounded-full">
-                                    {tag}
-                                </span>
-                            ))}
+                           
                         </div>
                     </div>
                 ))}

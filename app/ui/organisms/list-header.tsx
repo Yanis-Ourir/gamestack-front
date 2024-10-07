@@ -26,9 +26,9 @@ export default function ListHeader({listDetails}: {listDetails: ListData}) {
                 <p className={"text-2xl text-gray-500"}>
                     {listDetails.description}
                 </p>
-                <p>
-                    <LikeDislike initialLikes={listDetails.likes} initialDislikes={listDetails.dislikes} />
-                </p>
+        
+                    <LikeDislike initialLikes={listDetails.likes} initialDislikes={listDetails.dislikes} likeableId={listDetails.id} likeableType={"GameList"}/>
+                
             </div>
         </>
     )
