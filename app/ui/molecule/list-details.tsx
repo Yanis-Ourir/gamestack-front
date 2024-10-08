@@ -11,10 +11,10 @@ export type ListDetailsProps = {
     updated_at: string;
     avatar: string;
     user: string;
-    gamesNumber: number;
+    games: number;
 }
 
-export default function ListDetails({id, name, description, image, likes, updated_at, avatar, user, gamesNumber}: ListDetailsProps) {
+export default function ListDetails({id, name, description, image, likes, updated_at, avatar, user, games}: ListDetailsProps) {
     return (
         <Link href={'/list/' + id} className="flex justify-between items-center border-b border-gray-600 pb-4 mb-4">
             <div className="flex items-center">
@@ -47,7 +47,7 @@ export default function ListDetails({id, name, description, image, likes, update
             </div>
             <div>
                 <p className={"text-3xl text-gray-500"}>Jeux</p>
-                <p className={"text-6xl text-red-600 text-center"}>{gamesNumber}</p>
+                <p className={"text-6xl text-red-600 text-center"}>{games}</p>
             </div>
 
         </Link>

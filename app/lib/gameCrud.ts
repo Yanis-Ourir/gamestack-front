@@ -91,3 +91,7 @@ export function findByGameSlug(slug: string | string[]): Promise<GameDetailsProp
 export function findTenMostRatedGames(): Promise<GameDetailsProps[]> {
     return fetchGameData<GameDetailsProps[]>(`games/rating`);
 }
+
+export function findBySearch(search: string): Promise<GameDetailsProps[]> {
+    return fetchGameData<GameDetailsProps[]>(`games/search/${search}`);
+}

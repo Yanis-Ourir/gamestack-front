@@ -3,6 +3,7 @@ import Link from "next/link";
 import Input from "../ui/atoms/input";
 import { useState } from "react";
 import GameFilter from "../ui/form/filter";
+import SearchGameDetails from "../ui/molecule/search-game-details";
 
 export default function SearchLayout({ children }: { children: React.ReactNode }) {
     const [search, setSearch] = useState<string>("");
@@ -21,9 +22,20 @@ export default function SearchLayout({ children }: { children: React.ReactNode }
                 </div>
             </section>
 
-            <section className="text-2xl text-white p-[2rem]">
-                {children}
+            <section className="mt-[3rem] p-4 w-1/2">
+                <label htmlFor="search" className="sr-only">Rechercher un jeu</label>
+                <input type="text" className="input-login p-2" placeholder="Rechercher un jeu" onChange={handleSearch} />
             </section>
+
+            {!search ? (
+                <section className="text-2xl text-white p-[2rem]">
+                    {children}
+                </section>
+            ) : (
+                <section className="text-2xl text-white p-[2rem]">
+                    <SearchGameDetails gameName={search} />
+                </section>
+            )}
         </>
     )
 }

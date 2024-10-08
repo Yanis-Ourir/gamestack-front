@@ -56,6 +56,8 @@ export default function ProfilList() {
                 </div>
             )}
 
+            <Link href="/list/create-list" className="text-red-400 hover:underline">Créer une liste</Link>
+
             {lists.length > 0 ? ( lists.map((list, index) => (
                 <div key={index}>
                     <ListDetails
@@ -67,15 +69,14 @@ export default function ProfilList() {
                         updated_at={list.updated_at}
                         avatar={"/assets/static_images/icon-default.jpg"}
                         user={list.user}
-                        gamesNumber={0}
+                        games={list.games}
                         />
                     <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={() => deleteList(list.id)}>Supprimer</button>
                 </div>
             ))
             ) : (
                     <div>
-                        <p>Vous n'avez pas encore de liste</p>
-                        <Link href="/list/create-list" className="text-red-400 hover:underline">Créer une liste</Link>
+                        <p className="text-4xl">Vous n'avez pas encore de liste</p>
                     </div>
             )}
         </div>

@@ -21,6 +21,7 @@ export type ListData = {
     likes: number;
     dislikes: number;
     games: GameReviewProps[];
+    is_game_in_list?: boolean;
 }
 
 type User = {
@@ -38,7 +39,7 @@ export async function createListRequest({ listName, listDescription, listVisibil
     formData.append('description', listDescription);
     formData.append('is_private', listVisibility);
     formData.append('user_id', payloadToken.id);
-    formData.append('image', listImage); // Append the file to FormData
+    formData.append('image', listImage); 
 
     try {
         const response = await fetch('http://localhost:8000/api/game-lists', {
@@ -65,12 +66,29 @@ export async function findGameListOfUser() {
         },
     }).then(async (response) => response.json())
         .then((data) => {
-            console.log(data);
             return data;
         }).catch((error) => {
             console.error('Error:', error);
             throw new Error('Erreur dans la récupération de vos listes de jeux.');
         });
+}
+
+export async function findListAndCheckIfGameIsIn(gameId: any) {
+    const payloadToken = parseTokenIfPresent();
+    try {
+        const response = await fetch(`http://localhost:8000/api/game-list/${payloadToken.id}/game/${gameId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await response.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw new Error('Erreur dans la récupération de vos listes de jeux.');
+    }
 }
 
 
@@ -82,7 +100,6 @@ export async function findListById(id: string | string[]): Promise<ListData> {
         },
     }).then(async (response) => response.json())
         .then((data) => {
-            console.log(data);
             return data;
         }).catch((error) => {
             console.error('Error:', error);
@@ -117,23 +134,24 @@ export async function deleteListById(id: string | string[]): Promise<{ success: 
 
 export async function addGameToList(idList: string, idGame: string) {
     const payloadToken = parseTokenIfPresent();
-    return fetch(`http://localhost:8000/api/game-lists/add-game`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            gameListId: idList,
-            gameId: idGame,
-        }),
-    }).then(async (response) => response.json())
-        .then((data) => {
-            console.log(data);
-            return data;
-        }).catch((error) => {
-            console.error('Error:', error);
-            throw new Error('Erreur dans l\'ajout du jeu à la liste.');
+    try {
+        const response = await fetch(`http://localhost:8000/api/game-lists/add-game`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                gameListId: idList,
+                gameId: idGame,
+            }),
         });
+        const data = await response.json();
+        console.log('Successfully added game to list:', data);
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw new Error('Erreur dans l\'ajout du jeu à la liste.');
+    }
 }
 
 export async function removeGameFromList(idGame: string, idList: string): Promise<{ success: boolean; message: string }> {
