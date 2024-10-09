@@ -4,7 +4,7 @@ export type Evaluation = {
     rating: number;
     description: string;
     gameTime: string;
-    gameId: number;
+    gameId: string;
     platforms: string[];
     statusId: number;
     userId: string;

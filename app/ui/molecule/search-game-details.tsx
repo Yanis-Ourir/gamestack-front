@@ -16,7 +16,7 @@ export default function SearchGameDetails({ gameName }: SearchGameDetailsProps) 
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedGameName(gameName);
-        }, 500); 
+        }, 1000); 
 
         return () => {
             clearTimeout(handler);
@@ -50,7 +50,7 @@ export default function SearchGameDetails({ gameName }: SearchGameDetailsProps) 
     return (
         <div>
             {error && <p>{error}</p>}
-            {games.map((game, index) => (
+            {games && games.map((game, index) => (
                 <GameDetails
                     key={index}
                     id={game.id}

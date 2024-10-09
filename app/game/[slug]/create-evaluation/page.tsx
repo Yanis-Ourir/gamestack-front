@@ -1,16 +1,32 @@
 'use client';
 import parseTokenIfPresent from "@/app/lib/checkToken";
 import { Evaluation, addEvaluation } from "@/app/lib/evaluationCrud";
+import { findByGameSlug } from "@/app/lib/gameCrud";
 import Checkbox from "@/app/ui/atoms/checkbox";
 import ErrorMessage from "@/app/ui/atoms/error-message";
 import Input from "@/app/ui/atoms/input";
 import SuccessMessage from "@/app/ui/atoms/success-message";
-import { useState } from "react";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
 export default function CreateEvaluationPage() {
   const [evaluationStatus, setEvaluationStatus] = useState<string>('');
-  const [errorMessage, setErrorMessage] = useState<string>(''); 
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [gameId, setGameId] = useState<string | null>(null);
+  const params = useParams();
+
+  console.log(params);
+
+  useEffect(() => {
+    async function fetchData() {
+      const game = await findByGameSlug(params.slug);
+      setGameId(game.id);
+    }
+    fetchData();
+  }, [params.slug]);
+
+
 
   const token = parseTokenIfPresent();
 
@@ -24,11 +40,16 @@ export default function CreateEvaluationPage() {
       platforms.push((checkbox as HTMLInputElement).value);
     });
 
+    if (!gameId) {
+      setErrorMessage('Game ID is missing.');
+      return;
+    }
+
     const evaluation: Evaluation = {
       rating: parseInt(formData.get('evaluationRating') as string, 10),
       description: formData.get('evaluationDescription') as string,
       gameTime: formData.get('evaluationGameTime') as string,
-      gameId: 14,
+      gameId: gameId,
       platforms: platforms,
       statusId: parseInt(formData.get('evaluationStatus') as string, 10),
       userId: token.id,

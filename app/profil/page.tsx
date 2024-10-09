@@ -56,7 +56,7 @@ export default function ProfilList() {
                 </div>
             )}
 
-            <Link href="/list/create-list" className="text-red-400 hover:underline">Créer une liste</Link>
+            <Link href="/list/create-list" className="text-red-400 hover:underline">Create List</Link>
 
             {lists.length > 0 ? ( lists.map((list, index) => (
                 <div key={index}>
@@ -71,7 +71,7 @@ export default function ProfilList() {
                         user={list.user}
                         games={list.games}
                         />
-                    <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={() => deleteList(list.id)}>Supprimer</button>
+                    <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={() => deleteList(list.id)}>Delete</button>
                 </div>
             ))
             ) : (

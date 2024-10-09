@@ -42,7 +42,7 @@ export default function GameDetails({id, slug, name, image, platforms, tags, rel
     return (
         <Link href={"/game/" + slug} className="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between">
             <div className="flex">
-                <Image src={image ? image : ""} alt={"GBF"} width={"100"} height={"100"}/>
+                <Image src={image ? image : "/assets/static_images/No-Image-Placeholder.png"} alt={"GBF"} width={"100"} height={"100"}/>
                 <div className="px-4">
                     <p className="text-4xl">{name}</p>
                     <div className={"flex gap-3"}>

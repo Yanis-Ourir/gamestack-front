@@ -89,9 +89,9 @@ export default function List() {
             </section>
             <section id={"listfilter"}>
                 <div className={"flex justify-around items-center gap-4 text-white text-4xl my-12"}>
-                    <button className={"btn btn-primary"}>Tous</button>
+                    <button className={"btn btn-primary"}>All</button>
                     <button className={"btn btn-primary"}>Action</button>
-                    <button className={"btn btn-primary"}>Aventure</button>
+                    <button className={"btn btn-primary"}>Adventure</button>
                     <button className={"btn btn-primary"}>RPG</button>
                     <button className={"btn btn-primary"}>FPS</button>
                 </div>

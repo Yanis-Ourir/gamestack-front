@@ -21,7 +21,7 @@ export default function ListHeader({listDetails}: {listDetails: ListData}) {
                         width={40}
                         height={40}
                     />
-                    <p>{listDetails.user.username} - Mis à jour le {new Date(listDetails.updated_at).toLocaleDateString()}</p>
+                    <p>{listDetails.user.username} - Last update : {new Date(listDetails.updated_at).toLocaleDateString()}</p>
                 </div>
                 <p className={"text-2xl text-gray-500"}>
                     {listDetails.description}

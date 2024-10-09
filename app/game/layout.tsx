@@ -76,10 +76,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <div>
             <section id="game-details" className="flex p-4 mt-[2rem]">
-                <Image src="/assets/static_images/GFR.png" alt={game?.name || 'Game Image'} width={150} height={100} />
+                <Image src={game?.image ? game.image : "/assets/static_images/No-Image-Placeholder.png"} alt={game?.name || 'Game Image'} width={200} height={100} />
                 <div className="text-white text-2xl px-4">
                     <h1 className="dongle-regular-title">{game?.name}</h1>
-                    <p className="text-gray-500">Date de sortie {game?.release_date}</p>
+                    <p className="text-gray-500">Release date {game?.release_date}</p>
                     <div className="flex gap-3 mb-4">
                         {platformsTest?.map((platform, index) => (
                             <Tag key={index} name={platform.name} icon={platform.icon} />
@@ -89,7 +89,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         {game?.tags?.join(", ")}
                     </p>
                     <p className="text-gray-500">{game?.description}</p>
-                <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={modalAddToList}>Ajouter à une liste</button>
+                <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={modalAddToList}>Add to list</button>
                 </div>
             </section>
             {children}

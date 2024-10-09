@@ -42,7 +42,7 @@ export default function ListDetails({id, name, description, image, likes, update
                         </div>
                     </div>
                     <p className={"text-gray-500"}>{description}</p>
-                    <p className={"text-gray-500"}>{updated_at}</p>
+                    <p className={"text-gray-500"}>Last update : {new Date(updated_at).toLocaleDateString()}</p>
                 </div>
             </div>
             <div>
