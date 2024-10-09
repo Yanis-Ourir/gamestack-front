@@ -40,14 +40,14 @@ export default function ProfilHeader() {
                 {/* Background with gradient */}
                 <div className="gradiant-bg h-[10rem]"></div>
                 <div className="flex justify-between items-start mt-4 px-4">
-                    <div className="text-gray-500 text-2xl flex gap-2">
+                    <div className="text-gray-500 text-xl md:flex gap-2">
                         <p>Reviews : 12</p>
                         <p>Listes : 4</p>
                         <p>Jeux complétés : 89</p>
                     </div>
-                    <div className="pe-12">
+                    <div className="md:pe-12">
                         <Link href="#"
-                                className="border-gray-600 rounded-full border text-white px-4 text-2xl hover:bg-gray-800">Éditer
+                                className="border-gray-600 rounded-full border text-white px-4 text-xl md:text-2xl hover:bg-gray-800">Éditer
                             le profil</Link>
                     </div>
                 </div>

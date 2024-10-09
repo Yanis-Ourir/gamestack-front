@@ -21,7 +21,7 @@ export default function ListDetails({id, name, description, image, likes, update
                 <Image src={image} alt={"game list from community"} width={100}
                        height={100}/>
                 <div className="px-4">
-                    <p className="text-4xl">{name}</p>
+                    <p className="text-3xl md:text-4xl">{name}</p>
                     <div className={"flex items-center gap-2"}>
                         <Image className="avatar-image" src={avatar}
                                alt={"avatar from the game list"} width={40} height={40}/>
@@ -41,13 +41,13 @@ export default function ListDetails({id, name, description, image, likes, update
                             </svg>
                         </div>
                     </div>
-                    <p className={"text-gray-500"}>{description}</p>
+                    <p className={"text-gray-500 hidden md:block"}>{description}</p>
                     <p className={"text-gray-500"}>Last update : {new Date(updated_at).toLocaleDateString()}</p>
                 </div>
             </div>
             <div>
                 <p className={"text-3xl text-gray-500"}>Jeux</p>
-                <p className={"text-6xl text-red-600 text-center"}>{games}</p>
+                <p className={"text-6xl text-red-600 text-center"}>{games ? games : 0}</p>
             </div>
 
         </Link>

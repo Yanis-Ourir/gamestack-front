@@ -104,11 +104,10 @@ export default function Home() {
   return (
       <>
           <section className="flex justify-center flex-col items-center my-12">
-              <h1 className="text-6xl font-medium text-white w-1/2 text-center">Créez, partagez et découvrez les
-                  <span
-                      className="bg-gradient-to-r from-[#C31432] to-purple-800 bg-clip-text text-transparent"> expériences</span> incroyables
-                  de vos
-                  <span className="bg-gradient-to-r from-[#C31432] to-purple-800 bg-clip-text text-transparent"> jeux vidéo</span> préférés
+              <h1 className="text-4xl md:text-6xl font-medium text-white md:w-1/2 text-center">Create, share, and discover
+                  <span className="bg-gradient-to-r from-[#C31432] to-purple-800 bg-clip-text text-transparent"> incredible experiences </span>
+                  from your favorite 
+                  <span className="bg-gradient-to-r from-[#C31432] to-purple-800 bg-clip-text text-transparent"> video games</span>
               </h1>
               <div className="relative w-full flex justify-center items-center mt-12">
                   <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-800 to-purple-800 blur-2xl rounded-lg w-[70%] h-[105%]"></div>

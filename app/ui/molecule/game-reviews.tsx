@@ -42,19 +42,19 @@ export default function GameReview({ idList, id, slug, name, description, status
     return (
         <div className="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between">
             <Link href={"/game/" + slug} className="flex">
-                <Image src={image ? image : ""} alt={"GBF"} width={"100"} height={"100"} />
+                <Image src={image ? image : "/assets/static_images/No-Image-Placeholder.png"} alt={"GBF"} width={"100"} height={"100"} />
                 <div className="px-4">
-                    <div className="flex items-center gap-4">
-                    <p className="text-4xl">{name}</p>
-                    {status && (
-                        <div className={"flex items-center gap-2 " + status.color}>
-                            <DynamicIcon icon={status.icon}/>
-                            <p>{status.name}</p>
+                    <div className="md:flex items-center gap-4">
+                        <p className="text-3xl md:text-4xl">{name}</p>
+                        {status && (
+                            <div className={"flex items-center gap-2 " + status.color}>
+                                <DynamicIcon icon={status.icon}/>
+                                <p>{status.name}</p>
+                            </div>
+                        )}
                         </div>
-                    )}
-                    </div>
                     <div className={"flex gap-3"}>
-                        <p>Plateformes : </p>
+                        <p className="hidden md:block">Plateformes : </p>
                         {platforms.map((platform: PlatformsProps, index) => (
                             <Tag key={index} name={platform.name} icon={platform.icon} />
                         ))}
@@ -68,7 +68,9 @@ export default function GameReview({ idList, id, slug, name, description, status
                     </div>
                 </div>
             </Link>
+            <div className="hidden">
             <DropdownMenu editFunction={handleEdit} deleteFunction={handleDelete}/>
+            </div>
         </div>
     )
 }

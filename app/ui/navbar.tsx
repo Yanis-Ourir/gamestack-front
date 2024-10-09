@@ -1,8 +1,20 @@
 'use client';
+import { useState, useEffect } from 'react';
 import Image from 'next/image'
 import Link from "next/link";
+import { IoClose, IoMenu } from 'react-icons/io5';
+
 export default function Navbar() {
-    const token = localStorage.getItem('token');
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [token, setToken] = useState<string | null>(null);
+
+    useEffect(() => {
+        setToken(localStorage.getItem('token'));
+    }, []);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
     return <nav className="flex text-white justify-between items-center border-b border-gray-800">
         <div>
             <Link className="px-4 hover:text-[#B54548] active:text-[#B54548] flex items-center dongle-regular-title" href="/">
@@ -10,22 +22,35 @@ export default function Navbar() {
                 <p className="mt-2">GameStack</p>
             </Link>
         </div>
-        <ul className="flex mr-6 text-3xl">
-            <li>
+        <div className="md:hidden">
+            <button onClick={toggleMenu} className="text-4xl focus:outline-none">
+                <IoMenu />
+            </button>
+        </div>
+        <ul className={`flex-col text-3xl md:flex-row flex md:items-center absolute md:static md:bg-transparent w-full md:w-auto transition-transform transform ${isMenuOpen ? 'translate-x-0 bg-gray-900 items-center py-12' : '-translate-x-full'} md:translate-x-0`}>
+            <li className="my-2 pt-52 md:py-0 md:my-0">
                 <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/search/game">Search</Link>
             </li>
-            <li>
+            <li className="my-2 md:my-0">
                 <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="#">Contact</Link>
             </li>
-            <li>
                 {token ? (
                     <>
-                    <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/auth/logout">Logout</Link> <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/profil">Profil</Link>
+                    <li className="my-2 md:my-0">
+                        <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/profil">Profil</Link>
+                    </li>
+                    <li className="my-2 md:my-0">
+                        <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/auth/logout">Logout</Link> 
+                    </li>
                     </>
                 ) : (
-                    <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/auth/login">Login</Link>
+                    <li className="my-2 md:my-0">
+                        <Link className="px-4 hover:text-[#B54548] active:text-[#B54548]" href="/auth/login">Login</Link>
+                    </li>
                 )}
-            </li>
+            <button onClick={toggleMenu} className="text-4xl focus:outline-none md:hidden hover:text-red-500">
+                <IoClose />
+            </button>
         </ul>
     </nav>
 }
