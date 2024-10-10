@@ -18,7 +18,7 @@ export default function Checkbox({ type, id, name, label, value, required, iconN
 
   return (
     <label>
-      <input type={type} id={id} name={name} value={value} required={required} className="input-login" />
+      <input type={type} id={id} name={name} value={value} required={required} />
         <span className={textColor}>
           <DynamicIcon icon={iconName} />
           {label}

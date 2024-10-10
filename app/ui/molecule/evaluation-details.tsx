@@ -24,6 +24,8 @@ export default function EvaluationDetails({ evaluation }: { evaluation: Evaluati
                         {evaluation.status.name}
                         <p className="text-gray-500"> - {evaluation.game_time} heures</p>
                     </div>
+                </div>
+                <div className="flex gap-3 my-4">
                     {evaluation.platforms.map((platform, index) => (
                         <Tag key={index} name={platform.name} icon={platform.icon} />
                     ))}

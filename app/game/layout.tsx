@@ -76,9 +76,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <div>
             <section id="game-details" className="flex p-4 mt-[2rem]">
-                <Image src={game?.image ? game.image : "/assets/static_images/No-Image-Placeholder.png"} alt={game?.name || 'Game Image'} width={200} height={100} />
+                <Image src={game?.image ? game.image : "/assets/static_images/No-Image-Placeholder.png"} alt={game?.name || 'Game Image'} width={150} height={100} />
                 <div className="text-white text-2xl px-4">
-                    <h1 className="dongle-regular-title">{game?.name}</h1>
+                    <h1 className="text-3xl md:dongle-regular-title">{game?.name}</h1>
                     <p className="text-gray-500">Release date {game?.release_date}</p>
                     <div className="flex gap-3 mb-4">
                         {platformsTest?.map((platform, index) => (
@@ -88,7 +88,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <p>
                         {game?.tags?.join(", ")}
                     </p>
-                    <p className="text-gray-500">{game?.description}</p>
+                    <p className="text-gray-500 hidden md:block">{game?.description}</p>
                 <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={modalAddToList}>Add to list</button>
                 </div>
             </section>
@@ -96,18 +96,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             <section id="game-evaluations" className="mt-[2rem] p-12">
                 <div className="flex flex-col gap-12">
-                    {game?.evaluations?.map((evaluation, index) => (
+                    {game?.evaluations ? game.evaluations.map((evaluation, index) => (
                        <EvaluationDetails key={index} evaluation={evaluation} />
-                    ))}
+                    )) : (
+                        <p className="text-white">This game has no evaluation yet</p>
+                    )}
                 </div>
             </section>
             
             {modal && 
             <section id="modal-list">
-                <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center">
-                        <div className="bg-gray-800 w-1/3 p-8 rounded-lg text-white text-2xl">
-                        <div className="flex justify-between items-center">
-                            <h2 className="text-4xl text-center">Ajouter {game?.name} à une liste</h2>
+                <div className="fixed top-0 left-0 w-full h-full p-4 md:p-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
+                        <div className="bg-gray-800 w-fit md:w-1/3 p-8 rounded-lg text-white text-2xl">
+                        <div className="flex justify-between items-center gap-4 md:gap-0">
+                            <h2 className="text-2xl md:text-4xl text-center">Ajouter {game?.name} à une liste</h2>
                             <button onClick={modalAddToList} className="text-white rounded-full hover:text-red-500">X</button>
                         </div>
                             {successMessage && (

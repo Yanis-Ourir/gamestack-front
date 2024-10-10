@@ -22,9 +22,9 @@ export default function SearchLayout({ children }: { children: React.ReactNode }
                 </div>
             </section>
 
-            <section className="mt-[3rem] p-4 w-1/2">
-                <label htmlFor="search" className="sr-only">Rechercher un jeu</label>
-                <input type="text" className="input-login p-2" placeholder="Rechercher un jeu" onChange={handleSearch} />
+            <section className="mt-[3rem] p-4">
+                <label htmlFor="search" className="text-2xl text-white p-2">Rechercher un jeu</label>
+                <input type="text" className="input-login p-2" placeholder="Zelda..." onChange={handleSearch} />
             </section>
 
             {!search ? (

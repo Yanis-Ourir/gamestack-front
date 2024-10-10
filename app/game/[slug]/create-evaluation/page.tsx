@@ -6,6 +6,7 @@ import Checkbox from "@/app/ui/atoms/checkbox";
 import ErrorMessage from "@/app/ui/atoms/error-message";
 import Input from "@/app/ui/atoms/input";
 import SuccessMessage from "@/app/ui/atoms/success-message";
+import { GameDetailsProps } from "@/app/ui/molecule/game-details";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -13,7 +14,7 @@ import { useEffect, useState } from "react";
 export default function CreateEvaluationPage() {
   const [evaluationStatus, setEvaluationStatus] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [gameId, setGameId] = useState<string | null>(null);
+  const [game, setGame] = useState<GameDetailsProps | null>(null);
   const params = useParams();
 
   console.log(params);
@@ -21,7 +22,7 @@ export default function CreateEvaluationPage() {
   useEffect(() => {
     async function fetchData() {
       const game = await findByGameSlug(params.slug);
-      setGameId(game.id);
+      setGame(game);
     }
     fetchData();
   }, [params.slug]);
@@ -40,8 +41,8 @@ export default function CreateEvaluationPage() {
       platforms.push((checkbox as HTMLInputElement).value);
     });
 
-    if (!gameId) {
-      setErrorMessage('Game ID is missing.');
+    if (!game) {
+      setErrorMessage('Game is missing');
       return;
     }
 
@@ -49,7 +50,7 @@ export default function CreateEvaluationPage() {
       rating: parseInt(formData.get('evaluationRating') as string, 10),
       description: formData.get('evaluationDescription') as string,
       gameTime: formData.get('evaluationGameTime') as string,
-      gameId: gameId,
+      gameId: game.id,
       platforms: platforms,
       statusId: parseInt(formData.get('evaluationStatus') as string, 10),
       userId: token.id,
@@ -80,23 +81,20 @@ export default function CreateEvaluationPage() {
         <ErrorMessage message={errorMessage} />
       )}
 
-      <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/2 md:w-full rounded-lg text-2xl mb-[8rem] mt-[2rem]" onSubmit={handleSubmit}>
+      <form className="space-y-6 bg-gray-900 px-12 py-8 lg:w-1/2 w-full rounded-lg text-2xl mb-[8rem] mt-[2rem]" onSubmit={handleSubmit}>
         <Input type="number" id="evaluation-rating" name="evaluationRating" label="notation" required={true} className="input-login"/>
 
         <p className="text-2xl text-white mt-4">Plateformes : </p>
-        <div id="multiple-selects" className="flex justify-around my-4">
-          <Checkbox type="checkbox" id="evaluation-platform" name="evaluationPlatform" value="Llewellyn Moore" label={"PC"} required={false}/>
-          <Checkbox type="checkbox" id="evaluation-platform" name="evaluationPlatform" value="PS4" label={"PS4"} required={false}/>
-          <Checkbox type="checkbox" id="evaluation-platform" name="evaluationPlatform" value="PS5" label={"PS5"} required={false}/>
-          <Checkbox type="checkbox" id="evaluation-platform" name="evaluationPlatform" value="Xbox One" label={"Xbox One"} required={false}/>
-          <Checkbox type="checkbox" id="evaluation-platform" name="evaluationPlatform" value="Xbox Series X" label={"Xbox Series X"} required={false}/>
-          <Checkbox type="checkbox" id="evaluation-platform" name="evaluationPlatform" value="Switch" label={"Switch"} required={false}/>
+        <div id="multiple-selects" className="grid grid-cols-2 gap-6 md:flex my-4">
+          {game?.platforms.map((platform, index) => (
+            <Checkbox key={index} type="checkbox" id="evaluation-platform" name="evaluationPlatform" value={platform.name} label={platform.name} required={false}/>
+          ))}
         </div>
         
         <Input type="text" id="evaluation-game-time" name="evaluationGameTime" label="temps de jeu" required={true} className="input-login"/>
 
         <p className="text-2xl text-white mt-4">Status : </p>
-        <div id="multiple-selects" className="flex justify-around my-4">
+        <div id="multiple-selects" className="grid grid-cols-2 gap-6 md:flex justify-around my-4">
           <Checkbox type="checkbox" id="evaluation-status" name="evaluationStatus" value="1" label={"Complété"} required={false} iconName="IoCheckmarkCircleOutline" textColor="text-green-500"/>
           <Checkbox type="checkbox" id="evaluation-status" name="evaluationStatus" value="2" label={"En cours"} required={false} iconName="IoPlay"/>
           <Checkbox type="checkbox" id="evaluation-status" name="evaluationStatus" value="3" label={"Lâché"} required={false} iconName="IoTrashOutline" textColor="text-red-400"/>
