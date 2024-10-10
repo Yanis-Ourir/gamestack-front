@@ -1,106 +1,12 @@
-'use client';
 import Image from "next/image";
 import GameDetails from "@/app/ui/molecule/game-details";
 import React from "react";
 import ListDetails from "@/app/ui/molecule/list-details";
 import parseJWT from "./lib/parseJWT";
+import TopTenGames from "./ui/organisms/top-ten-rated-games";
+import MostLikedList from "./ui/organisms/most-liked-list";
 
 export default function Home() {
-    const platforms = [
-        {
-            name: "PS5",
-            icon: "IoGameControllerOutline"
-        },
-        {
-            name: "PS4",
-            icon: "IoGameControllerOutline"
-        },
-        {
-            name: "PC",
-            icon: "CgScreen"
-        }
-    ];
-    const gameList = [
-        {
-            name: "Granblue Fantasy Relink",
-            image: "/assets/static_images/GFR.png",
-            platforms: platforms,
-            tags: ["JRPG", "Action", "Fantasy"],
-            release_date: "Février 2024",
-            rating: 9.5
-        },
-        {
-            name: "Granblue Fantasy Relink",
-            image: "/assets/static_images/GFR.png",
-            platforms: platforms,
-            tags: ["JRPG", "Action", "Fantasy"],
-            release_date: "Février 2024",
-            rating: 9.5
-        },
-        {
-            name: "Granblue Fantasy Relink",
-            image: "/assets/static_images/GFR.png",
-            platforms: platforms,
-            tags: ["JRPG", "Action", "Fantasy"],
-            release_date: "Février 2024",
-            rating: 9.5
-        },
-        {
-            name: "Granblue Fantasy Relink",
-            image: "/assets/static_images/GFR.png",
-            platforms: platforms,
-            tags: ["JRPG", "Action", "Fantasy"],
-            release_date: "Février 2024",
-            rating: 9.5
-        }
-    ];
-    const lists = [
-        {
-            title: "Classiques incontournables",
-            image: "/assets/static_images/retro_gaming.jpg",
-            description: "Une liste qui selon moi regorges de jeux à faire absolument...",
-            likes: 78,
-            updatedAt: "Mis à jour le 04/08/2024",
-            avatar: "/assets/static_images/icon-default.jpg",
-            username: "John Doe",
-            gamesNumber: 15
-        },
-        {
-            title: "Classiques incontournables",
-            image: "/assets/static_images/retro_gaming.jpg",
-            description: "Une liste qui selon moi regorges de jeux à faire absolument...",
-            likes: 78,
-            updatedAt: "Mis à jour le 04/08/2024",
-            avatar: "/assets/static_images/icon-default.jpg",
-            username: "John Doe",
-            gamesNumber: 15
-        },
-        {
-            title: "Classiques incontournables",
-            image: "/assets/static_images/retro_gaming.jpg",
-            description: "Une liste qui selon moi regorges de jeux à faire absolument...",
-            likes: 78,
-            updatedAt: "Mis à jour le 04/08/2024",
-            avatar: "/assets/static_images/icon-default.jpg",
-            username: "John Doe",
-            gamesNumber: 15
-        },
-        {
-            title: "Classiques incontournables",
-            image: "/assets/static_images/retro_gaming.jpg",
-            description: "Une liste qui selon moi regorges de jeux à faire absolument...",
-            likes: 78,
-            updatedAt: "Mis à jour le 04/08/2024",
-            avatar: "/assets/static_images/icon-default.jpg",
-            username: "John Doe",
-            gamesNumber: 15
-        }
-    ]
-    const token = localStorage.getItem('token');
-    if(token) {
-        const payload = parseJWT(token);
-        console.log(payload);
-    }
   return (
       <>
           <section className="flex justify-center flex-col items-center my-12">
@@ -126,35 +32,12 @@ export default function Home() {
           <section className="text-2xl text-white p-[2rem]">
               <h2 className="dongle-regular-title mb-[3rem]">Les avis de notre communauté ! </h2>
               <h3 className="dongle-regular-title mb-[3rem]">Meilleurs jeux :fire:</h3>
-              {gameList.map((game, index) => (
-                  <GameDetails
-                        key={index}
-                        name={game.name}
-                        image={game.image}
-                        platforms={game.platforms}
-                        tags={game.tags}
-                        release_date={game.release_date}
-                        rating={game.rating}
-                  />
-              ))}
+              <TopTenGames/>
           </section>
 
           <section className={"text-2xl text-white p-[2rem]"}>
               <h4 className="dongle-regular-title mb-[3rem]">Meilleurs listes :fire:</h4>
-              {lists.map((list, index) => (
-                    <ListDetails
-                        key={index}
-                        id={"1"}
-                        name={list.title}
-                        description={list.description}
-                        image={list.image}
-                        likes={list.likes}
-                        updated_at={list.updatedAt}
-                        avatar={list.avatar}
-                        user={list.username}
-                        gamesNumber={list.gamesNumber}
-                    />
-              ))}
+                <MostLikedList limit={5}/>
           </section>
       </>
   )

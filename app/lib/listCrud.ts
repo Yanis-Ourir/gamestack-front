@@ -1,4 +1,5 @@
 import { GameReviewProps } from "../ui/molecule/game-reviews";
+import { ListDetailsProps } from "../ui/molecule/list-details";
 import parseTokenIfPresent from "./checkToken";
 import parseJWT from "./parseJWT";
 
@@ -129,6 +130,24 @@ export async function deleteListById(id: string | string[]): Promise<{ success: 
     } catch (error) {
         console.error('Error:', error);
         return { success: false, message: 'Erreur dans la suppression de la liste de jeux.' };
+    }
+}
+
+export async function findMostLikedList(limit: any): Promise<ListDetailsProps[]> {
+    try {
+        const response = await fetch(`http://localhost:8000/api/game-lists/most-liked/${limit}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await response.json();
+        const listsArray = Object.values(data).sort((a: any, b: any) => b.likes - a.likes);
+
+        return listsArray as ListDetailsProps[];
+    } catch (error) {
+        console.error('Error:', error);
+        throw new Error('Erreur dans la récupération des listes les plus aimées.');
     }
 }
 

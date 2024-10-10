@@ -40,7 +40,7 @@ export default function ProfilHeader() {
                 {/* Background with gradient */}
                 <div className="gradiant-bg h-[10rem]"></div>
                 <div className="flex justify-between items-start mt-4 px-4">
-                    <div className="text-gray-500 text-xl md:flex gap-2">
+                    <div className="text-gray-500 text-xl md:text-2xl md:flex gap-2">
                         <p>Reviews : 12</p>
                         <p>Listes : 4</p>
                         <p>Jeux complétés : 89</p>
