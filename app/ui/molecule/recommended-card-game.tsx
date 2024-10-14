@@ -1,10 +1,21 @@
+import Image from "next/image";
+import { GameDetailsProps } from "./game-details";
+import Link from "next/link";
 
-export default function RecommendedCardGame() {
+
+export default function RecommendedCardGame(game: GameDetailsProps) {
     return (
-        <div className="inline-block px-3">
-            <div className="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
-
+        <Link href={"/game/" + game.slug}>
+            <div className="rounded-lg shadow-md bg-slate-800 hover:shadow-xl hover:cursor-pointer hover:bg-slate-700 w-64 h-72">
+                <Image src={game.image ? game.image : "/assets/static_images/No-Image-Placeholder.png"} alt={game.name} width={256} height={100} className="object-cover object-center rounded-lg"/>
+                <div className="p-4">
+                    <p className="text-white text-2xl">{game.name}</p>
+                    <p className="text-gray-500 text-xl">
+                        {game.tags?.join(", ")}
+                    </p>
+                    <p className="w-fit text-red-400 text-lg">{game.release_date}</p>
+                </div>
             </div>
-        </div>
+        </Link>
     )
 }

@@ -20,6 +20,7 @@ export default function Profil({children}: { children: React.ReactNode[]}) {
             <section>
                 {children}
             </section>
+
         </div>
     );
 }

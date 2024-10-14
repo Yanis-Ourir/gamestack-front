@@ -1,8 +1,5 @@
 import Image from "next/image";
-import GameDetails from "@/app/ui/molecule/game-details";
 import React from "react";
-import ListDetails from "@/app/ui/molecule/list-details";
-import parseJWT from "./lib/parseJWT";
 import TopTenGames from "./ui/organisms/top-ten-rated-games";
 import MostLikedList from "./ui/organisms/most-liked-list";
 

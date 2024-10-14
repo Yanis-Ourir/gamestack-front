@@ -1,16 +1,25 @@
 import { findGamesRecommendation } from "@/app/lib/gameCrud";
 import { GameDetailsProps } from "../molecule/game-details";
 import RecommendedCardGame from "../molecule/recommended-card-game";
+import { use, useEffect, useState } from "react";
 
-export default async function RecommendedGames() {
-    const recommendedGames: GameDetailsProps[] = await findGamesRecommendation();
+
+export default function RecommendedGames() {
+    const [recommendedGames, setRecommendedGames] = useState<GameDetailsProps[]>([]);
+    
+    useEffect(() => {
+        async function fetchGames() {
+            const games = await findGamesRecommendation();
+            setRecommendedGames(games);
+        }
+        fetchGames();
+    }, []);
 
     return (
-        <div className="flex flex-col bg-white m-auto p-auto">
-          {recommendedGames.map((game) => (
-                <RecommendedCardGame/>
-            )
-        )}
+        <div className="flex flex-col items-center md:flex-row gap-3 md:gap-1">
+          {recommendedGames.map((game, index) => (
+            <RecommendedCardGame key={index} {...game} />
+            ))}
         </div>
     );
 }

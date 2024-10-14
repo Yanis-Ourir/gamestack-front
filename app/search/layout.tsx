@@ -4,6 +4,7 @@ import Input from "../ui/atoms/input";
 import { useState } from "react";
 import GameFilter from "../ui/form/filter";
 import SearchGameDetails from "../ui/molecule/search-game-details";
+import RecommendedGames from "../ui/organisms/recommended-games";
 
 export default function SearchLayout({ children }: { children: React.ReactNode }) {
     const [search, setSearch] = useState<string>("");
@@ -36,6 +37,14 @@ export default function SearchLayout({ children }: { children: React.ReactNode }
                     <SearchGameDetails gameName={search} />
                 </section>
             )}
+
+            <section className={"text-2xl text-white p-[2rem]"}>
+                <h5 className="dongle-regular-title mb-[3rem]">
+                    Recommended Games 
+                </h5>
+                    <RecommendedGames />
+            </section>
+       
         </>
     )
 }
