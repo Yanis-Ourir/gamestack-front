@@ -50,7 +50,7 @@ export default function SearchGameDetails({ gameName }: SearchGameDetailsProps) 
     return (
         <div>
             {error && <p>{error}</p>}
-            {games && games.map((game, index) => (
+            {games.length > 0 ? games.map((game, index) => (
                 <GameDetails
                     key={index}
                     id={game.id}
@@ -62,7 +62,9 @@ export default function SearchGameDetails({ gameName }: SearchGameDetailsProps) 
                     release_date={game.release_date}
                     rating={game.rating}
                 />
-            ))}
+            )) : (
+                <p>No game found</p>
+            )}
         </div>
     );
 }

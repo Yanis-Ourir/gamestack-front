@@ -1,4 +1,5 @@
 import { GameDetailsProps } from "../ui/molecule/game-details";
+import parseTokenIfPresent from "./checkToken";
 
 
 
@@ -69,7 +70,7 @@ async function fetchGameData<T>(endpoint: string): Promise<T> {
             },
         });
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Error fetching games data');
         }
         const data = await response.json();
         return data;
@@ -94,4 +95,9 @@ export function findTenMostRatedGames(): Promise<GameDetailsProps[]> {
 
 export function findBySearch(search: string): Promise<GameDetailsProps[]> {
     return fetchGameData<GameDetailsProps[]>(`games/search/${search}`);
+}
+
+export async function findGamesRecommendation(): Promise<GameDetailsProps[]> {
+    const payloadToken = parseTokenIfPresent();
+    return fetchGameData<GameDetailsProps[]>(`games/recommendation/${payloadToken.id}`);
 }

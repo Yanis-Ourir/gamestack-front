@@ -11,6 +11,7 @@ import { addGameToList, findGameListOfUser, findListAndCheckIfGameIsIn, ListData
 import Loader from "../ui/molecule/loader";
 import SuccessMessage from "../ui/atoms/success-message";
 import ErrorMessage from "../ui/atoms/error-message";
+import Link from "next/link";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [game, setGame] = useState<GameDetailsProps | null>(null);
@@ -109,7 +110,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div className="fixed top-0 left-0 w-full h-full p-4 md:p-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
                         <div className="bg-gray-800 w-fit md:w-1/3 p-8 rounded-lg text-white text-2xl">
                         <div className="flex justify-between items-center gap-4 md:gap-0">
-                            <h2 className="text-2xl md:text-4xl text-center">Ajouter {game?.name} à une liste</h2>
+                            <h2 className="text-2xl md:text-4xl text-center">Add {game?.name} to list</h2>
                             <button onClick={modalAddToList} className="text-white rounded-full hover:text-red-500">X</button>
                         </div>
                             {successMessage && (
@@ -123,7 +124,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                     <ErrorMessage message={errorMessage} />
                                 </div>
                             )}
-                        {lists && lists.map((list, index) => (
+                        {lists.length > 0 ? lists.map((list, index) => (
                             <div
                                 key={index}
                                 className={`flex justify-between items-center border-b border-gray-500 p-4 hover:cursor-pointer ${list.is_game_in_list ? 'text-green-400' : 'text-white'} ${list.is_game_in_list ? 'hover:bg-gray-800' : 'hover:bg-gray-700'}`}
@@ -138,7 +139,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 <p>{list.name}</p>
                                 <DynamicIcon icon={list.is_game_in_list ? 'IoCheckmarkCircle' : 'IoAddCircle'} />
                             </div>
-                        ))}
+                        )) : (
+                            <div className="flex flex-col justify-center items-center mt-12">
+                                <p className="text-white text-2xl">No list found</p>
+                                <Link href="/list/create" className="text-red-400 hover:underline">Create a list</Link>
+                            </div>
+                        )}
                         
                     </div>
                 </div>

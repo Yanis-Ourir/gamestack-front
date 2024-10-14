@@ -5,9 +5,11 @@ import Button from "@/app/ui/atoms/button";
 import Link from "next/link";
 import loginRequest from "@/app/lib/loginRequest";
 import SuccessMessage from "@/app/ui/atoms/success-message";
+import { useState } from "react";
+import ErrorMessage from "@/app/ui/atoms/error-message";
 
 export default function Login() {
-
+    const [error, setError] = useState<string>('');
     const success = localStorage.getItem('success');
 
     function handleSubmit(e: any) {
@@ -17,7 +19,7 @@ export default function Login() {
         try {
             loginRequest(email.value, password.value);
         } catch (error) {
-            console.error(error);
+            setError('Login failed. Please check your email and password.');
         }
     }
 
@@ -27,6 +29,9 @@ export default function Login() {
             <Image src="/assets/place_holder_logo.png" alt={"Logo gamestack"} width={200} height={200} />
             {success &&
                 <SuccessMessage message={success} />
+            }
+            {error &&
+                <ErrorMessage message={error} />
             }
             <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg text-2xl mb-[8rem]" method="POST" onSubmit={handleSubmit}>
                 <Input label={"Email :"} type={"email"} id={"#inputEmail"} name={"email"} required={true} className={"input-login"} />
