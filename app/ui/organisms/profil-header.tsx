@@ -12,6 +12,11 @@ export type User = {
     description: string;
     createdAt: string;
     updatedAt: string;
+    image: UserImage;
+}
+
+export type UserImage = {
+    url: string;
 }
 
 export default function ProfilHeader() {
@@ -50,9 +55,9 @@ export default function ProfilHeader() {
                 {/* Profile picture, slightly overlapping the background */}
                 <div className="absolute inset-x-0 top-[6rem] flex justify-center">
                     <div className="text-center">
-                    <Image src="/assets/static_images/icon-default.jpg" alt="avatar"
+                    <Image src={user?.image ? "http://localhost:8000/storage/" + user.image.url : "/assets/static_images/icon-default.jpg"} alt="avatar"
                                 className="rounded-full" width={150} height={150}/>
-                        <p className="text-4xl text-white mt-2">{payloadToken?.pseudo}</p>
+                        <p className="text-4xl text-white mt-2">{user?.pseudo}</p>
                     </div>
                 </div>
             </div>
