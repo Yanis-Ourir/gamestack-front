@@ -1,11 +1,12 @@
 'use client';
+import parseTokenIfPresent from "@/app/lib/checkToken";
 import parseJWT from "@/app/lib/parseJWT";
 import findUser from "@/app/lib/userCrud";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-type User = {
+export type User = {
     pseudo: string;
     email: string;
     description: string;
@@ -15,16 +16,11 @@ type User = {
 
 export default function ProfilHeader() {
     const [user, setUser] = useState<User>();
-    const token = localStorage.getItem('token');
-    const payloadToken = parseJWT(token as string);
+    const payloadToken = parseTokenIfPresent();
+
 
     async function fetchData() {
-        if (!token) {
-            window.location.href = '/auth/login';
-            return;
-        }
-
-        const data = await findUser(token);
+        const data = await findUser();
         setUser(data);
     }
 
@@ -45,9 +41,9 @@ export default function ProfilHeader() {
                         <p>Listes : 4</p>
                         <p>Jeux complétés : 89</p>
                     </div>
-                    <div className="md:pe-12">
-                        <Link href="#"
-                                className="border-gray-600 rounded-full border text-white px-4 text-xl md:text-2xl hover:bg-gray-800">Éditer
+                    <div className="md:pe-12 z-50">
+                        <Link href="/profil/edit"
+                                className="border-gray-600 rounded-full border text-white px-4 text-xl md:text-2xl hover:bg-slate-600 hover:cursor-pointer">Éditer
                             le profil</Link>
                     </div>
                 </div>
@@ -56,7 +52,7 @@ export default function ProfilHeader() {
                     <div className="text-center">
                     <Image src="/assets/static_images/icon-default.jpg" alt="avatar"
                                 className="rounded-full" width={150} height={150}/>
-                        <p className="text-4xl text-white mt-2">{payloadToken.pseudo}</p>
+                        <p className="text-4xl text-white mt-2">{payloadToken?.pseudo}</p>
                     </div>
                 </div>
             </div>

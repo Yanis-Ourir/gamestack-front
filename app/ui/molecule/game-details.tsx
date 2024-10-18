@@ -23,7 +23,13 @@ export type EvaluationProps = {
     game_time: string;
     status: StatusProps;
     platforms: PlatformsProps[];
-    user: string;
+    user: UserProps;
+}
+
+export type UserProps = {
+    id: number;
+    pseudo: string;
+    avatar: string;
 }
 
 export type StatusProps = {

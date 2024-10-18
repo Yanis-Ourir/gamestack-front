@@ -15,7 +15,7 @@ export default function ListHeader({listDetails}: {listDetails: ListData}) {
                 <h1 className={"dongle-regular-title"}>{listDetails.name}</h1>
                 <div className={"text-white text-2xl text-center flex gap-2 items-center"}>
                     <Image
-                        src={listDetails.user.avatar || "/assets/static_images/icon-default.jpg"} // Fallback for avatar if null
+                        src={"http://localhost:8000/storage/" + listDetails.user.avatar || "/assets/static_images/icon-default.jpg"} // Fallback for avatar if null
                         alt={"avatar of list owner"}
                         className={"avatar-image"}
                         width={40}

@@ -36,8 +36,6 @@ export type StatusProps = {
 
 
 
-
-
 export default function GameReview({ idList, id, slug, name, description, status, image, platforms, tags, release_date, handleEdit, handleDelete }: GameReviewProps) {
     return (
         <div className="flex mb-4 border-b border-gray-600 pb-4 items-center justify-between">
@@ -68,8 +66,8 @@ export default function GameReview({ idList, id, slug, name, description, status
                     </div>
                 </div>
             </Link>
-            <div className="hidden">
-            <DropdownMenu editFunction={handleEdit} deleteFunction={handleDelete}/>
+            <div className="hidden md:block">
+                <DropdownMenu editFunction={handleEdit} deleteFunction={handleDelete}/>
             </div>
         </div>
     )

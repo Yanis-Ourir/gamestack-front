@@ -40,7 +40,8 @@ export async function createListRequest({ listName, listDescription, listVisibil
     formData.append('description', listDescription);
     formData.append('is_private', listVisibility);
     formData.append('user_id', payloadToken.id);
-    formData.append('image', listImage); 
+    formData.append('image', listImage);
+    console.log(formData);
 
     try {
         const response = await fetch('http://localhost:8000/api/game-lists', {
@@ -60,18 +61,19 @@ export async function createListRequest({ listName, listDescription, listVisibil
 
 export async function findGameListOfUser() {
     const payloadToken = parseTokenIfPresent();
-    return fetch(`http://localhost:8000/api/game-lists/user/` + payloadToken.id, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    }).then(async (response) => response.json())
-        .then((data) => {
-            return data;
-        }).catch((error) => {
-            console.error('Error:', error);
-            throw new Error('Erreur dans la récupération de vos listes de jeux.');
+    try {
+        const response = await fetch(`http://localhost:8000/api/game-lists/user/` + payloadToken.id, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
         });
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw new Error('Erreur dans la récupération de vos listes de jeux.');
+    }
 }
 
 export async function findListAndCheckIfGameIsIn(gameId: any) {

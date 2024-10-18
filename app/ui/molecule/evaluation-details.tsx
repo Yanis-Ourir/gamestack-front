@@ -4,18 +4,21 @@ import DynamicIcon from "../atoms/dynamic-icon";
 import Tag from "./tag";
 
 export default function EvaluationDetails({ evaluation }: { evaluation: EvaluationProps }) {
+    console.log(evaluation);
     return <div className="flex items-center justify-between gap-2 md:px-12 md:pb-12 border-b border-gray-600">
         <div className="flex items-center">
+           
             <Image
-                src="/assets/static_images/icon-default.jpg"
-                alt="avatar"
+                // @ts-ignore
+                src={evaluation.user.avatar ? `http://localhost:8000/storage/${evaluation.user.avatar.url}` : "/assets/static_images/No-Image-Placeholder.png"}
+                alt="avatar de l'utilisateur"
                 className="rounded-full"
                 width={100}
                 height={50}
             />
             <div className="flex flex-col mb-4 md:px-8">
                 <div className="flex gap-2 items-center text-4xl">
-                    <p className="text-white">{evaluation.user}</p>
+                    <p className="text-white">{evaluation.user.pseudo}</p>
                     <p className="text-red-600 text-4xl md:hidden">{evaluation.rating}</p>
                 </div>
                 <div className="flex gap-3">

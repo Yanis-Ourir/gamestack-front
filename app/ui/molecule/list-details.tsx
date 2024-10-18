@@ -10,11 +10,20 @@ export type ListDetailsProps = {
     likes: number;
     updated_at: string;
     avatar: string;
-    user: string;
+    user: UserProps;
     games: number;
 }
 
+type UserProps = {
+    id: number;
+    username: string;
+    avatar: string;
+}
+
+
+
 export default function ListDetails({id, name, description, image, likes, updated_at, avatar, user, games}: ListDetailsProps) {
+    console.log(user);
     return (
         <Link href={'/list/' + id} className="flex justify-between items-center border-b border-gray-600 pb-4 mb-4">
             <div className="flex items-center">
@@ -23,10 +32,10 @@ export default function ListDetails({id, name, description, image, likes, update
                 <div className="px-4">
                     <p className="text-3xl md:text-4xl">{name}</p>
                     <div className={"flex items-center gap-2"}>
-                        <Image className="avatar-image" src={avatar}
+                        <Image className="avatar-image" src={user.avatar ? "http://localhost:8000/storage/" + user.avatar : "/assets/static_images/icon-default.jpg"}
                                alt={"avatar from the game list"} width={40} height={40}/>
                         <div className="flex items-center gap-2">
-                            <p className="text-2xl">{user} - {likes}</p>
+                            <p className="text-2xl">{user.username} - {likes}</p>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 32 32"  
