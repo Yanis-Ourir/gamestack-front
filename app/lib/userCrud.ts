@@ -6,10 +6,12 @@ type UpdateProfil = {
     profilImage: File;
 }
 
+const endpoint = process.env.NEXT_PUBLIC_API_URL;
+
 export default async function findUser() {
     const payloadToken = parseTokenIfPresent();
     try {
-        const response = await fetch(`http://localhost:8000/api/user/` + payloadToken.pseudo, {
+        const response = await fetch(`${endpoint}/api/user/` + payloadToken.pseudo, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +35,7 @@ export async function editUser({profilPseudo, profilDescription, profilImage}: U
     formData.append('image', profilImage);
 
     try {
-        const response = await fetch(`http://localhost:8000/api/users/test/${payloadToken.id}`, {
+        const response = await fetch(`${endpoint}/api/users/test/${payloadToken.id}`, {
             method: 'POST',
             body: formData,
         });

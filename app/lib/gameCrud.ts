@@ -1,6 +1,8 @@
 import { GameDetailsProps } from "../ui/molecule/game-details";
 import parseTokenIfPresent from "./checkToken";
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 
 
 // export default function findGameById(gameId: string): Promise<GameDetailsProps> | string  {
@@ -63,7 +65,7 @@ import parseTokenIfPresent from "./checkToken";
 
 async function fetchGameData<T>(endpoint: string): Promise<T> {
     try {
-        const response = await fetch(`http://localhost:8000/api/${endpoint}`, { 
+        const response = await fetch(`${apiUrl}/api/${endpoint}`, { 
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

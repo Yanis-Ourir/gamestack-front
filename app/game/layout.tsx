@@ -77,7 +77,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <div>
             <section id="game-details" className="flex p-4 mt-[2rem]">
-                <Image src={game?.image ? game.image : "/assets/static_images/No-Image-Placeholder.png"} alt={game?.name || 'Game Image'} width={150} height={100} />
+                <Image src={game?.image ? game.image : "/assets/static_images/No-Image-Placeholder.png"} alt={game?.name || 'Game Image'} width={500} height={100} />
                 <div className="text-white text-2xl px-4">
                     <h1 className="text-3xl md:dongle-regular-title">{game?.name}</h1>
                     <p className="text-gray-500">Release date {game?.release_date}</p>
@@ -131,7 +131,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 onClick={() => addGameToSelectedList(list.id)}
                             >
                                 <Image
-                                    src={list.image ? `http://localhost:8000/storage/${list.image}` : '/assets/static_images/retro_gaming.jpg'}
+                                    src={list.image ? `${process.env.NEXT_PUBLIC_API_URL}/storage/${list.image}` : '/assets/static_images/retro_gaming.jpg'}
                                     alt="game list from community"
                                     width={70}
                                     height={70}

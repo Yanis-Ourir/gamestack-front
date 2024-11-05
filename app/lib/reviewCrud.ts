@@ -5,8 +5,10 @@ export type ReviewProps = {
     statusId: number;
 };
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 export default function addReview({description, gameId, gameListId, statusId}: ReviewProps) {
-    return fetch("http://localhost:8000/api/reviews", {
+    return fetch(`${apiUrl}/api/reviews`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -21,7 +23,7 @@ export default function addReview({description, gameId, gameListId, statusId}: R
 };
 
 export function editReview({description, gameId, gameListId, statusId}: ReviewProps) {
-    return fetch("http://localhost:8000/api/review", {
+    return fetch(`${apiUrl}/api/review`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -36,7 +38,7 @@ export function editReview({description, gameId, gameListId, statusId}: ReviewPr
 }
 
 export function deleteReview(id: string) {
-    return fetch(`http://localhost:8000/api/review/${id}`, {
+    return fetch(`${apiUrl}/api/review/${id}`, {
         method: "DELETE",
     });
 }

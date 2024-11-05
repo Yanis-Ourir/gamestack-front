@@ -70,7 +70,7 @@ export default function ProfilList() {
                         id={list.id}
                         name={list.name}
                         description={list.description}
-                        image={list.image ? "http://localhost:8000/storage/" + list.image : "/assets/static_images/retro_gaming.jpg"}
+                        image={list.image ? `${process.env.NEXT_PUBLIC_API_URL}/storage/` + list.image : "/assets/static_images/retro_gaming.jpg"}
                         likes={list.likes}
                         updated_at={list.updated_at}
                         avatar={"/assets/static_images/icon-default.jpg"}

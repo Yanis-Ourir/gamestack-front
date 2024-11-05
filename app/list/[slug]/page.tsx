@@ -15,9 +15,7 @@ import LikeDislike from "@/app/ui/form/like-dislike";
 import ListHeader from "@/app/ui/organisms/list-header";
 
 export default function List() {
-    // NEED TYPING HERE
     const params = useParams();
-
     const [listDetails, setListDetails] = useState<ListData>();
     const [loading, setLoading] = useState<boolean>(true);
     const [games, setGames] = useState<GameReviewProps[]>([]);

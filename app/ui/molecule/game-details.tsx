@@ -29,7 +29,7 @@ export type EvaluationProps = {
 export type UserProps = {
     id: number;
     pseudo: string;
-    avatar: string;
+    image: string;
 }
 
 export type StatusProps = {

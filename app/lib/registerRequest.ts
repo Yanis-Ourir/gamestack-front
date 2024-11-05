@@ -1,6 +1,7 @@
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 export default async function registerRequest(pseudoValue: string, emailValue: string, passwordValue: string): Promise<void> {
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/register', {
+        const response = await fetch(`${apiUrl}/api/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -16,8 +16,8 @@ export type ListDetailsProps = {
 
 type UserProps = {
     id: number;
-    username: string;
-    avatar: string;
+    pseudo: string;
+    image: string;
 }
 
 
@@ -32,10 +32,10 @@ export default function ListDetails({id, name, description, image, likes, update
                 <div className="px-4">
                     <p className="text-3xl md:text-4xl">{name}</p>
                     <div className={"flex items-center gap-2"}>
-                        <Image className="avatar-image" src={user.avatar ? "http://localhost:8000/storage/" + user.avatar : "/assets/static_images/icon-default.jpg"}
-                               alt={"avatar from the game list"} width={40} height={40}/>
+                        <Image className="avatar-image" src={user.image ? `${process.env.NEXT_PUBLIC_API_URL}/storage/` + user.image : "/assets/static_images/icon-default.jpg"}
+                               alt={"avatar of the user from the game list"} width={34} height={34}/>
                         <div className="flex items-center gap-2">
-                            <p className="text-2xl">{user.username} - {likes}</p>
+                            <p className="text-2xl">{user.pseudo} - {likes}</p>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 32 32"  

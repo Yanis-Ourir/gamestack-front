@@ -4,9 +4,11 @@ type LoginResponse = {
     expires_in: number;
 };
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 export default async function loginRequest(emailValue: string, passwordValue: string) {
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/auth/login', {
+        const response = await fetch(`${apiUrl}/api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

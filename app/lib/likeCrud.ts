@@ -5,6 +5,8 @@ export type LikeDislikeProps = {
     likeableType: string;
 };
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 const performAction = async (url: string, method: string, body: object | null = null) => {
     try {
         const response = await fetch(url, {
@@ -28,7 +30,7 @@ const performAction = async (url: string, method: string, body: object | null = 
 
 export const addLike = ({ likeableId, likeableType }: LikeDislikeProps) => {
     const payloadToken = parseTokenIfPresent();
-    return performAction(`http://localhost:8000/api/likes`, 'POST', {
+    return performAction(`${apiUrl}/api/likes`, 'POST', {
         user_id: payloadToken.id,
         likeable_id: likeableId,
         likeable_type: `App\\Models\\${likeableType}`,
@@ -36,12 +38,12 @@ export const addLike = ({ likeableId, likeableType }: LikeDislikeProps) => {
 };
 
 export const removeLike = (likeId: number | null) => {
-    return performAction(`http://localhost:8000/api/like/${likeId}`, 'DELETE');
+    return performAction(`${apiUrl}/api/like/${likeId}`, 'DELETE');
 };
 
 export const addDislike = ({ likeableId, likeableType }: LikeDislikeProps) => {
     const payloadToken = parseTokenIfPresent();
-    return performAction(`http://localhost:8000/api/dislikes`, 'POST', {
+    return performAction(`${apiUrl}/api/dislikes`, 'POST', {
         user_id: payloadToken.id,
         dislikeable_id: likeableId,
         dislikeable_type: `App\\Models\\${likeableType}`,
@@ -49,15 +51,15 @@ export const addDislike = ({ likeableId, likeableType }: LikeDislikeProps) => {
 };
 
 export const removeDislike = (dislikeId: number | null) => {
-    return performAction(`http://localhost:8000/api/dislike/${dislikeId}`, 'DELETE');
+    return performAction(`${apiUrl}/api/dislike/${dislikeId}`, 'DELETE');
 };
 
 export const checkIfUserAlreadyLiked = ({ likeableId, likeableType }: LikeDislikeProps) => {
     const payloadToken = parseTokenIfPresent();
-    return performAction(`http://localhost:8000/api/like/${likeableId}/check-user/${payloadToken.id}/type/${likeableType}`, 'GET');
+    return performAction(`${apiUrl}/api/like/${likeableId}/check-user/${payloadToken.id}/type/${likeableType}`, 'GET');
 };
 
 export const checkIfUserAlreadyDisliked = ({ likeableId, likeableType }: LikeDislikeProps) => {
     const payloadToken = parseTokenIfPresent();
-    return performAction(`http://localhost:8000/api/dislike/${likeableId}/check-user/${payloadToken.id}/type/${likeableType}`, 'GET');
+    return performAction(`${apiUrl}/api/dislike/${likeableId}/check-user/${payloadToken.id}/type/${likeableType}`, 'GET');
 };

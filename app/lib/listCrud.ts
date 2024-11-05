@@ -27,9 +27,11 @@ export type ListData = {
 
 type User = {
     id: number;
-    username: string;
-    avatar: string;
+    pseudo: string;
+    image: string;
 }
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export async function createListRequest({ listName, listDescription, listVisibility, listImage }: List) {
   
@@ -44,7 +46,7 @@ export async function createListRequest({ listName, listDescription, listVisibil
     console.log(formData);
 
     try {
-        const response = await fetch('http://localhost:8000/api/game-lists', {
+        const response = await fetch(`${apiUrl}/api/game-lists`, {
             method: 'POST',
             body: formData,
         });
@@ -62,7 +64,7 @@ export async function createListRequest({ listName, listDescription, listVisibil
 export async function findGameListOfUser() {
     const payloadToken = parseTokenIfPresent();
     try {
-        const response = await fetch(`http://localhost:8000/api/game-lists/user/` + payloadToken.id, {
+        const response = await fetch(`${apiUrl}/api/game-lists/user/` + payloadToken.id, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -79,7 +81,7 @@ export async function findGameListOfUser() {
 export async function findListAndCheckIfGameIsIn(gameId: any) {
     const payloadToken = parseTokenIfPresent();
     try {
-        const response = await fetch(`http://localhost:8000/api/game-list/${payloadToken.id}/game/${gameId}`, {
+        const response = await fetch(`${apiUrl}/api/game-list/${payloadToken.id}/game/${gameId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -96,7 +98,7 @@ export async function findListAndCheckIfGameIsIn(gameId: any) {
 
 
 export async function findListById(id: string | string[]): Promise<ListData> {
-    return fetch(`http://localhost:8000/api/game-list/` + id, {
+    return fetch(`${apiUrl}/api/game-list/` + id, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -113,7 +115,7 @@ export async function findListById(id: string | string[]): Promise<ListData> {
 export async function deleteListById(id: string | string[]): Promise<{ success: boolean; message: string }> {
     const payloadToken = parseTokenIfPresent();
     try {
-        const response = await fetch(`http://localhost:8000/api/game-list/${id}`, {
+        const response = await fetch(`${apiUrl}/api/game-list/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -137,7 +139,7 @@ export async function deleteListById(id: string | string[]): Promise<{ success: 
 
 export async function findMostLikedList(limit: any): Promise<ListDetailsProps[]> {
     try {
-        const response = await fetch(`http://localhost:8000/api/game-lists/most-liked/${limit}`, {
+        const response = await fetch(`${apiUrl}/api/game-lists/most-liked/${limit}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -156,7 +158,7 @@ export async function findMostLikedList(limit: any): Promise<ListDetailsProps[]>
 export async function addGameToList(idList: string, idGame: string) {
     const payloadToken = parseTokenIfPresent();
     try {
-        const response = await fetch(`http://localhost:8000/api/game-lists/add-game`, {
+        const response = await fetch(`${apiUrl}/api/game-lists/add-game`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -178,7 +180,7 @@ export async function addGameToList(idList: string, idGame: string) {
 export async function removeGameFromList(idGame: string, idList: string): Promise<{ success: boolean; message: string }> {
     console.log(idList, idGame);
     try {
-        const response = await fetch(`http://localhost:8000/api/game-lists/remove-game`, {
+        const response = await fetch(`${apiUrl}/api/game-lists/remove-game`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

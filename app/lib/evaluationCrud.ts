@@ -10,11 +10,13 @@ export type Evaluation = {
     userId: string;
 }
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 export async function addEvaluation({ rating, description, gameTime, gameId, platforms, statusId }: Evaluation) {
     const token = parseTokenIfPresent();
 
     try {
-        await fetch('http://localhost:8000/api/evaluations', {
+        await fetch(`${apiUrl}/api/evaluations`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +41,7 @@ export async function addEvaluation({ rating, description, gameTime, gameId, pla
 
 // export async function getEvaluationsByGameId(gameId: number) {
 //     try {
-//         const response = await fetch(`http://localhost:8000/api/evaluations/game/${gameId}`);
+//         const response = await fetch(`${apiUrl}/api/evaluations/game/${gameId}`);
 //         const evaluations = await response.json();
 //         return evaluations;
 //     } catch (error) {
