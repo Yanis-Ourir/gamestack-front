@@ -23,7 +23,7 @@ type UserProps = {
 
 
 export default function ListDetails({id, name, description, image, likes, updated_at, avatar, user, games}: ListDetailsProps) {
-    console.log(user);
+
     return (
         <Link href={'/list/' + id} className="flex justify-between items-center border-b border-gray-600 pb-4 mb-4">
             <div className="flex items-center">
@@ -55,7 +55,7 @@ export default function ListDetails({id, name, description, image, likes, update
                 </div>
             </div>
             <div>
-                <p className={"text-3xl text-gray-500"}>Jeux</p>
+                <p className={"text-3xl text-gray-500"}>Games</p>
                 <p className={"text-6xl text-red-600 text-center"}>{games ? games : 0}</p>
             </div>
 

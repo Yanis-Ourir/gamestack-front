@@ -135,7 +135,7 @@ export default function List() {
                     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center">
                         <div className="bg-gray-800 w-1/2 p-8 rounded-lg text-white text-2xl">
                             <div className="flex justify-between items-center">
-                                <h2 className="text-center text-4xl">Modifier la review de la liste</h2>
+                                <h2 className="text-center text-4xl">Update review</h2>
                                 <button onClick={closeModal} className="text-white hover:text-red-600">X</button>
                             </div>
                             {successMessage && (
@@ -153,13 +153,13 @@ export default function List() {
                             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                                 <p className="text-2xl text-white mt-4">Status : </p>
                                 <div id="multiple-selects" className="flex justify-around my-4 gap-4">
-                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="1" label={"Complété"} required={false} iconName="IoCheckmarkCircleOutline" textColor="text-green-500" />
-                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="2" label={"En cours"} required={false} iconName="IoPlay" />
-                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="3" label={"Lâché"} required={false} iconName="IoTrashOutline" textColor="text-red-400" />
-                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="4" label={"Souhaite jouer"} required={false} iconName="IoAddCircleOutline" textColor="text-gray-400" />
+                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="1" label={"Completed"} required={false} iconName="IoCheckmarkCircleOutline" textColor="text-green-500" />
+                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="2" label={"In Progress"} required={false} iconName="IoPlay" />
+                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="3" label={"Dropped"} required={false} iconName="IoTrashOutline" textColor="text-red-400" />
+                                    <Checkbox type="checkbox" id="review-status" name="reviewStatus" value="4" label={"Want to Play"} required={false} iconName="IoAddCircleOutline" textColor="text-gray-400" />
                                 </div>
                                 <Input label={"Changer la description"} type={"text"} id={"review-game"} name={"reviewGame"} required={true} className={"input-login"} />
-                                <button className="bg-red-500 text-white px-4 py-2 rounded-full">Changer</button>
+                                <button className="bg-red-500 text-white px-4 py-2 rounded-full">Update</button>
                             </form>
 
                         </div>

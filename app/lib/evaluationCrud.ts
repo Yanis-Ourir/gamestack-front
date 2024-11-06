@@ -31,10 +31,10 @@ export async function addEvaluation({ rating, description, gameTime, gameId, pla
                 user_id: token.id,
             }),
         });
-        return 'Evaluation ajoutée avec succès !';
+        return 'Evaluation created successfully.';
     } catch (error) {
         console.error(error);
-        return 'Erreur dans la création de votre évaluation. Veuillez réessayer.';
+        return 'Error creating evaluation. Please try again.';
     }
 }
 

@@ -52,7 +52,7 @@ export default function GameReview({ idList, id, slug, name, description, status
                         )}
                         </div>
                     <div className={"flex gap-3"}>
-                        <p className="hidden md:block">Plateformes : </p>
+                        <p className="hidden md:block">Platforms : </p>
                         {platforms.map((platform: PlatformsProps, index) => (
                             <Tag key={index} name={platform.name} icon={platform.icon} />
                         ))}

@@ -35,15 +35,15 @@ export async function editUser({profilPseudo, profilDescription, profilImage}: U
     formData.append('image', profilImage);
 
     try {
-        const response = await fetch(`${endpoint}/api/users/test/${payloadToken.id}`, {
+        const response = await fetch(`${endpoint}/api/users/${payloadToken.id}`, {
             method: 'POST',
             body: formData,
         });
         
         console.log(response);
-        return 'Profil modifié avec succès !';
+        return 'Profil updated successfully.';
     } catch (error) {
         console.error('Error:', error);
-        return 'Erreur dans la modification de votre profil. Veuillez réessayer.';
+        return 'Error updating profil. Please try again.';
     }
 }

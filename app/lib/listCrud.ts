@@ -53,10 +53,10 @@ export async function createListRequest({ listName, listDescription, listVisibil
 
         console.log(response);
 
-        return 'Liste créée avec succès !';
+        return 'List created successfully.';
     } catch (error) {
         console.error(error);
-        return 'Erreur dans la création de votre liste. Veuillez réessayer.';
+        return 'Error creating list. Please try again.';
     }
 }
 
@@ -74,7 +74,7 @@ export async function findGameListOfUser() {
         return data;
     } catch (error) {
         console.error('Error:', error);
-        throw new Error('Erreur dans la récupération de vos listes de jeux.');
+        throw new Error('Error fetching user game lists.');
     }
 }
 
@@ -92,7 +92,7 @@ export async function findListAndCheckIfGameIsIn(gameId: any) {
         return data;
     } catch (error) {
         console.error('Error:', error);
-        throw new Error('Erreur dans la récupération de vos listes de jeux.');
+        throw new Error('Error fetching user game lists.');
     }
 }
 
@@ -108,7 +108,7 @@ export async function findListById(id: string | string[]): Promise<ListData> {
             return data;
         }).catch((error) => {
             console.error('Error:', error);
-            throw new Error('Erreur dans la récupération de la liste de jeux.');
+            throw new Error('Error fetching list.');
         });
 }
 
@@ -125,7 +125,7 @@ export async function deleteListById(id: string | string[]): Promise<{ success: 
         if (!response.ok) {
             const errorText = await response.text();
             console.error('Error:', errorText);
-            throw new Error('Erreur dans la suppression de la liste de jeux.');
+            throw new Error('Error deleting list.');
         }
 
         const message = await response.text();
@@ -133,7 +133,7 @@ export async function deleteListById(id: string | string[]): Promise<{ success: 
         return { success: true, message };
     } catch (error) {
         console.error('Error:', error);
-        return { success: false, message: 'Erreur dans la suppression de la liste de jeux.' };
+        return { success: false, message: 'Error while deleting your game list' };
     }
 }
 
@@ -173,7 +173,7 @@ export async function addGameToList(idList: string, idGame: string) {
         return data;
     } catch (error) {
         console.error('Error:', error);
-        throw new Error('Erreur dans l\'ajout du jeu à la liste.');
+        throw new Error('Error while adding game to list.');
     }
 }
 
@@ -198,10 +198,8 @@ export async function removeGameFromList(idGame: string, idList: string): Promis
         }
 
         const data = await response.json();
-        console.log('Successfully removed game from list:', data);
-        return { success: true, message: 'Jeu supprimé de la liste avec succès.' };
+        return { success: true, message: 'Successfully removed game from list' };
     } catch (error) {
-        console.error('Error:', error);
-        return { success: false, message: 'Erreur dans la suppression du jeu de la liste.' };
+        return { success: false, message: 'Error while deleting game from list' };
     }
 }

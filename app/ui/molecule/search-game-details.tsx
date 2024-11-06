@@ -11,26 +11,14 @@ export default function SearchGameDetails({ gameName }: SearchGameDetailsProps) 
     const [games, setGames] = useState<GameDetailsProps[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const [debouncedGameName, setDebouncedGameName] = useState<string>(gameName);
-
-    useEffect(() => {
-        const handler = setTimeout(() => {
-            setDebouncedGameName(gameName);
-        }, 1000); 
-
-        return () => {
-            clearTimeout(handler);
-        };
-    }, [gameName]);
 
     useEffect(() => {
         const fetchGame = async () => {
             setLoading(true);
             setError(null);
             try {
-                const game = await findBySearch(debouncedGameName);
+                const game = await findBySearch(gameName);
                 setGames(game);
-                console.log(game);
             } catch (err) {
                 setError('No game found');
             } finally {
@@ -38,10 +26,10 @@ export default function SearchGameDetails({ gameName }: SearchGameDetailsProps) 
             }
         };
 
-        if (debouncedGameName) {
+        if (gameName) {
             fetchGame();
         }
-    }, [debouncedGameName]);
+    }, [gameName]);
 
     if (loading) {
         return <Loader />;
@@ -50,7 +38,7 @@ export default function SearchGameDetails({ gameName }: SearchGameDetailsProps) 
     return (
         <div>
             {error && <p>{error}</p>}
-            {games.length > 0 ? games.map((game, index) => (
+            {games.length > 0 && games.map((game, index) => (
                 <GameDetails
                     key={index}
                     id={game.id}
@@ -62,9 +50,7 @@ export default function SearchGameDetails({ gameName }: SearchGameDetailsProps) 
                     release_date={game.release_date}
                     rating={game.rating}
                 />
-            )) : (
-                <p>No game found</p>
-            )}
+            ))}
         </div>
     );
 }

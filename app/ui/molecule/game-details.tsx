@@ -52,7 +52,7 @@ export default function GameDetails({id, slug, name, image, platforms, tags, rel
                 <div className="px-4 flex flex-col justify-between">
                     <p className="text-3xl md:text-4xl">{name}</p>
                     <div className={"flex gap-3 items-center"}>
-                        <p className="hidden md:block">Plateformes : </p>
+                        <p className="hidden md:block">Platforms : </p>
                         {platforms.map((platform: PlatformsProps, index) => (
                             <Tag key={index} name={platform.name} icon={platform.icon}/>
                         ))}

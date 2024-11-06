@@ -18,7 +18,7 @@ const performAction = async (url: string, method: string, body: object | null = 
         if (!response.ok) {
             const errorText = await response.text();
             console.error('Error:', errorText);
-            throw new Error('Erreur lors de l\'opération');
+            throw new Error('Error performing action');
         }
 
         return response.json();

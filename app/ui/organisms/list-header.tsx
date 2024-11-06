@@ -8,8 +8,8 @@ export default function ListHeader({listDetails}: {listDetails: ListData}) {
             <Image
                 src={listDetails.image ? `${process.env.NEXT_PUBLIC_API_URL}/storage/${listDetails.image}` : "/assets/static_images/retro_gaming.jpg"}
                 alt={"game list video picture"}
-                width={100}
-                height={100}
+                width={200}
+                height={200}
             />
             <div className={"px-4"}>
                 <h1 className={"dongle-regular-title"}>{listDetails.name}</h1>
