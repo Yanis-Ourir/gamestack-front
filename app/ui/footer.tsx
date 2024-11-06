@@ -4,7 +4,7 @@ export default function Footer() {
     return <footer className="bg-footer-bg w-full bottom-0 p-4 text-2xl">
         <div className="p-2">
             <div className="text-white flex gap-2 mb-4">
-                <Link href="#">A propos</Link> -
+                <Link href="/privacy-policy">Privacy Policy</Link> -
                 <Link href="#">Contact</Link> -
                 <Link href="#">Mentions légales</Link>
             </div>

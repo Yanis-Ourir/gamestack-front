@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function Contact() {
     return (
-        <section className="bg-gradient-to-br from-[#1a1a2e] via-[#3f0d3d] to-[#1a1a2e] text-white min-h-screen py-12 px-6 flex flex-col items-center">
+        <section className="bg-gradient-to-br from-[#1a1a2e] via-[#1a1a2e] to-[#3f0d3d] text-white min-h-screen py-12 px-6 flex flex-col items-center">
             
             <header className="text-center mb-8">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
-                <p className="text-lg max-w-lg mx-auto">
+                <h1 className="text-4xl md:text-5xl mb-4">Get in Touch</h1>
+                <p className="text-2xl max-w-lg mx-auto">
                     Have questions or feedback? We're here to help! Send us a message, and our team will get back to you as soon as possible.
                 </p>
             </header>
@@ -15,7 +15,7 @@ export default function Contact() {
             <div className="w-full max-w-lg bg-white bg-opacity-10 rounded-lg p-8 shadow-lg">
                 <form>
                     <div className="mb-6">
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-2">
+                        <label htmlFor="name" className="block text-2xl font-medium text-gray-200 mb-2">
                             Name
                         </label>
                         <input
@@ -27,7 +27,7 @@ export default function Contact() {
                     </div>
 
                     <div className="mb-6">
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
+                        <label htmlFor="email" className="block text-2xl font-medium text-gray-200 mb-2">
                             Email
                         </label>
                         <input
@@ -39,7 +39,7 @@ export default function Contact() {
                     </div>
 
                     <div className="mb-6">
-                        <label htmlFor="subject" className="block text-sm font-medium text-gray-200 mb-2">
+                        <label htmlFor="subject" className="block text-2xl font-medium text-gray-200 mb-2">
                             Subject
                         </label>
                         <input
@@ -51,7 +51,7 @@ export default function Contact() {
                     </div>
 
                     <div className="mb-8">
-                        <label htmlFor="message" className="block text-sm font-medium text-gray-200 mb-2">
+                        <label htmlFor="message" className="block text-2xl font-medium text-gray-200 mb-2">
                             Message
                         </label>
                         <textarea
@@ -71,7 +71,7 @@ export default function Contact() {
                 </form>
             </div>
 
-            <div className="mt-12 text-center text-gray-400 max-w-lg">
+            <div className="mt-12 text-center text-gray-400 max-w-lg text-xl">
                 <p className="mb-2">Or reach out to us at:</p>
                 <p>Email: <a href="mailto:support@yourapp.com" className="text-purple-400">support@yourapp.com</a></p>
                 <p className="mt-2">Phone: <a href="tel:+123456789" className="text-purple-400">+1 (234) 567-89</a></p>
