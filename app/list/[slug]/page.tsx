@@ -82,7 +82,7 @@ export default function List() {
 
     return (
         <div>
-            <section id={"list-details"} className={"text-2xl text-white flex items-center p-[2rem]"}>
+            <section id={"list-details"} className={"text-2xl text-white flex p-[2rem]"}>
                 <ListHeader listDetails={listDetails} />
             </section>
             <section id={"listfilter"}>

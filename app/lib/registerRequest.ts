@@ -1,5 +1,5 @@
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-export default async function registerRequest(pseudoValue: string, emailValue: string, passwordValue: string): Promise<void> {
+export default async function registerRequest(pseudoValue: string, emailValue: string, passwordValue: string): Promise<void | string> {
     try {
         const response = await fetch(`${apiUrl}/api/register`, {
             method: 'POST',
@@ -13,17 +13,18 @@ export default async function registerRequest(pseudoValue: string, emailValue: s
             }),
         });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.error('Error:', errorData);
-            alert('Erreur lors de l\'inscription: ' + (errorData.message || 'Veuillez réessayer.'));
-            return;
+        const data = await response.json();
+
+        console.log(data);
+
+        if(data.errors) {
+            return data.errors.password;
         }
 
         window.location.href = "/auth/login";
-        localStorage.setItem('success', 'Inscription réussie, veuillez vous connecter');
+        localStorage.setItem('success', data.success);
     } catch (error) {
         console.error('Error:', error);
-        alert('Erreur lors de l\'inscription: Veuillez réessayer.');
+        return "Une erreur inattendue est survenue." + error;
     }
 }

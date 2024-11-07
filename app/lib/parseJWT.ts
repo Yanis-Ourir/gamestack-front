@@ -8,3 +8,12 @@ export default function parseJWT(token: string): any {
         return null;
     }
 }
+
+export function checkToken(): any {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        window.location.href = '/auth/login'; 
+        return;
+    }
+    return token;
+}

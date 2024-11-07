@@ -22,10 +22,10 @@ export default function CreateList() {
         }
         try {
             const result = await createListRequest(List);
-            if (result === 'Liste créée avec succès !') {
+            if (result === 'List created successfully') {
                 setListStatus(result); 
             } else {
-                setErrorMessage(result); // Affiche l'erreur retournée par la fonction createListRequest
+                setErrorMessage(result); 
             }
         } catch (error) {
             setErrorMessage('Une erreur inattendue est survenue.');
@@ -36,14 +36,17 @@ export default function CreateList() {
       <div className="flex flex-col items-center justify-center">
           <h1 className={"dongle-regular-title text-white mt-12"}>Créer une nouvelle liste de jeux vidéos !</h1>
             <p className={"text-2xl text-white"}>Choisissez le type de liste que vous souhaitez faire ! Partager vos expériences jeux vidéos avec la communauté !</p>
+        
+        <div className="h-12">
 
           {listStatus && (
               <SuccessMessage message={listStatus} />
-          )}
+            )}
 
           {errorMessage && (
               <ErrorMessage message={errorMessage} />
-          )}
+            )}
+        </div>
           
             <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg text-2xl mb-[8rem] mt-[2rem]" method="POST" onSubmit={handleSubmit} encType='multipart/form-data'>
                 <Input label={"Nom de la liste"} type={"text"} id={"list-name"} name={"listName"} required={true} className={"input-login"}/>

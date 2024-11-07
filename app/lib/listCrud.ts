@@ -1,7 +1,7 @@
 import { GameReviewProps } from "../ui/molecule/game-reviews";
 import { ListDetailsProps } from "../ui/molecule/list-details";
 import parseTokenIfPresent from "./checkToken";
-import parseJWT from "./parseJWT";
+import parseJWT, { checkToken } from "./parseJWT";
 
 type List = {
     listName: string;
@@ -36,6 +36,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 export async function createListRequest({ listName, listDescription, listVisibility, listImage }: List) {
   
     const payloadToken = parseTokenIfPresent();
+    const token = checkToken();
 
     const formData = new FormData();
     formData.append('name', listName);
@@ -48,15 +49,23 @@ export async function createListRequest({ listName, listDescription, listVisibil
     try {
         const response = await fetch(`${apiUrl}/api/game-lists`, {
             method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
             body: formData,
         });
 
-        console.log(response);
+        if(!response.ok) {
+            const errorText = await response.text();
+            console.error('Error:', errorText);
+            return 'Error creating list. Please try again.';
+        }
 
-        return 'List created successfully.';
+
+        return 'List created successfully';
     } catch (error) {
         console.error(error);
-        return 'Error creating list. Please try again.';
+        return 'Error creating list. Please try again';
     }
 }
 
@@ -113,12 +122,13 @@ export async function findListById(id: string | string[]): Promise<ListData> {
 }
 
 export async function deleteListById(id: string | string[]): Promise<{ success: boolean; message: string }> {
-    const payloadToken = parseTokenIfPresent();
+    const token = checkToken();
     try {
         const response = await fetch(`${apiUrl}/api/game-list/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
             },
         });
 
@@ -156,12 +166,13 @@ export async function findMostLikedList(limit: any): Promise<ListDetailsProps[]>
 }
 
 export async function addGameToList(idList: string, idGame: string) {
-    const payloadToken = parseTokenIfPresent();
+    const token = checkToken();
     try {
         const response = await fetch(`${apiUrl}/api/game-lists/add-game`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
                 gameListId: idList,
@@ -178,12 +189,13 @@ export async function addGameToList(idList: string, idGame: string) {
 }
 
 export async function removeGameFromList(idGame: string, idList: string): Promise<{ success: boolean; message: string }> {
-    console.log(idList, idGame);
+    const token = checkToken();
     try {
         const response = await fetch(`${apiUrl}/api/game-lists/remove-game`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
                 game_list_id: idList,

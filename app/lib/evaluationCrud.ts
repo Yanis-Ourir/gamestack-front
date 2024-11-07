@@ -1,4 +1,5 @@
 import parseTokenIfPresent from "./checkToken";
+import { checkToken } from "./parseJWT";
 
 export type Evaluation = {
     rating: number;
@@ -13,13 +14,16 @@ export type Evaluation = {
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export async function addEvaluation({ rating, description, gameTime, gameId, platforms, statusId }: Evaluation) {
-    const token = parseTokenIfPresent();
+    const payloadToken = parseTokenIfPresent();
+    const token = checkToken();
+    console.log('token', token);
 
     try {
         await fetch(`${apiUrl}/api/evaluations`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
                 rating: rating,
@@ -28,10 +32,10 @@ export async function addEvaluation({ rating, description, gameTime, gameId, pla
                 game_id: gameId,
                 platforms: platforms,
                 status_id: statusId,
-                user_id: token.id,
+                user_id: payloadToken.id,
             }),
         });
-        return 'Evaluation created successfully.';
+        return 'Evaluation created successfully';
     } catch (error) {
         console.error(error);
         return 'Error creating evaluation. Please try again.';

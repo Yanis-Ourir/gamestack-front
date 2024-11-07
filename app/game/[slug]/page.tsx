@@ -12,7 +12,7 @@ export default function GamePage() {
             <section id="game-stats">
                 <div className="flex p-4 mt-[2rem] justify-center">
                     <div className="text-white text-2xl">
-                        <h1 className="dongle-regular-title">Statistiques</h1>
+                        <h1 className="dongle-regular-title">Statistics</h1>
                         {/* <p className="text-gray-500">Note de la communauté: <span className="text-red-600 text-6xl">{game?.rating}</span></p> */}
                     </div>
                 </div>
@@ -22,7 +22,7 @@ export default function GamePage() {
             </section>
             <div className="flex justify-center mt-12">
                 <Link href={`/game/${params.slug}/create-evaluation`} className="bg-gradient-to-r from-[#C31432] to-purple-800 text-white w-fit px-4 rounded-full flex gap-3 text-xl items-center">
-                    <IoGameControllerOutline /> Ajouter un avis
+                    <IoGameControllerOutline /> Add an evaluation
                 </Link>
             </div>
         </>

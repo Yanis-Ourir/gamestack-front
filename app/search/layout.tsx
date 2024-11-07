@@ -52,7 +52,6 @@ export default function SearchLayout({ children }: { children: React.ReactNode }
             )}
 
             <section className={"text-2xl text-white p-[2rem]"}>
-                <h5 className="dongle-regular-title mb-[3rem]">Recommended Games</h5>
                 <RecommendedGames />
             </section>
         </>

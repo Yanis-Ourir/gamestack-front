@@ -60,13 +60,13 @@ export default function CreateEvaluationPage() {
 
     try {
       const result = await addEvaluation(evaluation);
-      if(result === 'Evaluation ajoutée avec succès !') {
+      if (result === 'Evaluation created successfully') {
         setEvaluationStatus(result);
       } else {
         setErrorMessage(result);
       }
     } catch (error) {
-      setErrorMessage('Une erreur inattendue est survenue.');
+      setErrorMessage('Error creating evaluation. Please try again.');
       console.error(error);
     }
   };

@@ -55,28 +55,21 @@ export default function ProfilList() {
                     <ErrorMessage message={errorMessage} />
                 </div>
             )}
-            <section className="flex text-4xl justify-around mt-16 text-white" id={"profil-nav"}>
+            {/* <section className="flex text-4xl justify-around mt-16 text-white" id={"profil-nav"}>
                 <Link href={"/profil"} className={"hover:text-hover-red active:text-hover-red active:underline [&.active]:text-hover-red"}>Listes</Link>
                 <Link href={"/profil/reviews"} className={"hover:text-hover-red active:text-hover-red active:underline [&.active]:text-hover-red"}>Évaluations</Link>
                 <Link href={"#"} className={"hover:text-hover-red"}>Favoris</Link>
                 <Link href={"#"} className={"hover:text-hover-red active:text-hover-red"}>Stats</Link>
-            </section>
-
-            <Link href="/list/create-list" className="text-red-400 hover:underline">Create List</Link>
+            </section> */}
+            
+            <div className="flex flex-col md:flex-row justify-between items-center my-12">
+                <h1 className="text-4xl dongle-regular-title py-8">Your video games lists</h1>
+                <Link href="/list/create-list" className="bg-gradient-to-r from-[#C31432] to-purple-800 text-white px-4 py-2 rounded-full hover:to-[#C31432]">Create List</Link>
+            </div>
 
             {lists.length > 0 ? ( lists.map((list, index) => (
                 <div key={index}>
-                    <ListDetails
-                        id={list.id}
-                        name={list.name}
-                        description={list.description}
-                        image={list.image ? `${process.env.NEXT_PUBLIC_API_URL}/storage/` + list.image : "/assets/static_images/retro_gaming.jpg"}
-                        likes={list.likes}
-                        updated_at={list.updated_at}
-                        avatar={"/assets/static_images/icon-default.jpg"}
-                        user={list.user}
-                        games={list.games}
-                        />
+                    <ListDetails {...list}/>
                     <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={() => deleteList(list.id)}>Delete</button>
                 </div>
             ))

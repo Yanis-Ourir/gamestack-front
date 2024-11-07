@@ -7,11 +7,12 @@ import Image from "next/image";
 import Tag from "../ui/molecule/tag";
 import DynamicIcon from "../ui/atoms/dynamic-icon";
 import EvaluationDetails from "../ui/molecule/evaluation-details";
-import { addGameToList, findGameListOfUser, findListAndCheckIfGameIsIn, ListData } from "../lib/listCrud";
+import { addGameToList, findListAndCheckIfGameIsIn, ListData } from "../lib/listCrud";
 import Loader from "../ui/molecule/loader";
 import SuccessMessage from "../ui/atoms/success-message";
 import ErrorMessage from "../ui/atoms/error-message";
 import Link from "next/link";
+import ListLoader from "../ui/molecule/list-loader";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [game, setGame] = useState<GameDetailsProps | null>(null);
@@ -22,6 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const [lists, setLists] = useState<ListData[]>([]);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [listLoading, setListLoading] = useState<boolean>(true);
     const params = useParams();
 
     useEffect(() => {
@@ -55,6 +57,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         setModal(!modal);
         const listsData = await findListAndCheckIfGameIsIn(game?.id);
         setLists(listsData);
+        setListLoading(false);
         console.log(listsData);
     }
 
@@ -124,6 +127,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                     <ErrorMessage message={errorMessage} />
                                 </div>
                             )}
+                            
+                            {listLoading && <ListLoader />}
                         {lists.length > 0 ? lists.map((list, index) => (
                             <div
                                 key={index}

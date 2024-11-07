@@ -27,7 +27,7 @@ export default function ListDetails({id, name, description, image, likes, update
     return (
         <Link href={'/list/' + id} className="flex justify-between items-center border-b border-gray-600 pb-4 mb-4">
             <div className="flex items-center">
-                <Image src={image} alt={"game list from community"} width={100}
+                <Image src={image ? process.env.NEXT_PUBLIC_API_URL + '/storage/' + image : ""} alt={"game list from community"} width={100}
                        height={100}/>
                 <div className="px-4">
                     <p className="text-3xl md:text-4xl">{name}</p>

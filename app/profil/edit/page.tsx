@@ -36,7 +36,7 @@ export default function EditProfil() {
 
         try {
             const result = await editUser(profil);
-            if (result === 'Profil modifié avec succès !') {
+            if (result === 'Profil updated successfully') {
                 setSuccessMessage(result);
             } else {
                 setErrorMessage(result); 
@@ -54,7 +54,7 @@ export default function EditProfil() {
     return (
         
         <div className="flex flex-col items-center justify-center mt-24">
-            <h1 className="dongle-regular-title text-white">Page de modification du profil</h1>
+            <h1 className="dongle-regular-title text-white">Update your GameStack profil</h1>
         
             <div className="flex justify-center">
                 {errorMessage && (
@@ -69,9 +69,9 @@ export default function EditProfil() {
             <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg text-2xl mb-[8rem] mt-[2rem]" method="POST" onSubmit={handleSubmit} encType='multipart/form-data'>
                 <input type="hidden" name="_method" value="PUT"></input>
                 <Input label={"Pseudo"} type={"text"} id={"profil-name"} name={"profilPseudo"} required={true} className={"input-login"} defaultValue={user?.pseudo ? user.pseudo : ""}/>
-                <Input label={"Description de votre profil"} type={"text"} id={"profil-description"} name={"profilDescription"} required={true} className={"input-login"} defaultValue={user?.description ? user.description : ""}/>
-                <Input label={"Image de votre profil"} type={"file"} id={"profil-image"} name={"profilImage"} required={false} className={"input-login"} />
-                <Button classes={"bg-red-input w-full rounded-full p-1.5 text-white hover:bg-red-input-hover"} label={"Créer votre liste"} />
+                <Input label={"Description"} type={"text"} id={"profil-description"} name={"profilDescription"} required={true} className={"input-login"} defaultValue={user?.description ? user.description : ""}/>
+                <Input label={"Profil picture"} type={"file"} id={"profil-image"} name={"profilImage"} required={false} className={"input-login"} />
+                <Button classes={"bg-red-input w-full rounded-full p-1.5 text-white hover:bg-red-input-hover"} label={"Update"} />
             </form>
         </div>
     )

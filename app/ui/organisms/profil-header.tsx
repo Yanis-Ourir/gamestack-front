@@ -38,7 +38,7 @@ export default function ProfilHeader() {
     return (
         <>
             <div className="relative">
-                {/* Background with gradient */}
+         
                 <div className="gradiant-bg h-[10rem]"></div>
                 <div className="flex justify-between items-start mt-4 px-4">
                     <div className="text-gray-500 text-xl md:text-2xl md:flex gap-2">
@@ -52,7 +52,7 @@ export default function ProfilHeader() {
                             le profil</Link>
                     </div>
                 </div>
-                {/* Profile picture, slightly overlapping the background */}
+            
                 <div className="absolute inset-x-0 top-[6rem] flex justify-center">
                     <div className="text-center">
                         <Image src={user?.image ? process.env.NEXT_PUBLIC_API_URL + "/storage/" + user.image.url : "/assets/static_images/icon-default.jpg"} alt="avatar"
@@ -62,7 +62,7 @@ export default function ProfilHeader() {
                 </div>
             </div>
             <div>
-                <p className={"text-3xl text-gray-500 mt-24 px-4"}>{user?.description}</p>
+                <p className={"text-3xl text-gray-500 mt-24 px-4 text-center"}>{user?.description}</p>
             </div>
         </>
     )

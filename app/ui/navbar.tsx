@@ -47,7 +47,7 @@ export default function Navbar() {
                     </>
                 ) : (
                     <li className="my-2 md:my-0">
-                        <Link className={`px-4 hover:text-[#B54548] ${pathname === '/login' ? 'text-[#B54548]' : ''}`} href="/auth/login">Login</Link>
+                        <Link className={`px-4 hover:text-[#B54548] ${pathname === '/auth/login' ? 'text-[#B54548]' : ''}`} href="/auth/login">Login</Link>
                     </li>
                 )}
             <button onClick={toggleMenu} className="text-4xl focus:outline-none md:hidden hover:text-red-500">

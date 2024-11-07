@@ -1,4 +1,5 @@
 import parseTokenIfPresent from './checkToken';
+import { checkToken } from './parseJWT';
 
 export type LikeDislikeProps = {
     likeableId: string | number;
@@ -7,11 +8,16 @@ export type LikeDislikeProps = {
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const performAction = async (url: string, method: string, body: object | null = null) => {
+const performAction = async (url: string, method: string, body: object | null = null, token: string | null = null) => {
+    const headers: HeadersInit = { 'Content-Type': 'application/json' };
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+
     try {
         const response = await fetch(url, {
             method,
-            headers: { 'Content-Type': 'application/json' },
+            headers,
             body: body ? JSON.stringify(body) : null,
         });
 
@@ -30,28 +36,32 @@ const performAction = async (url: string, method: string, body: object | null = 
 
 export const addLike = ({ likeableId, likeableType }: LikeDislikeProps) => {
     const payloadToken = parseTokenIfPresent();
+    const token = checkToken();
     return performAction(`${apiUrl}/api/likes`, 'POST', {
         user_id: payloadToken.id,
         likeable_id: likeableId,
         likeable_type: `App\\Models\\${likeableType}`,
-    });
+    }, token);
 };
 
 export const removeLike = (likeId: number | null) => {
-    return performAction(`${apiUrl}/api/like/${likeId}`, 'DELETE');
+    const token = checkToken();
+    return performAction(`${apiUrl}/api/like/${likeId}`, 'DELETE', null, token);
 };
 
 export const addDislike = ({ likeableId, likeableType }: LikeDislikeProps) => {
     const payloadToken = parseTokenIfPresent();
+    const token = checkToken();
     return performAction(`${apiUrl}/api/dislikes`, 'POST', {
         user_id: payloadToken.id,
         dislikeable_id: likeableId,
         dislikeable_type: `App\\Models\\${likeableType}`,
-    });
+    }, token);
 };
 
 export const removeDislike = (dislikeId: number | null) => {
-    return performAction(`${apiUrl}/api/dislike/${dislikeId}`, 'DELETE');
+    const token = checkToken();
+    return performAction(`${apiUrl}/api/dislike/${dislikeId}`, 'DELETE', null, token);
 };
 
 export const checkIfUserAlreadyLiked = ({ likeableId, likeableType }: LikeDislikeProps) => {
