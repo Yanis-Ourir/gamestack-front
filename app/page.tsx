@@ -47,7 +47,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Download Section */}
+     
         <div className="flex flex-col items-center mt-20">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Get the App</h2>
           <p className="text-lg mb-8 max-w-md text-center">
