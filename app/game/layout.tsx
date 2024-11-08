@@ -69,10 +69,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 setErrorMessage(response.error);
                 return;
             }
-            setSuccessMessage('Jeu ajouté à la liste avec succès');
+            setSuccessMessage('Game added to list successfully');
         } catch (error) {
             console.error('Error adding game to list:', error);
-            setErrorMessage('Erreur lors de l\'ajout du jeu à la liste');
+            setErrorMessage('Error while adding the game to list');
         }
     }
 

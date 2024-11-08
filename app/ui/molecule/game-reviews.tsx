@@ -18,6 +18,10 @@ export type GameReviewProps = {
     slug: string;
     status?: StatusProps;
     release_date: string;
+    review?: {
+        description: string;
+        status: StatusProps;
+    }
     handleEdit: () => void;
     handleDelete: (idGame: string, idList: string) => void;
 }
@@ -59,7 +63,7 @@ export default function GameReview({ idList, id, slug, name, description, status
                     </div>
                     <div className={"text-gray-500"}>
                         <p>
-                            {tags.join(", ")}
+                            {tags?.join(", ")}
                         </p>
                         <p>{release_date}</p>
                         <p>{description}</p>

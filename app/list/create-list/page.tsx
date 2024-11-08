@@ -28,14 +28,14 @@ export default function CreateList() {
                 setErrorMessage(result); 
             }
         } catch (error) {
-            setErrorMessage('Une erreur inattendue est survenue.');
+            setErrorMessage('Error creating list');
             console.error(error);
         }
     }
   return (
       <div className="flex flex-col items-center justify-center">
-          <h1 className={"dongle-regular-title text-white mt-12"}>Créer une nouvelle liste de jeux vidéos !</h1>
-            <p className={"text-2xl text-white"}>Choisissez le type de liste que vous souhaitez faire ! Partager vos expériences jeux vidéos avec la communauté !</p>
+          <h1 className={"dongle-regular-title text-white mt-12"}>Create a new game list !</h1>
+            <p className={"text-2xl text-white"}>Choose your type of game list that you want to create</p>
         
         <div className="h-12">
 
@@ -49,15 +49,15 @@ export default function CreateList() {
         </div>
           
             <form className="space-y-6 bg-gray-900 px-12  py-8 lg:w-1/3 md:w-full rounded-lg text-2xl mb-[8rem] mt-[2rem]" method="POST" onSubmit={handleSubmit} encType='multipart/form-data'>
-                <Input label={"Nom de la liste"} type={"text"} id={"list-name"} name={"listName"} required={true} className={"input-login"}/>
-                <Input label={"Description de la liste"} type={"text"} id={"list-description"} name={"listDescription"} required={true} className={"input-login"}/>
-                <Input label={"Image de la liste"} type={"file"} id={"list-image"} name={"listImage"} required={false} className={"input-login"}/>
-                <label htmlFor="list-visibility" className="block text-md font-medium leading-6 text-white">Visibilité de la liste</label>
+                <Input label={"List name"} type={"text"} id={"list-name"} name={"listName"} required={true} className={"input-login"}/>
+                <Input label={"List description"} type={"text"} id={"list-description"} name={"listDescription"} required={true} className={"input-login"}/>
+                <Input label={"List image"} type={"file"} id={"list-image"} name={"listImage"} required={false} className={"input-login"}/>
+                <label htmlFor="list-visibility" className="block text-md font-medium leading-6 text-white">List visibility</label>
                 <select name="listVisibility" id="list-visibility" className="input-login" required={true}>
                     <option value="0">Public</option>
-                    <option value="1">Privée</option>
+                    <option value="1">Private</option>
                 </select>
-              <Button classes={"bg-red-input w-full rounded-full p-1.5 text-white hover:bg-red-input-hover"} label={"Créer votre liste"} />
+              <Button classes={"bg-red-input w-full rounded-full p-1.5 text-white hover:bg-red-input-hover"} label={"Create your list"} />
             </form>
     </div>
   )

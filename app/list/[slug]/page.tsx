@@ -1,7 +1,5 @@
 'use client';
-import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import GameDetails from "@/app/ui/molecule/game-details";
 import { useParams } from "next/navigation";
 import { findListById, ListData, removeGameFromList } from "@/app/lib/listCrud";
 import Loader from "@/app/ui/molecule/loader";
@@ -11,8 +9,9 @@ import ErrorMessage from "@/app/ui/atoms/error-message";
 import Input from "@/app/ui/atoms/input";
 import Checkbox from "@/app/ui/atoms/checkbox";
 import addReview from "@/app/lib/reviewCrud";
-import LikeDislike from "@/app/ui/form/like-dislike";
 import ListHeader from "@/app/ui/organisms/list-header";
+import { StatusProps } from "@/app/ui/molecule/game-details";
+
 
 export default function List() {
     const params = useParams();
@@ -60,10 +59,10 @@ export default function List() {
         if(gameId && listDetails) {
             try {
                 await addReview({ description: reviewGame.value, gameId, gameListId: listDetails.id, statusId: Number(selectedStatuses[0]) });
-                setSuccessMessage('Review ajoutée avec succès');
+                setSuccessMessage('Review successfully added');
             } catch (error) {
                 console.error('Error adding review:', error);
-                setErrorMessage('Erreur lors de l\'ajout de la review');
+                setErrorMessage('Error adding review');
             }
         }
     }
@@ -72,10 +71,10 @@ export default function List() {
         try {
             await removeGameFromList(idGame, idList);
             setGames(games.filter(game => game.id !== idGame));
-            setSuccessMessage('Jeux supprimé avec succès');
+            setSuccessMessage('Game deleted successfully');
         } catch (error) {
             console.error('Error deleting list:', error);
-            setErrorMessage('Erreur lors de la suppression du jeu');
+            setErrorMessage('Error deleting game');
         }
     }
 
@@ -106,27 +105,35 @@ export default function List() {
                 </div>
             )}
             
-            <section className={"text-2xl text-white p-[2rem]"}>
+            <section className={"text-2xl text-white p-[2rem] mb-32"}>
                 {games.length > 0 ? (
-                    games.map((game: any, index: number) => (
-                        <GameReview
-                            idList={listDetails.id}
-                            id={game.id}
-                            key={index}
-                            name={game.name}
-                            description={game.review[0]?.description}
-                            image={game.image}
-                            platforms={game.platforms}
-                            tags={game.tags}
-                            release_date={game.releaseDate}
-                            status={game.review[0]?.status}
-                            slug={game.slug}
-                            handleEdit={() => openModal(game.id)}
-                            handleDelete={() => handleDelete(game.id, listDetails.id)}
-                        />
-                    ))
+                    games.map((game) => {
+                     
+                        const review = Object.values(game.review || {})[0] || {};
+                        console.log(game);
+                        return (
+                          
+                            <GameReview
+                                idList={listDetails.id}
+                                id={game.id}
+                                key={game.id}
+                                name={game.name}
+                                // @ts-ignore
+                                description={review?.description}
+                                image={game.image}
+                                platforms={game.platforms}
+                                tags={game.tags}
+                                release_date={game.release_date}
+                                // @ts-ignore
+                                status={review?.status}
+                                slug={game.slug}
+                                handleEdit={() => openModal(game.id)}
+                                handleDelete={() => handleDelete(game.id, listDetails.id)}
+                            />
+                        );
+                    })
                 ) : (
-                    <p>No games available in this list.</p>
+                    <p className="h-56">No games available in this list.</p>
                 )}
             </section>
 

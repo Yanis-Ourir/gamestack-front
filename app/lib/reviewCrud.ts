@@ -1,3 +1,5 @@
+import { checkToken } from "./parseJWT";
+
 export type ReviewProps = {
     description: string;
     gameId: string;
@@ -8,9 +10,11 @@ export type ReviewProps = {
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export default function addReview({description, gameId, gameListId, statusId}: ReviewProps) {
+    const token = checkToken();
     return fetch(`${apiUrl}/api/reviews`, {
         method: "POST",
         headers: {
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify({

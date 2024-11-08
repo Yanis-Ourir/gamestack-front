@@ -74,8 +74,8 @@ export default function ProfilList() {
                 </div>
             ))
             ) : (
-                    <div>
-                        <p className="text-4xl">Vous n'avez pas encore de liste</p>
+                    <div className="h-40">
+                        <p className="text-4xl">There are no lists yet</p>
                     </div>
             )}
         </div>
