@@ -10,11 +10,16 @@ export default async function MostLikedList({limit}: MostLikedListProps) {
    
     return (
         <>
-            {lists?.map((list, index) => (
-                <ListDetails
-                    {...list}
-                />
-            ))}
+            {lists && lists.length > 0 ? (
+                lists.map((list, index) => (
+                    <ListDetails
+                        key={index}
+                        {...list}
+                    />
+                ))
+            ) : (
+                <p>No community list yet ! </p>
+            )}
         </>
     )
 }

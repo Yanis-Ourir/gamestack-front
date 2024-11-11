@@ -35,16 +35,16 @@ export default function LegalMentions() {
                         This website utilizes data from the RAWG API to provide detailed information about video games, such as titles, images, and descriptions.
                     </p>
                     <p className="text-3xl text-gray-300 mt-2">
-                        In compliance with RAWG's <a href="https://rawg.io/apidocs" target="_blank" rel="noopener noreferrer" className="text-red-400 underline">Terms of Service</a>, we:
+                        In compliance with RAWG&apos;s <a href="https://rawg.io/apidocs" target="_blank" rel="noopener noreferrer" className="text-red-400 underline">Terms of Service</a>, we:
                     </p>
                     <ul className="list-disc list-inside mt-4 text-gray-300 text-2xl">
                         <li>Attribute RAWG as the source of the data and images used on this website.</li>
                         <li>Include an active hyperlink to RAWG from every page where their data is displayed.</li>
-                        <li>Do not redistribute RAWG's data or make it available for external use beyond this project.</li>
-                        <li>Use RAWG's API within the limits of free commercial use for projects with less than 100,000 monthly active users or 500,000 page views per month.</li>
+                        <li>Do not redistribute RAWG&apos;s data or make it available for external use beyond this project.</li>
+                        <li>Use RAWG&apos;s API within the limits of free commercial use for projects with less than 100,000 monthly active users or 500,000 page views per month.</li>
                     </ul>
                     <p className="text-3xl text-gray-300 mt-4">
-                        If you have any questions about the usage of RAWG's data, feel free to reach out to RAWG at <a href="mailto:api@rawg.io" className="text-red-400 underline">api@rawg.io</a>.
+                        If you have any questions about the usage of RAWG&apos;s data, feel free to reach out to RAWG at <a href="mailto:api@rawg.io" className="text-red-400 underline">api@rawg.io</a>.
                     </p>
                 </section>
 

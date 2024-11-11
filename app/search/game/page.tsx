@@ -6,6 +6,7 @@ export default async function GameSearch() {
     return (
         <>
             <TopTenGames />
+            <h1>Games</h1>
         </>
     )
 }

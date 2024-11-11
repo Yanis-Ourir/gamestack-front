@@ -7,7 +7,7 @@ export default function Contact() {
             <header className="text-center mb-8">
                 <h1 className="text-4xl md:text-5xl mb-4">Get in Touch</h1>
                 <p className="text-2xl max-w-lg mx-auto">
-                    Have questions or feedback? We're here to help! Send us a message, and our team will get back to you as soon as possible.
+                    Have questions or feedback? We&apos;re here to help! Send us a message, and our team will get back to you as soon as possible.
                 </p>
             </header>
 

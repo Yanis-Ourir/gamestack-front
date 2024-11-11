@@ -31,7 +31,7 @@ export default function LikeDislike({ initialLikes, initialDislikes, likeableId,
                 setLiked(false);
             }
         });
-    }, [dislikes, likes]);
+    }, [likeableId, likeableType, dislikes, likes]);
 
     const handleLike = () => {
         toggleLikeDislike({

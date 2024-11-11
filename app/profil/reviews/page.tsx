@@ -60,6 +60,7 @@ export default function Reviews() {
         <div className={"text-2xl text-white p-[2rem]"}>
             {gameList.map((game, index) => (
                 <GameDetails
+                    id={index.toString()}
                     key={index}
                     name={game.name}
                     slug = {game.slug}

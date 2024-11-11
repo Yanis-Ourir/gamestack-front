@@ -21,15 +21,15 @@ export type UserImage = {
 
 export default function ProfilHeader() {
     const [user, setUser] = useState<User>();
-    const payloadToken = parseTokenIfPresent();
-
-
+    
+    
     async function fetchData() {
         const data = await findUser();
         setUser(data);
     }
-
+    
     useEffect(() => {
+        const payloadToken = parseTokenIfPresent();
         fetchData();
     }, []);
 

@@ -67,12 +67,12 @@ export default function Home() {
 
           <section className="text-2xl text-white p-[2rem]">
               <h2 className="dongle-regular-title mb-[3rem]">Community Evaluation </h2>
-              <h3 className="dongle-regular-title mb-[3rem]">Best Games :fire:</h3>
+              <h3 className="dongle-regular-title mb-[3rem]">Best Games</h3>
               <TopTenGames/>
           </section>
 
           <section className={"text-2xl text-white p-[2rem]"}>
-              <h4 className="dongle-regular-title mb-[3rem]">Best lists :fire:</h4>
+              <h4 className="dongle-regular-title mb-[3rem]">Best lists</h4>
                 <MostLikedList limit={5}/>
           </section>
       </>

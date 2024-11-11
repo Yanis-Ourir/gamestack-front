@@ -1,5 +1,4 @@
 'use client';
-import parseTokenIfPresent from "@/app/lib/checkToken";
 import findUser, { editUser } from "@/app/lib/userCrud";
 import Button from "@/app/ui/atoms/button";
 import ErrorMessage from "@/app/ui/atoms/error-message";

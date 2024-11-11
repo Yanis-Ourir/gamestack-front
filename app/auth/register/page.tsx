@@ -45,7 +45,7 @@ export default function Register() {
 
             <Button classes={"bg-red-input w-full rounded-full p-1.5 text-white hover:bg-red-input-hover"} label={"Register"} />
             
-            <p className="text-white text-center pt-2">Already have an account ? <Link href="/auth/login" className="text-red-400 hover:underline">Connectez-vous</Link>
+            <p className="text-white text-center pt-2">Already have an account ? <Link href="/auth/login" className="text-red-400 hover:underline">Log in</Link>
             </p>
         </form>
     </div>

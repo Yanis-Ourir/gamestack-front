@@ -99,7 +99,6 @@ export function findBySearch(search: string): Promise<GameDetailsProps[]> {
     return fetchGameData<GameDetailsProps[]>(`games/search/${search}`);
 }
 
-export async function findGamesRecommendation(): Promise<GameDetailsProps[]> {
-    const payloadToken = parseTokenIfPresent();
-    return fetchGameData<GameDetailsProps[]>(`games/recommendation/${payloadToken.id}`);
+export async function findGamesRecommendation(userId: string): Promise<GameDetailsProps[]> {
+    return fetchGameData<GameDetailsProps[]>(`games/recommendation/${userId}`);
 }

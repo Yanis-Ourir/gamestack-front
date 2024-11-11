@@ -2,13 +2,18 @@ import { findGamesRecommendation } from "@/app/lib/gameCrud";
 import { GameDetailsProps } from "../molecule/game-details";
 import RecommendedCardGame from "../molecule/recommended-card-game";
 import { useEffect, useState } from "react";
+import { getToken } from "@/app/lib/checkToken";
 
 export default function RecommendedGames() {
     const [recommendedGames, setRecommendedGames] = useState<GameDetailsProps[]>([]);
-
+    
     useEffect(() => {
+        const token = getToken();
         async function fetchGames() {
-            const games = await findGamesRecommendation();
+            if (!token) {
+                return;
+            }
+            const games = await findGamesRecommendation(token.id);
             setRecommendedGames(games);
         }
         fetchGames();

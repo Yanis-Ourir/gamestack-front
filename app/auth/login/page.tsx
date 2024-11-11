@@ -5,12 +5,18 @@ import Button from "@/app/ui/atoms/button";
 import Link from "next/link";
 import loginRequest from "@/app/lib/loginRequest";
 import SuccessMessage from "@/app/ui/atoms/success-message";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ErrorMessage from "@/app/ui/atoms/error-message";
 
 export default function Login() {
     const [error, setError] = useState<string>('');
-    const success = localStorage.getItem('success');
+    const [success, setSuccess] = useState<string>('');
+
+    useEffect(() => {
+        if(localStorage.getItem('success') !== null) {
+            setSuccess(localStorage.getItem('success') || '');
+        }
+    }, []);
 
     function handleSubmit(e: any) {
         e.preventDefault();
@@ -43,7 +49,7 @@ export default function Login() {
                     </div>
                     <Link href="#" className="text-gray-500 pt-1 hover:text-red-400">Forgot password ?</Link>
                 </div>
-                <Button classes={"bg-red-input w-full rounded-full p-1.5 text-white hover:bg-red-input-hover"} label={"Connexion"} />
+                <Button classes={"bg-red-input w-full rounded-full p-1.5 text-white hover:bg-red-input-hover"} label={"Login"} />
                 <p className="text-white text-center pt-2">No account yet ? <Link href="/auth/register" className="text-red-400 hover:underline">Register</Link></p>
             </form>
         </div>
