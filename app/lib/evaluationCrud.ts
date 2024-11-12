@@ -16,7 +16,6 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 export async function addEvaluation({ rating, description, gameTime, gameId, platforms, statusId }: Evaluation) {
     const payloadToken = parseTokenIfPresent();
     const token = checkToken();
-    console.log('token', token);
 
     try {
         await fetch(`${apiUrl}/api/evaluations`, {
